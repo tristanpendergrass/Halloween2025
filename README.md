@@ -4,6 +4,8 @@ for Halloween game 2025
 
 john calls folder halloween2025
 
+tristan is on board.
+
 
 
 
