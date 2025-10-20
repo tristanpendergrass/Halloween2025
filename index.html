@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Halloween Minigames</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="game-area">
+        <!-- Left Navigation - Game Info -->
+        <div class="left-nav">
+          <h2 class="game-title">🎃 Halloween Games</h2>
+          <div class="current-game-info">
+            <h3 id="current-game-name">Game 1</h3>
+            <div class="score-display">
+              <span class="score-label">Score:</span>
+              <span id="current-score">0</span>
+            </div>
+          </div>
+          <div class="game-description">
+            <p id="game-description">Select a game to start playing!</p>
+          </div>
+        </div>
+
+        <!-- Center - Game Content -->
+        <div class="center-game">
+          <div id="game-content">
+            <div class="welcome-screen">
+              <h1>🦇 Halloween Minigames! 🦇</h1>
+              <h2>2025 EDITION!</h2>
+              <p>Choose a game from the menu to start playing!</p>
+              <div class="halloween-decoration">
+                <span class="pumpkin">🎃</span>
+                <span class="ghost">👻</span>
+                <span class="spider">🕷️</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Navigation - Game List -->
+        <div class="right-nav expanded">
+          <div class="title-section">
+            <ul class="game-list">
+              <li class="game-item active" data-game="title-screen">
+                <span class="game-icon">🏠</span>
+                <span class="game-name">Title Screen</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="games-section">
+            <h3>
+              <span class="games-icon">🕸️</span>
+              <span class="games-text">Games</span>
+            </h3>
+            <ul class="game-list">
+              <li class="game-item" data-game="welcome-game">
+                <span class="game-icon">
+                  <img
+                    src="js/games/welcome-game/Candy_Corn_emoji_40x40.png"
+                    alt="Candy Corn"
+                    style="width: 30px; height: 30px;"
+                  />
+                </span>
+                <span class="game-name">Welcome Game</span>
+              </li>
+              <li class="game-item" data-game="whosThatWitch">
+                <span class="game-icon">
+                  <img
+                    src="js/games/whosThatWitch/assets/other/witch_emoji_for_title_40x40.png"
+                    alt="Witch"
+                    style="width: 30px; height: 30px;"
+                  />
+                </span>
+                <span class="game-name">Who's That Witch?</span>
+              </li>
+              <li class="game-item" data-game="word-haunt">
+                <span class="game-icon word-haunt-icon">
+                  <span>A</span>
+                  <span>👻</span>
+                  <span>🔍</span>
+                  <span>Z</span>
+                </span>
+                <span class="game-name">Word Haunt</span>
+              </li>
+              <li class="game-item" data-game="theRadleyHouse">
+                <span class="game-icon radley-icon">R</span>
+                <span class="game-name radley-name">The Radley House</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Panel Toggle Button -->
+          <div class="panel-toggle">
+            <button
+              id="panel-toggle-btn"
+              class="toggle-button"
+              aria-label="Toggle panel"
+            >
+              <span class="toggle-arrow">···→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

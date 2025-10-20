@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(python3:*)",
+      "Bash(cp:*)",
+      "Bash(npm test)",
+      "Bash(npm run test-puzzle:*)",
+      "Bash(mv:*)",
+      "Bash(npm run test-word-search:*)",
+      "Bash(npm test:*)",
+      "Bash(npm run create-word-search:*)",
+      "Bash(npm run validate-partial-word-search:*)",
+      "Bash(node:*)",
+      "Bash(cat:*)",
+      "Bash(npm run validate-word-haunt:*)",
+      "Bash(kill 1683 4117)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8000)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

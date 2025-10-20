@@ -1,0 +1,53 @@
+<svg width="905" height="720" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="905" height="720" fill="white" stroke="red" stroke-width="3"/>
+  
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="lightgray" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="905" height="720" fill="url(#grid)" opacity="0.5"/>
+  
+  <!-- Corner markers -->
+  <!-- Top-left (0,0) -->
+  <rect x="0" y="0" width="20" height="20" fill="blue"/>
+  <text x="25" y="15" font-family="Arial" font-size="14" fill="black">(0,0)</text>
+  
+  <!-- Top-right (904,0) -->
+  <rect x="884" y="0" width="20" height="20" fill="blue"/>
+  <text x="820" y="15" font-family="Arial" font-size="14" fill="black">(904,0)</text>
+  
+  <!-- Bottom-left (0,719) -->
+  <rect x="0" y="699" width="20" height="20" fill="blue"/>
+  <text x="25" y="714" font-family="Arial" font-size="14" fill="black">(0,719)</text>
+  
+  <!-- Bottom-right (904,719) -->
+  <rect x="884" y="699" width="20" height="20" fill="blue"/>
+  <text x="800" y="714" font-family="Arial" font-size="14" fill="black">(904,719)</text>
+  
+  <!-- Center crosshairs -->
+  <line x1="432.5" y1="360" x2="472.5" y2="360" stroke="green" stroke-width="2"/>
+  <line x1="452.5" y1="340" x2="452.5" y2="380" stroke="green" stroke-width="2"/>
+  <text x="477.5" y="365" font-family="Arial" font-size="12" fill="green">Center: (452.5,360)</text>
+  
+  <!-- Title text -->
+  <text x="390" y="50" font-family="Arial" font-size="18" font-weight="bold" fill="black">905x720 GAME AREA TEST</text>
+  <text x="400" y="300" font-family="Arial" font-size="16" fill="red">FULL DIMENSIONS</text>
+  <text x="380" y="320" font-family="Arial" font-size="16" fill="red">No gaps or borders</text>
+  <text x="390" y="340" font-family="Arial" font-size="14" fill="blue">Perfect absolute positioning</text>
+  
+  <!-- Arrows pointing to corners -->
+  <path d="M 60 60 L 20 20" stroke="blue" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 845 60 L 885 20" stroke="blue" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 60 660 L 20 700" stroke="blue" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 845 660 L 885 700" stroke="blue" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="blue"/>
+    </marker>
+  </defs>
+</svg>

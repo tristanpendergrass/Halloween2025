@@ -1,0 +1,444 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Courier New", monospace;
+  background: linear-gradient(135deg, #1a0a0a 0%, #2d1810 50%, #1a0a0a 100%);
+  color: #ff8c42;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.main-container {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(139, 69, 19, 0.1) 0%,
+    rgba(0, 0, 0, 0.8) 70%
+  );
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.game-area {
+  width: 1280px;
+  height: 720px;
+  background: linear-gradient(145deg, #2a1810 0%, #1f1410 100%);
+  border: 3px solid #ff6600;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(255, 102, 0, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+/* Left Navigation */
+.left-nav {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 720px;
+  background: linear-gradient(180deg, #3d2817 0%, #2a1810 100%);
+  border-right: 2px solid #ff6600;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.game-title {
+  color: #ff8c42;
+  text-align: center;
+  font-size: 1.4em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  border-bottom: 2px solid #ff6600;
+  padding-bottom: 10px;
+}
+
+.current-game-info {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #cc5500;
+}
+
+#current-game-name {
+  color: #ffaa66;
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.score-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score-label {
+  color: #ff8c42;
+  font-weight: bold;
+}
+
+#current-score {
+  color: #ffcc88;
+  font-size: 1.4em;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.game-description {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #994400;
+  flex-grow: 1;
+}
+
+#game-description {
+  color: #cc9966;
+  line-height: 1.4;
+  font-size: 0.9em;
+}
+
+/* Center Game Area */
+.center-game {
+  position: absolute;
+  left: 250px;
+  top: 0;
+  width: 950px;
+  height: 720px;
+  background: linear-gradient(135deg, #1a1410 0%, #261a10 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#game-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-screen {
+  text-align: center;
+  color: #ff8c42;
+  box-sizing: border-box;
+}
+
+/* Adjust welcome screen centering based on panel state */
+.panel-expanded .welcome-screen {
+  padding-right: 250px;
+}
+
+.panel-collapsed .welcome-screen {
+  padding-right: 80px;
+}
+
+.welcome-screen h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+  color: #ffaa66;
+}
+
+.welcome-screen h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  color: #ff8c42;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.welcome-screen p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  color: #cc9966;
+}
+
+.halloween-decoration {
+  font-size: 3em;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.pumpkin {
+  animation-delay: 0s;
+}
+.ghost {
+  animation-delay: 1s;
+}
+.spider {
+  animation-delay: 2s;
+}
+
+/* Right Navigation */
+.right-nav {
+  position: absolute;
+  left: 1030px;
+  top: 0;
+  width: 250px;
+  height: 720px;
+  background: linear-gradient(180deg, #3d2817 0%, #2a1810 100%);
+  border-left: 2px solid #ff6600;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Panel States */
+.right-nav.expanded {
+  width: 250px;
+  left: 1030px;
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.right-nav.collapsed {
+  width: 80px;
+  left: 1200px;
+  box-shadow: none;
+  padding: 20px 10px;
+}
+
+/* Content transitions */
+.right-nav .game-name {
+  transition: opacity 0.2s ease;
+}
+
+.right-nav.collapsed .game-name {
+  display: none;
+}
+
+/* Panel Toggle Button */
+.panel-toggle {
+  margin-top: auto;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.toggle-button {
+  background: transparent;
+  border: none;
+  color: #ff8c42;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.toggle-button:hover {
+  color: #ffaa66;
+  transform: scale(1.2);
+}
+
+.toggle-button:active {
+  transform: scale(1.1);
+}
+
+/* Arrow direction based on panel state - content will be set by JavaScript */
+.toggle-arrow {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+/* Collapsed panel behaviors */
+.right-nav.collapsed .game-item {
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+}
+
+.right-nav.collapsed .game-icon {
+  width: auto;
+}
+
+.right-nav.collapsed .games-icon {
+  display: none;
+}
+
+.right-nav.collapsed .games-section h3 {
+  font-size: 1.2em;
+}
+
+.right-nav h3 {
+  color: #ff8c42;
+  text-align: center;
+  font-size: 1.4em;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  border-bottom: 2px solid #ff6600;
+  padding-bottom: 10px;
+}
+
+.title-section {
+  margin-bottom: 15px;
+}
+
+.title-section h3 {
+  margin-bottom: 15px;
+}
+
+.games-section h3 {
+  margin-bottom: 15px;
+}
+
+.game-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.game-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  min-height: 38px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid #cc5500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #cc9966;
+}
+
+.game-item:hover {
+  background: rgba(255, 102, 0, 0.2);
+  border-color: #ff8c42;
+  transform: translateX(5px);
+  box-shadow: 0 4px 8px rgba(255, 102, 0, 0.3);
+}
+
+.game-item.active {
+  background: rgba(255, 102, 0, 0.3);
+  border-color: #ffaa66;
+  color: #ffcc88;
+  box-shadow: 0 4px 12px rgba(255, 102, 0, 0.4);
+}
+
+.game-icon {
+  font-size: 1.5em;
+  width: 30px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Word Haunt custom grid icon */
+.word-haunt-icon {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0;
+  width: 30px;
+  height: 30px;
+  font-size: 0.75em;
+}
+
+.word-haunt-icon > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0.8;
+  letter-spacing: -0.1em;
+}
+
+/* Make letters bigger than emojis */
+.word-haunt-icon > span:first-child,
+.word-haunt-icon > span:last-child {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.game-name {
+  font-weight: bold;
+  flex-grow: 1;
+}
+
+/* The Radley House special styling - matches game title */
+.radley-icon {
+  font-family: "Cinzel", Georgia, serif;
+  color: #ff9500;
+  text-shadow: 0 0 10px #6a0dad, 0 0 20px #6a0dad, 2px 2px 4px #000;
+  font-weight: 700;
+  font-size: 1.7em;
+}
+
+.radley-name {
+  font-family: "Cinzel", Georgia, serif;
+  color: #ff9500;
+  text-shadow: 2px 2px 4px #000;
+  font-weight: 700;
+  font-size: 0.9em;
+}
+
+/* Game Content Styles */
+.game-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ff8c42;
+}
+
+.game-screen h2 {
+  font-size: 2.2em;
+  margin-bottom: 20px;
+  color: #ffaa66;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.game-screen p {
+  font-size: 1.1em;
+  color: #cc9966;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.game-placeholder {
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px dashed #ff6600;
+  border-radius: 12px;
+  padding: 40px;
+  margin: 20px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  color: #cc9966;
+}
