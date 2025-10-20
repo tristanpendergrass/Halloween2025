@@ -56,10 +56,7 @@ body {
 .game-title {
   color: #ff8c42;
   text-align: center;
-  font-size: 1.4em;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  border-bottom: 2px solid #ff6600;
-  padding-bottom: 10px;
+  margin-top: auto;
 }
 
 .current-game-info {
@@ -67,6 +64,8 @@ body {
   padding: 15px;
   border-radius: 8px;
   border: 1px solid #cc5500;
+  height: 100px;
+  margin-top: auto;
 }
 
 #current-game-name {
@@ -96,10 +95,10 @@ body {
 
 .game-description {
   background: rgba(0, 0, 0, 0.2);
-  padding: 15px;
-  border-radius: 8px;
-  border: 1px solid #994400;
-  flex-grow: 1;
+  padding: 3px;
+  border-radius: 0;
+  border: 2px solid #994400;
+  height: 460px;
 }
 
 #game-description {
