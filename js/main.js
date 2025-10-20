@@ -30,6 +30,7 @@ class HalloweenGames {
 
     this.bindEvents();
     await this.loadGames();
+    this.startCountdownTimer();
   }
 
   bindEvents() {
@@ -270,6 +271,60 @@ class HalloweenGames {
 
   getCurrentGame() {
     return this.games[this.currentGame];
+  }
+
+  getHalloweenCountdown() {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+
+    // Trick or Treat time: October 31 at 6:00 PM (month 9, hour 18)
+    let halloween = new Date(currentYear, 9, 31, 18, 0, 0, 0);
+
+    // If we're past Halloween trick-or-treat time this year, use next year
+    if (now > halloween) {
+      halloween = new Date(currentYear + 1, 9, 31, 18, 0, 0, 0);
+    }
+
+    // Calculate difference in milliseconds
+    const diff = halloween - now;
+
+    // Convert to days, hours, minutes, seconds
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    // Format with leading zeros
+    return {
+      days: String(days).padStart(2, '0'),
+      hours: String(hours).padStart(2, '0'),
+      minutes: String(minutes).padStart(2, '0'),
+      seconds: String(seconds).padStart(2, '0')
+    };
+  }
+
+  updateCountdown() {
+    const countdown = this.getHalloweenCountdown();
+
+    const daysElement = document.getElementById("countdown-days");
+    const hoursElement = document.getElementById("countdown-hours");
+    const minutesElement = document.getElementById("countdown-minutes");
+    const secondsElement = document.getElementById("countdown-seconds");
+
+    if (daysElement) daysElement.textContent = countdown.days;
+    if (hoursElement) hoursElement.textContent = countdown.hours;
+    if (minutesElement) minutesElement.textContent = countdown.minutes;
+    if (secondsElement) secondsElement.textContent = countdown.seconds;
+  }
+
+  startCountdownTimer() {
+    // Update immediately
+    this.updateCountdown();
+
+    // Then update every second
+    this.countdownInterval = setInterval(() => {
+      this.updateCountdown();
+    }, 1000);
   }
 }
 
