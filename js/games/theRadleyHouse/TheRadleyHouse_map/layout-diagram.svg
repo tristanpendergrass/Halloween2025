@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1100" height="850" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .container-box { fill: #f0f0f0; stroke: #333; stroke-width: 2; }
+      .panel-box { fill: #fff; stroke: #666; stroke-width: 1; }
+      .content-area { fill: #e8f4f8; stroke: #0066cc; stroke-width: 1; stroke-dasharray: 3,3; }
+      .dimension-text { font-family: Arial, sans-serif; font-size: 12px; fill: #333; text-anchor: middle; }
+      .label-text { font-family: Arial, sans-serif; font-size: 14px; fill: #000; font-weight: bold; text-anchor: middle; }
+      .padding-text { font-family: Arial, sans-serif; font-size: 10px; fill: #666; text-anchor: middle; }
+      .dimension-line { stroke: #cc0000; stroke-width: 1; marker-end: url(#arrowhead); }
+      .padding-indicator { fill: #ffcccc; opacity: 0.5; }
+      .border-indicator { fill: #ccccff; opacity: 0.7; }
+      .gap-indicator { fill: #ffffcc; opacity: 0.7; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#cc0000"/>
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="550" y="30" class="label-text" style="font-size: 18px;">Text Adventure Game Layout - 950×720px</text>
+  
+  <!-- Outer container padding indicators -->
+  <rect x="60" y="60" width="10" height="720" class="padding-indicator"/>
+  <rect x="70" y="60" width="950" height="10" class="padding-indicator"/>
+  <rect x="1020" y="60" width="10" height="720" class="padding-indicator"/>
+  <rect x="70" y="770" width="950" height="10" class="padding-indicator"/>
+  
+  <!-- Main container outline -->
+  <rect x="60" y="60" width="970" height="740" class="container-box"/>
+  
+  <!-- Container content area -->
+  <rect x="80" y="80" width="930" height="700" fill="#f8f8f8" stroke="#333" stroke-width="1"/>
+  
+  <!-- Header Panel -->
+  <rect x="80" y="80" width="930" height="120" class="panel-box"/>
+  <rect x="82" y="82" width="926" height="116" class="border-indicator"/>
+  <rect x="92" y="92" width="906" height="96" class="content-area"/>
+  <text x="545" y="140" class="label-text">HEADER</text>
+  <text x="545" y="155" class="dimension-text">Content: 906×96px</text>
+  
+  <!-- Text Panel -->
+  <rect x="80" y="210" width="607" height="550" class="panel-box"/>
+  <rect x="82" y="212" width="603" height="546" class="border-indicator"/>
+  <rect x="92" y="222" width="583" height="526" class="content-area"/>
+  <text x="383.5" y="490" class="label-text">TEXT PANEL</text>
+  <text x="383.5" y="505" class="dimension-text">Content: 583×526px</text>
+  
+  <!-- ASCII Art Panel -->
+  <rect x="697" y="210" width="313" height="280" class="panel-box"/>
+  <rect x="699" y="212" width="309" height="276" class="border-indicator"/>
+  <rect x="709" y="222" width="289" height="256" class="content-area"/>
+  <text x="853.5" y="345" class="label-text">ASCII ART</text>
+  <text x="853.5" y="360" class="dimension-text">Content: 289×256px</text>
+  
+  <!-- Prompt Panel -->
+  <rect x="80" y="770" width="607" height="40" class="panel-box"/>
+  <rect x="82" y="772" width="603" height="36" class="border-indicator"/>
+  <rect x="92" y="782" width="583" height="16" class="content-area"/>
+  <text x="383.5" y="792" class="label-text">PROMPT</text>
+  
+  <!-- Status Panel -->
+  <rect x="697" y="500" width="313" height="310" class="panel-box"/>
+  <rect x="699" y="502" width="309" height="306" class="border-indicator"/>
+  <rect x="709" y="512" width="289" height="286" class="content-area"/>
+  <text x="853.5" y="650" class="label-text">STATUS</text>
+  <text x="853.5" y="665" class="dimension-text">Content: 289×286px</text>
+  
+  <!-- Gap indicators -->
+  <rect x="1017.5" y="210" width="10" height="600" class="gap-indicator"/>
+  <rect x="80" y="200" width="1260" height="10" class="gap-indicator"/>
+  <rect x="80" y="760" width="937.5" height="10" class="gap-indicator"/>
+  <rect x="1027.5" y="490" width="312.5" height="10" class="gap-indicator"/>
+  
+  <!-- Dimension lines and labels -->
+  
+  <!-- Total width -->
+  <line x1="60" y1="40" x2="1360" y2="40" class="dimension-line"/>
+  <text x="710" y="35" class="dimension-text">1300px (1280px + 20px padding)</text>
+  
+  <!-- Container padding -->
+  <line x1="60" y1="820" x2="80" y2="820" class="dimension-line"/>
+  <text x="70" y="835" class="padding-text">10px</text>
+  
+  <!-- Header dimensions -->
+  <line x1="40" y1="80" x2="40" y2="200" class="dimension-line"/>
+  <text x="25" y="140" class="dimension-text" transform="rotate(-90 25 140)">120px</text>
+  
+  <!-- Grid column widths -->
+  <line x1="80" y1="830" x2="687" y2="830" class="dimension-line"/>
+  <text x="383.5" y="845" class="dimension-text">607px</text>
+  
+  <line x1="697" y1="830" x2="1010" y2="830" class="dimension-line"/>
+  <text x="853.5" y="845" class="dimension-text">313px</text>
+  
+  <!-- Gap width -->
+  <line x1="687" y1="850" x2="697" y2="850" class="dimension-line"/>
+  <text x="692" y="865" class="padding-text">10px gap</text>
+  
+  <!-- Border and padding indicators -->
+  <text x="1050" y="100" class="padding-text">Container Padding (10px)</text>
+  <rect x="1040" y="105" width="15" height="15" class="padding-indicator"/>
+  
+  <text x="1050" y="130" class="padding-text">Panel Borders (2px)</text>
+  <rect x="1040" y="135" width="15" height="15" class="border-indicator"/>
+  
+  <text x="1050" y="160" class="padding-text">Panel Padding (10px)</text>
+  <rect x="1040" y="165" width="15" height="15" class="content-area"/>
+  
+  <text x="1050" y="190" class="padding-text">Grid Gaps (10px)</text>
+  <rect x="1040" y="195" width="15" height="15" class="gap-indicator"/>
+  
+  <!-- Panel height labels -->
+  <text x="1050" y="250" class="dimension-text">ASCII Art: 280px</text>
+  <text x="1050" y="400" class="dimension-text">Text: 550px</text>
+  <text x="1050" y="550" class="dimension-text">Status: 310px</text>
+  <text x="1050" y="785" class="dimension-text">Prompt: 40px</text>
+  
+</svg>

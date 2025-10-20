@@ -1,0 +1,282 @@
+{
+  "scavengerItems": {
+    "nvidia": {
+      "includeInGame": false,
+      "type": "scavenger",
+      "typedNames": ["nvidia5090videocard", "nvidiartx5090videocard", "rtx5090videocard", "rtx5090", "nvidia5090", "nvidia", "5090", "videocard", "nvidiavideocard", "graphicscard", "nvidia5090card", "5090card", "nvidia5090video"],
+      "display": "NVidia <b>RTX 5090</b> Video Card",
+      "description": "An Nvidia RTX 5090 <b>video card</b>. A decent <b>video card</b> for gaming.",
+      "location": "HIDDEN",
+      "originalLocation": "GAME-ROOM",
+      "points": 10,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "found": false,
+      "visible": false,
+      "locked": false,
+      "icon90x90": "assets/scavenger/nVidia90x90.png",
+      "icon250x250": "assets/scavenger/nVidia250x250.png",
+      "actions": {
+        "examine": "An ASUS <b>RTX 5090</b> Video Card! Released in 2024 to great acclaim and an even greater price, this video card will will be a great card to play Minesweeper on!",
+        "take": {
+          "response": "You remove the <b>NVidia</b> <b>RTX 5090</b> <b>Video Card</b> from the PC case, look around to make sure no one is watching, and then furtively put it in your bag.",
+          "addToInventory": true,
+          "markAsFound": true
+        }
+      }
+    },
+    "monstermash": {
+      "includeInGame": false,
+      "type": "scavenger",
+      "typedNames": ["monstermash", "monstermashcd", "monster", "mash", "bobby", "pickett", "bobbypickett", "cd", "music", "graveyard"],
+      "display": "<b>Monster Mash</b> <b>CD</b>",
+      "description": "The 1962 <b>Monster Mash</b> song by Bobby Pickett - a twisted horror song.",
+      "location": "MUSIC-ROOM",
+      "points": 10,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "found": false,
+      "visible": true,
+      "locked": false,
+      "icon90x90": "assets/scavenger/monsterMashCD90x90.png",
+      "icon250x250": "assets/scavenger/monsterMashCD250x250.png",
+      "actions": {
+        "examine": "A scary, vampire themed horror song that kids play repeatedly when they want to REALLY annoy their parents. 'I was working in the lab, late one night... We did the Monster Mash!'",
+        "take": {
+          "response": "You put the <b>Monster Mash</b> <b>CD</b> in your treat bag.",
+          "addToInventory": true,
+          "markAsFound": true
+        }
+      }
+    },
+    "catmug": {
+      "includeInGame": false,
+      "type": "scavenger",
+      "typedNames": ["catmug", "cat", "mug", "cup", "kittymug"],
+      "display": "<b>Cat</b> <b>Mug</b>",
+      "description": "A black <b>mug</b> in the shape of a <b>cat</b>'s head. Scary!",
+      "location": "DINING-ROOM",
+      "points": 10,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "found": false,
+      "visible": true,
+      "locked": false,
+      "icon90x90": "assets/scavenger/catMug90x90.png",
+      "icon250x250": "assets/scavenger/catMug250x250.png",
+      "actions": {
+        "examine": "A heavy ceramic <b>mug</b> shaped like a <b>cat</b>'s head. Black. Scary. This thing could do some real damage in the wrong hands!",
+        "take": {
+          "response": "You put the heavy <b>cat</b> <b>mug</b> in your treat bag.",
+          "addToInventory": true,
+          "markAsFound": true
+        }
+      }
+    },
+    "doublemintgum": {
+      "includeInGame": false,
+      "type": "scavenger",
+      "typedNames": ["doublemintgum", "doublemint", "gum", "wrigleys", "wrigleysgum", "chewinggum", "wrigleysdoublemint", "wrigley", "wrigleysdoublemintgum", "wrigley'sdoublemintgum", "wrigley's", "wrigley'sdoublemint", "wrigley'sdoublemint"],
+      "display": "Wrigley's <b>Doublemint Gum</b>",
+      "description": "An unopened pack of Wrigley's Doublemint Gum.",
+      "location": "KITCHEN",
+      "points": 10,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "found": false,
+      "visible": true,
+      "locked": false,
+      "icon90x90": "assets/scavenger/wrigleysOldDoublemintGumPack90x90.png",
+      "icon250x250": "assets/scavenger/wrigleysOldDoublemintGumPack250x250.png",
+      "actions": {
+        "examine": "An old pack of Wrigley's Doublemint Chewing Gum. 'Double your pleasure, double your fun, with Doublemint, Doublemint chewing gum!' (but just don't think about eating it - did I mention it looks very old?)",
+        "take": {
+          "response": "You pick up the pack of <b>Doublemint Gum</b> and put it in your bag.",
+          "addToInventory": true,
+          "markAsFound": true
+        }
+      }
+    },
+    "watch": {
+      "includeInGame": false,
+      "typedNames": ["fancywatch", "watch", "timepiece", "lange&sohne", "clock", "luxurywatch"],
+      "display": "Fancy <b>Watch</b>",
+      "description": "An expensive Lange & Sohne <b>watch</b>!",
+      "location": "BEDROOM",
+      "points": 10,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "found": false,
+      "visible": true,
+      "locked": false,
+      "icon90x90": "assets/scavenger/watch90x90.png",
+      "icon250x250": "assets/scavenger/watch250x250.png",
+      "actions": {
+        "examine": "Fantastic! A very expensive <b>Lange & Sohne</b> <b>watch</b>! It calculates the seasons! It even tells the time!",
+        "take": {
+          "response": "You put the <b>watch</b> on your wrist",
+          "addToInventory": true,
+          "markAsFound": true
+        }
+      }
+    },
+    "strangerthings": {
+      "includeInGame": false,
+      "type": "scavenger",
+      "typedNames": ["strangerthings", "stranger", "things", "dvd", "milliebobbybrown", "millie", "strangerthingsdvd"],
+      "display": "Stranger Things <b>DVD</b>",
+      "description": "A <b>DVD</b> of the 2016 Netflix series <b>Stranger Things</b>, starring Millie Bobby Brown and more.",
+      "location": "HIDDEN",
+      "originalLocation": "TV-ROOM",
+      "points": 10,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "found": false,
+      "visible": false,
+      "locked": false,
+      "icon90x90": "assets/scavenger/strangerThings90x90.png",
+      "icon250x250": "assets/scavenger/strangerThings250x250.png",
+      "actions": {
+        "examine": "An old style clamshell case <b>DVD</b> of the 2016 Netflix series <b>Stranger Things</b>. Not scratched at all!<br><br><span style='color: #ffdd77; animation: slowBlink 3s ease-in-out infinite;'>(LEGAL DISCLAIMER:'Stranger Things' is a trademark of Netflix Inc. and is brought to you by paid subscription only by Netflix. Click <u>HERE</u> to subscribe. Season 5, Volume 1 COMING SOON on November 26, 2025! Hold onto your walkie-talkies and mark your calendar!)</span>",
+        "take": {
+          "response": "You put the <b>DVD</b> in your treat bag.",
+          "addToInventory": true,
+          "markAsFound": true
+        }
+      }
+    },
+    "dog": {
+      "includeInGame": false,
+      "type": "scavenger",
+      "typedNames": ["odddog", "dog", "odd", "weird", "weirddog", "weirddoggy", "cavalier", "cavalierkingcharles", "ceramicdog"],
+      "display": "<b>Odd</b> <b>Dog</b>",
+      "description": "Small ceramic figurine of a King Charles Cavalier <b>dog</b>. Not weird at all!",
+      "location": "BEDROOM",
+      "points": 10,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "found": false,
+      "visible": true,
+      "locked": false,
+      "icon90x90": "assets/scavenger/dog90x90.png",
+      "icon250x250": "assets/scavenger/dog250x250.png",
+      "actions": {
+        "examine": "Ceramic figure of a King Charles Cavalier Spaniel. Will be great for throwing at a ghost or something.",
+        "take": {
+          "response": "You pick up the oddly shaped ceramic <b>dog</b> and put it in your bag.",
+          "addToInventory": true,
+          "markAsFound": true
+        }
+      }
+    },
+    "indianheadpennies": {
+      "includeInGame": false,
+      "type": "scavenger",
+      "typedNames": ["indianheadpennies", "pennies", "penny", "indianhead", "coins", "coin", "cents", "cent", "copper"],
+      "display": "Indian Head <b>pennies</b>",
+      "description": "Two Indian Head pennies c1909",
+      "location": "HIDDEN",
+      "originalLocation": "STUDY",
+      "points": 10,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "found": false,
+      "visible": false,
+      "locked": false,
+      "icon90x90": "assets/scavenger/indianHeadPennies90x90.png",
+      "icon250x250": "assets/scavenger/indianHeadPennies250x250.png",
+      "actions": {
+        "examine": "Two Indian Head United States pennies, c1909. Decent condition. I wonder why they were in the safe?  Only worth $100 or so?  Sentimental value I guess.",
+        "take": {
+          "response": "You carefully put the two <b>pennies</b> in your pocket.",
+          "addToInventory": true,
+          "markAsFound": true
+        }
+      }
+    },
+    "pumpkin": {
+      "includeInGame": false,
+      "type": "scavenger",
+      "typedNames": ["decorativepumpkin", "pumpkin", "ceramicpumpkin", "glasspumpkin", "knickknack"],
+      "display": "Decorative <b>Pumpkin</b>",
+      "description": "A small decorative <b>pumpkin</b> to celebrate the season!",
+      "location": "FOYER",
+      "points": 10,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "found": false,
+      "visible": true,
+      "locked": false,
+      "icon90x90": "assets/scavenger/pumpkin90x90.png",
+      "icon250x250": "assets/scavenger/pumpkin250x250.png",
+      "actions": {
+        "examine": "A finely made glass <b>pumpkin</b>. Clearly hand-blown by a highly skilled artisan. Feels good in the hand. Will make a nice paperweight.",
+        "take": {
+          "response": "You carefully pick up the pumpkin and put it in your bag.",
+          "addToInventory": true,
+          "markAsFound": true
+        }
+      }
+    },
+    "gamingmouse": {
+      "includeInGame": false,
+      "typedNames": ["razergamingmouse", "gamingmouse", "mouse", "razorgamingmouse", "razermouse", "razormouse", "razer", "razor"],
+      "display": "Razer Gaming <b>Mouse</b>",
+      "description": "Top of the line gaming mouse from Razer.",
+      "location": "GAME-ROOM",
+      "points": 10,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "found": false,
+      "visible": true,
+      "locked": false,
+      "icon90x90": "assets/scavenger/gamingMouse90x90.png",
+      "icon250x250": "assets/scavenger/gamingMouse250x250.png",
+      "actions": {
+        "examine": "Great gaming <b>mouse</b> from Razer. Laser. High DPI. Low-latency. Wired or wireless. RGB. and more!",
+        "take": {
+          "response": "You put the Razer <b>mouse</b> in your bag.",
+          "addToInventory": true,
+          "markAsFound": true
+        }
+      }
+    },
+    "frankenstein": {
+      "includeInGame": false,
+      "type": "scavenger",
+      "typedNames": ["frankensteinbook", "frankenstein", "book", "novel", "maryshelley", "frankensteinnovel"],
+      "display": "Frankenstein <b>book</b>",
+      "description": "Hardback copy of Mary Shelley's 1818 Frankenstein <b>novel</b> You will need to <b>read</b> or <b>examine</b> it to learn more about it.",
+      "location": "LIBRARY",
+      "points": 10,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "found": false,
+      "visible": true,
+      "locked": false,
+      "revealsItem": "oldnote",
+      "hasBeenSearched": false,
+      "icon90x90": "assets/scavenger/frankenstein90x90.png",
+      "icon250x250": "assets/scavenger/frankenstein250x250.png",
+      "actions": {
+        "examine": "The <b>book</b> is a First Edition of the classic 'Frankenstein' novel by Mary Shelley. It looks like it might fall apart if not handled gently. You notice an old <b>bookmark</b> in the pages. Nice <b>bookmark</b>! You take it and put it in your pocket. You might want to <b>examine</b> it later.",
+        "take": {
+          "response": "You put the <b>book</b> in your bag to read later.",
+          "addToInventory": true,
+          "markAsFound": true
+        }
+      }
+    }
+  }
+}

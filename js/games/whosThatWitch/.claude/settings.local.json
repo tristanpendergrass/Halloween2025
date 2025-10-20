@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3:*)",
+      "Bash(pip3 install:*)",
+      "Bash(pip3:*)",
+      "Bash(python3.13:*)",
+      "Bash(python3.11:*)",
+      "Bash(python:*)",
+      "Bash(file:*)",
+      "Read(//mnt/d/dev/projects/halloween/john-claude-docs/**)",
+      "Read(//mnt/d/dev/projects/halloween/**)",
+      "Bash(git restore:*)",
+      "Bash(xargs rm)",
+      "Bash(git ls-tree -r HEAD --name-only)",
+      "Bash(cat /mnt/d/dev/projects/halloween/games/whosthatwitch/.git/config)",
+      "Bash(awk '{print $4}')",
+      "Bash(awk -F'/' '{print $1\"\"\"\"/\"\"\"\"$2\"\"\"\"/\"\"\"\"$3}')",
+      "Bash(for file in \"_blackCat_480x346.png\" \"_back_witchOnBroom_124.png\" \"_back_witchOnBroom_166.png\" \"_back_witchOnBroom_99.png\" \"_easyButton_80x30.png\" \"_mediumButton_80x30.png\" \"_hardButton_80x30.png\" \"_halftone_blackSmall_124.png\" \"_halftone_blackSmall_166.png\" \"_halftone_blackSmall_99.png\")",
+      "Bash(do if git ls-files)",
+      "Bash(then echo \"✓ $file (in git)\" else echo \"✗ $file (NOT in git at usedInGame/other/)\" fi done)",
+      "Bash(for size in 124 166 99)",
+      "Bash(do for file in \"__bomb_swap_$size.png\" \"__bomb_redo_$size.png\" \"__bonus_freeLook_5_$size.png\")",
+      "Bash(then echo \"✓ $file (in git)\" else echo \"✗ $file (NOT in git at usedInGame/specialTiles/)\" fi done done)",
+      "Bash(cat .gitattributes)",
+      "Bash(git rev-parse HEAD)",
+      "Bash(git ls-tree -r HEAD)",
+      "Bash(/dev/null)",
+      "Bash(awk -F'/' '{print $2}')",
+      "Bash(git lfs ls-files)",
+      "Bash(find . -name \".gitignore\" -exec echo \"=== {} ===\" ; -exec cat {} ;)",
+      "Bash(git add .nojekyll)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nAdd .nojekyll file to fix GitHub Pages asset paths\n\nGitHub Pages was returning 404 errors for images in assets/usedInGame/other/ \nand assets/usedInGame/specialTiles/ subdirectories. Adding .nojekyll tells \nGitHub Pages to bypass Jekyll processing and serve files directly.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push origin main)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "theme": "witches",
+  "assetFolder": "assets/usedInGame",
+  "folderPattern": "witches",
+  "filePattern": "{basename}_{size}.png",
+  "imageListFile": "json/witchesImages.json",
+  "gridConfigFile": "json/tileSizes.json",
+  "boardDimensions": {
+    "width": 502,
+    "height": 502
+  },
+  "difficulties": [
+    {
+      "id": "easyTiles",
+      "label": "EASY",
+      "buttonId": "btn-easy",
+      "imageTiles": 8,
+      "bombTiles": 0,
+      "bonusTiles": 1
+    },
+    {
+      "id": "mediumTiles",
+      "label": "MEDIUM",
+      "buttonId": "btn-medium",
+      "imageTiles": 14,
+      "bombTiles": 1,
+      "bonusTiles": 1
+    },
+    {
+      "id": "hardTiles",
+      "label": "HARD",
+      "buttonId": "btn-hard",
+      "imageTiles": 22,
+      "bombTiles": 2,
+      "bonusTiles": 1
+    }
+  ],
+  "defaultDifficulty": "mediumTiles"
+}

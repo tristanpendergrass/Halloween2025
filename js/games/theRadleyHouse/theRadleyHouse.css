@@ -1,0 +1,524 @@
+/* Import Google Fonts for handwritten notes and Halloween header */
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Cinzel:wght@600;700&family=Special+Elite&display=swap");
+
+/* ========================================
+   === BASE STYLES ===
+   ======================================== */
+
+body {
+  background-color: black;
+  color: white;
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ========================================
+   === LAYOUT GRID ===
+   ======================================== */
+
+.container {
+  display: grid;
+  grid-template-columns: 607px 313px;
+  grid-template-rows: 120px 280px 1fr 40px;
+  grid-template-areas:
+    "header header"
+    "text scavenger"
+    "text status"
+    "prompt status";
+  width: 950px;
+  height: 720px;
+  gap: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* ========================================
+   === SECTION STYLES ===
+   ======================================== */
+
+.header {
+  grid-area: header;
+  border: none;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+}
+
+.header-hint {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 10px;
+  color: #ccc;
+  opacity: 1;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.header-restart {
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  font-size: 10px;
+  color: #ccc;
+  opacity: 1;
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* -----------------------------------------
+    Change the color, font, size of h1 and h2 
+    below to change the appearance of the
+    TITLE and SUBTITLE of the main header section.
+   ----------------------------------------- */
+
+.header h1 {
+  color: #ff9500; /* Bright orange */
+  font-family: "Cinzel", "Georgia", serif;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 4px; /* Spread out horizontally */
+  text-shadow: 0 0 10px #6a0dad, /* Purple glow */ 0 0 20px #6a0dad,
+    /* Stronger purple */ 2px 2px 4px #000; /* Black depth */
+  margin: 10px 0 12px 0;
+}
+
+.header h2 {
+  color: #b19cd9; /* Pale purple */
+  font-family: "Special Elite", "Courier New", monospace;
+  font-size: 16px;
+  font-style: italic;
+  text-shadow: 0 0 5px rgba(106, 13, 173, 0.5);
+  margin: 0;
+}
+
+.text {
+  grid-area: text;
+  border: 2px solid #ff6600;
+  padding: 15px;
+  box-sizing: border-box;
+  color: #00ff00;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  line-height: 1.4;
+  overflow-y: auto;
+}
+
+/* ========================================
+   === SCROLLBAR STYLING ===
+   ======================================== */
+
+/* Custom scrollbar styling */
+.text::-webkit-scrollbar {
+  width: 12px;
+}
+
+.text::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 6px;
+}
+
+.text::-webkit-scrollbar-thumb {
+  background: #00ff00;
+  border-radius: 6px;
+  border: 2px solid #1a1a1a;
+}
+
+.text::-webkit-scrollbar-thumb:hover {
+  background: #33ff33;
+}
+
+/* ========================================
+   === TEXT COLOR CLASSES ===
+   ======================================== */
+
+/* Text color classes */
+.prompt-echo {
+  color: white;
+}
+
+.command-output {
+  color: #1acdb2;
+}
+
+.flavor-text {
+  color: #00ff00;
+}
+
+.error-text {
+  color: #ff4444;
+}
+
+.underlined-text {
+  text-decoration: underline;
+}
+
+.notes-text {
+  background: #fffef0; /* Cream/ivory paper color */
+  color: #2d2d2d; /* Dark gray/black for text */
+  font-family: "Caveat", cursive;
+  font-size: 20px;
+  padding: 15px 20px;
+  margin: 10px 0;
+  display: inline-block;
+  border: 1px solid #bbb;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
+  white-space: pre-line; /* Preserves line breaks */
+  max-width: 90%;
+}
+
+/* Flashing animation for scavenger hunt discoveries */
+@keyframes flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes slowBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes curfewFlash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.scavenger-found {
+  color: #ffa500; /* Bright orange/gold */
+  font-size: 20px;
+  font-weight: bold;
+  animation: flash 2s ease-in-out infinite;
+}
+
+/* Celebration overlay for 9th scavenger item */
+.celebration-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.celebration-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 165px);
+  grid-template-rows: repeat(3, 165px);
+  gap: 5px;
+  padding: 10px;
+  border: 2px solid #ff6600;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.celebration-grid img {
+  width: 165px;
+  height: 165px;
+  object-fit: contain;
+  transform-origin: center center;
+  animation: punchRotate 0.6s ease-out forwards;
+  filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.8))
+    drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+}
+
+@keyframes punchRotate {
+  0% {
+    transform: scale(0.1) rotate(0deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1) rotate(360deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.8))
+      drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 165, 0, 1))
+      drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
+  }
+}
+
+.celebration-grid img {
+  animation: punchRotate 0.6s ease-out forwards,
+    glowPulse 2s ease-in-out infinite 0.6s;
+}
+
+/* Celebration text overlay */
+.celebration-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #ffd700;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 1.4;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 40px 50px;
+  border: 4px solid #ffd700;
+  border-radius: 15px;
+  opacity: 0;
+  animation: fadeInText 1s ease-in forwards;
+
+  /* Chiseled/carved effect */
+  text-shadow: 3px 3px 6px #000, -1px -1px 2px rgba(255, 255, 255, 0.4),
+    0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.prompt {
+  grid-area: prompt;
+  border: 2px solid #ff6600;
+  padding: 10px;
+  box-sizing: border-box;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  align-items: center;
+}
+
+.prompt-symbol {
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+.command-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+}
+
+.command-input:focus {
+  outline: none;
+}
+
+.scavenger {
+  grid-area: scavenger;
+  border: 2px solid #ff6600;
+  padding: 2px;
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+  line-height: 1.3;
+  overflow: hidden;
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: black;
+}
+
+.scavenger-square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid transparent;
+  position: relative;
+}
+
+.scavenger-square.found::after {
+  content: "✓";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 20px;
+  height: 20px;
+  background: #22c55e;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.scavenger-square img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8))
+    drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+}
+
+.status {
+  grid-area: status;
+  border: 2px solid #ff6600;
+  padding: 10px;
+  box-sizing: border-box;
+  color: white;
+  font-size: 14px;
+  line-height: 1.2;
+  overflow-y: auto;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.status-section {
+  margin-bottom: 8px;
+}
+
+.status-title {
+  color: #ffcc00;
+  font-weight: bold;
+  margin-bottom: 2px;
+  text-align: center;
+}
+
+.score-items {
+  text-align: center;
+}
+
+/* Time display container - holds both time boxes side-by-side */
+.time-display-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px auto 3px auto;
+}
+
+/* Individual time box */
+.time-box {
+  font-family: "Courier New", monospace;
+  background: #0a2a0a; /* Dark green tint */
+  border: 2px solid #00ff00;
+  border-radius: 3px;
+  padding: 3px 8px;
+  text-align: center;
+}
+
+/* Label above time (Time/Curfew) */
+.time-label {
+  font-size: 11px;
+  color: #00ff00;
+  font-weight: normal;
+  margin-bottom: 2px;
+  letter-spacing: 1px;
+}
+
+/* Time value display */
+.time-value {
+  font-size: 18px;
+  color: #00ff00;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 0 5px #00ff00, 0 0 8px #00ff00;
+}
+
+/* Curfew box - default orange (Halloween themed) */
+.time-box.curfew {
+  background: #0a2a0a; /* Dark green tint (same as Time box) */
+  border-color: #ff6600; /* Halloween orange border */
+}
+
+.time-box.curfew .time-label,
+.time-box.curfew .time-value {
+  color: white; /* White text */
+  text-shadow: 0 0 5px white, 0 0 8px white;
+}
+
+/* Curfew box - medium bright red when late */
+.time-box.curfew.curfew-late {
+  background: #2a0a0a; /* Dark red tint */
+  border-color: #ff5555; /* Medium bright red border */
+}
+
+.time-box.curfew.curfew-late .time-label,
+.time-box.curfew.curfew-late .time-value {
+  color: #ff5555; /* Medium bright red text */
+  text-shadow: 0 0 5px #ff5555, 0 0 8px #ff5555;
+}
+
+/* Flash only the time value when very late (>10 min) */
+.time-box.curfew-very-late .time-value {
+  animation: curfewFlash 1.5s ease-in-out infinite;
+}
+
+/* Faster urgent flash when super late (>15 min) */
+.time-box.curfew-super-late .time-value {
+  animation: curfewFlash 0.6s ease-in-out infinite;
+}
+
+.time-items {
+  text-align: center;
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+.command-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 10px;
+  row-gap: 1px;
+  line-height: 1.1;
+}
+
+.command-grid > div {
+  margin: 0;
+  padding: 0;
+}
+
+.compass {
+  white-space: pre;
+  margin-top: 8px;
+  line-height: 1.2;
+}

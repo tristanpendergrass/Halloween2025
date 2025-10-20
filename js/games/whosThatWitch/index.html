@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Who's That Witch?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Creepster&family=Barrio&family=Lakki+Reddy&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="screen">
+      <div id="game-title">Who's That Witch?</div>
+      <div id="game-subtitle">
+        First, match the witches, and then identify them!
+      </div>
+      <div id="scoring-area">
+        <div id="current-clicks">clicks: 0</div>
+        <div id="best-scores-display">
+          <span id="best-easy">---</span>
+          <span id="best-medium">---</span>
+          <span id="best-hard">---</span>
+        </div>
+        <div class="difficulty-buttons">
+          <!-- Buttons will be dynamically created from gameConfig.json -->
+        </div>
+        <div id="scoring-controls">
+          <div class="control-row">
+            <span class="control-label"
+              >scoring on/off:&nbsp;&nbsp;&nbsp;&nbsp;</span
+            >
+            <button id="scoring-toggle" class="scoring-btn">OFF</button>
+            <span class="control-label" style="margin-left: 15px"
+              >clues on/off:</span
+            >
+            <button id="clues-toggle" class="scoring-btn">OFF</button>
+          </div>
+          <div class="control-row">
+            <span class="control-label">reset best score:</span>
+            <button id="scoring-reset" class="scoring-btn">reset</button>
+          </div>
+        </div>
+      </div>
+      <div id="board"></div>
+      <div id="status-box">
+        <div id="character-list"></div>
+      </div>
+      <div id="hints-cat">
+        <img
+          src="assets/usedInGame/other/_blackCat_480x346.png"
+          alt="Hints"
+          id="cat-image"
+        />
+        <div id="cat-tooltip" class="cat-description">
+          <strong style="color: #ffcc00">Select a level:</strong><br />
+          EASY, MEDIUM, HARD
+          <br />
+          <br />
+          <strong style="color: #ffcc00">SPECIAL TILES:</strong><br />
+          <strong style="color: #ffcc00">Free look!</strong> Shows witches for 5
+          seconds.<br />
+          <strong style="color: #ffcc00">Redo!</strong> You have to redo a
+          couple witches.<br />
+          <strong style="color: #ffcc00">Swap!</strong> Swaps a couple of hidden
+          witches.
+          <br />
+          <br />
+          <strong style="color: #ffcc00">Also</strong> you can turn CLUES on or
+          off in the witch list to make it easier to identify the witches.<br /><br /><strong
+            style="color: #ffcc00"
+            >Also</strong
+          >
+          you can turn scoring on or off if that annoys you. But... see if you
+          can beat the old best score (low scores are good!)!
+        </div>
+      </div>
+      <!-- Game content will go here -->
+    </div>
+
+    <script src="js/whosThatWitch.js"></script>
+  </body>
+</html>

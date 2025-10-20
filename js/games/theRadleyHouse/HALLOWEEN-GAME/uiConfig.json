@@ -1,0 +1,21 @@
+{
+  "statusPanel": {
+    "commands": {
+      "title": "COMMANDS",
+      "list": [
+        "(h)elp (l)ook (i)nventory",
+        "(t)ake e(x)amine (d)rop",
+        "(n)orth (s)outh (e)ast (w)est"
+      ]
+    },
+    "inventory": {
+      "title": "INVENTORY:"
+    },
+    "status": {
+      "title": "SCORE"
+    }
+  },
+  "fallbackText": {
+    "noGameText": "There is no game text to load. Just type commands for now"
+  }
+}

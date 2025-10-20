@@ -1,0 +1,14 @@
+1. The game is actually called "Who's That Witch?", not "Where's That Witch?"
+
+2. it is in the folder d:/dev/projects/halloween/games/whosThatWitch
+
+3. it is a small, browser based game of just js, html and css.
+
+4. it is a matching tile game, where the player needs to match two turned over tiles together, and then as a twist they also need to identify which WITCH that is.
+
+5. The game takes place in a fixed 950x720 game space. The actual space available is only 950x714 because some outside lines take up 3px on the top and 3px on the bottom.  So make sure this app respects an ACTUAL 950x714 space, including any borders or padding that it might use.
+
+6. create a main div that will hold everthing else. call it 'game' and it should be 950x714, with NO outside borders or padding.  Nor should there be any borders or padding on the inside of that space.  it will basically be invisible for now.
+
+
+ 

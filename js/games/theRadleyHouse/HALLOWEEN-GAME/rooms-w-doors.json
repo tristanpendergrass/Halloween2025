@@ -1,0 +1,425 @@
+{
+  "rooms": {
+    "INVENTORY": {
+      "name": "Inventory",
+      "enterText": {},
+      "lookText": "",
+      "exits": {},
+      "special": {
+        "inventory-room": true,
+        "backgroundPic": "assets/background/RadleyHouse250x250.png"
+      }
+    },
+
+    "START": {
+      "name": "Halloween Night",
+      "enterText": {
+        "first": "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size: 1.2em;'><b>Welcome to The Radley House!</b></span><br><br>This is a Halloween-themed text based game where you wander around and try to discover things. However, you only have so much time!<br><br>----------------------------------------------------------<br><br><b>Wow! 7:57 PM already. I told Atticus that I would be home by 8:30</b>. He'll be disappointed if I'm late. Pobably give me a 'you need to be responsible' lecture or something. I should probably start walking home.<br><br>... wait? is that a light on over there? Just down the street, to the <b>east</b>? Maybe Halloween isn't over yet!<br><br><span style='color: #ffcc00;'>[hint: type <b>go east</b> to walk down the street.]<br>[hint: type <b>score</b> to learn how the time system works.]</span>",
+        "repeat": "You are at the start of your Halloween adventure. The street continues to the <b>east</b> towards Mrs. McGillicutty's house."
+      },
+      "lookText": "It is Halloween night and getting late, and dark. You can see a porch light on just down the street to the <b>east</b>.",
+      "exits": {
+        "east": { "to": "STREET-01", "door": "start2street-01" }
+      },
+      "special": {
+        "starting-location": true,
+        "backgroundPic": "assets/background/DarkStreet250x250.png"
+      }
+    },
+
+    "STREET-01": {
+      "name": "Street",
+      "enterText": {
+        "first": "You walk east to investigate the light. Why, it's Mrs. McGillicutty's house! Cheery house. Nice of her to leave the porch light on. Probably has some candy left!<br><br>Wow, she really went all out on the decorations this year! Fancy Halloween lighting! Those ghosts are old school! Her well-lit front porch is to the <b>north</b>. The sidewalk continues to the <b>east</b> or back to the <b>west</b>.<br><br><span style=\"color: #ffcc00;\">[hint: in this game you will type commands (like <b>north</b>) and sometimes two word commands (like <b>get key</b>) to control your player. Words in <b>bold</b> will often be commands or words you can type.]</span>",
+        "repeat": "You are on the street. The path to Mrs. McGillicutty's house is to the <b>north</b>.  The sidewalk continues to the <b>east</b> or back to the <b>west</b>."
+      },
+      "lookText": "You are on the street. Mrs. McGillicutty's front porch is to the <b>north</b>.  The sidewalk continues to the <b>east</b>, or back to the <b>west</b>. It is getting darker.<br><br><span style='color: #ffcc00;'>[Hint: type <b>'go north'</b> to Mrs. McGillicutty's porch, or <b>'go east'</b> to head on down the road.]</span>",
+      "exits": {
+        "west":  { "to": "START",      "door": "start2street-01" },
+        "north": { "to": "NICE-PORCH", "door": "street-012nice-porch" },
+        "east":  { "to": "STREET-02",  "door": "street-012street-02" }
+      },
+      "special": {
+        "backgroundPic": "assets/background/McGillicuttyHouse250x250.png"
+      }
+    },
+
+    "STREET-02": {
+      "name": "Street",
+      "enterText": {
+        "first": "You walk down the street to <span style='font-family: Cinzel, serif; color: #ff9500; font-size: 1.3em; font-weight: 700; letter-spacing: 2px; text-shadow: 0 0 5px #6a0dad, 1px 1px 2px #000;'>THE RADLEY HOUSE</span>.<br><br>Such an imposing decrepit old house! Sort of a cross between the Addams Family mansion and an insurance agent's nightmare!  Well.. at least the porch light is on.<br><br>To the <b>north</b> is the Radley's front porch. or... maybe it would be safer to just walk <b>west</b>, back to Mrs. McGillicutty's house?",
+        "repeat": "You are in front of the Radley House again. Its not so bad once you get used to it.... if you're a ghost!"
+      },
+      "lookText": "You are in front of the Radley House again. Its not so bad once you get used to it I guess.",
+      "exits": {
+        "west":  { "to": "STREET-01",   "door": "street-012street-02" },
+        "north": { "to": "FRONT-PORCH", "door": "street022front-porch" }
+      },
+      "special": {
+        "backgroundPic": "assets/background/RadleyHouse250x250.png"
+      }
+    },
+
+    "NICE-PORCH": {
+      "name": "Nice Porch",
+      "enterText": {
+        "first": "You are standing on Mrs. McGillicutty's porch. The light is on. A welcome mat greets all visitors with a cheery 'Happy Halloween!'. Next to the door a brass <b>doorbell</b> begs to be pushed.<br><br><span style=\"color: #ffcc00;\">[hint: type <b>use doorbell</b> or <b>ring doorbell</b> to ring the doorbell, or type <b>examine doorbell</b> to get more information about it.]<br><br>[hint: Use <b>look</b> to remind you of where you are.]</span>",
+        "second": "The porch light is off. The porch is dark, but you can still make out the doorbell.",
+        "repeat": "The porch light is off. The porch is dark, but you can still make out the doorbell."
+      },
+      "lookText": "You are on Mrs. McGillicutty's porch. The front door is <b>north</b> and the pathway to the street is <b>south</b>.",
+      "exits": {
+        "south": { "to": "STREET-01",  "door": "street-012nice-porch" }
+      },
+      "special": {
+        "backgroundPic": "assets/background/McGillicuttyHouse250x250.png"
+      }
+    },
+
+    "NICE-HOUSE": {
+      "name": "Nice House",
+        "enterText": {
+          "first": "NOTE THIS IS NOW IN THE ITEMS - THIS IS LEFT HERE TO REMIND ME. The door to the nice house swings open. Mrs. McGillicutty answers. Her face is painted green, and she is wearing a pointy witch hat. 'Elphaba!' you think? She holds a small candy dish, and tells you to take two candies.<br><br>After you take the candies she leans over and whispers 'Mr. Radley and his son Arthur next door are having a scavenger hunt. You might find this note useful during that game!'<br><br>She hands you a handwritten note and you put it in your pocket. <span style='color: #ffcc00;'>[hint: type <b>examine list</b> to read Mrs. McGillicutty's clues.]</span> 'Good luck dear!' she says, and closes the door.",
+
+
+          "second": "The porchlight is off. You ring and ring, but no one answers.",
+          "repeat": "The porchlight is off. You ring and ring, but no one answers."
+      },
+      "lookText": "You are still on the porch.",
+      "exits": {
+        "south": { "to": "NICE-PORCH", "door": "nice-porch2nice-house" }
+      },
+      "special": {
+        "backgroundPic": "assets/background/McGillicuttyHouse250x250.png"
+      }
+    },
+
+    "FRONT-PORCH": {
+      "name": "Front Porch",
+      "enterText": {
+        "first": "You go up the walkway to the front porch of the Radley House. The porchlight is dirty yellow, flickering. Not a soul in sight. There is a brass <b>gong handle</b> to the right of the door.<br><br><span style='color: #ffcc00;'>[hint: type <b>use gong</b> or <b>use handle</b> to sound the <b>gong</b>.]</span>",
+        "repeat": "You are on the Radley's front porch. Porchlight still flickering and buzzing. The <b>gong</b> handle is very ornate. What!! Is that a rat?"
+      },
+      "lookText": "You are on the Radley's front porch.  The door's <b>gong handle</b> is right in front of you. The porch is barely lit, dank, and spooky. Entry into the house is to the <b>north</b>.  The sidewalk is behind you to the <b>south</b>.",
+      "exits": {
+        "south": { "to": "STREET-02", "door": "street022front-porch" },
+        "north": { "to": "FOYER",     "door": "front-porch2foyer" }
+      },
+      "special": {
+        "backgroundPic": "assets/background/RadleyHouse250x250.png"
+      }
+    },
+
+    "FOYER": {
+      "name": "FOYER",
+      "enterText": {
+        "first": "You c<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y enter the Radley House FOYER. It reminds you of a scene from that Downton Abbey show...  there are doors everywhere!",
+        "repeat": "You are in the FOYER."
+      },
+      "lookText": "You are in the FOYER.  So many doors!",
+      "exits": {
+        "south": { "to": "FRONT-PORCH",  "door": "front-porch2foyer" },
+        "north": { "to": "DINING-ROOM",  "door": "foyer2dining-room" },
+        "east":  { "to": "STUDY",        "door": "foyer2study" },
+        "west":  { "to": "LIBRARY",      "door": "foyer2library" }
+      },
+      "special": {
+        "displaySquare": 7,
+        "backgroundPic": "assets/background/RadleyHouse250x250.png"
+      }
+    },
+
+    "LIBRARY": {
+      "name": "LIBRARY",
+      "enterText": {
+        "first": "You enter the LIBRARY. Wow! Tall bookshelves line the walls, and the floor is covered in a thick carpet.  There are several armchairs scattered around the room.  An open book lies on a table near the window. <span style='color: #ffcc00;'>[hint: you can <b>examine</b> items you find here.]</span>",
+        "repeat": "You are in the LIBRARY."
+      },
+      "lookText": "You are in the LIBRARY.",
+      "exits": {
+        "east":  { "to": "FOYER",  "door": "foyer2library" },
+        "north": { "to": "MUSIC-ROOM", "door": "library2music-room" }
+      },
+      "special": {
+        "displaySquare": 6,
+        "backgroundPic": "assets/background/RadleyHouse250x250.png"
+      }
+    },
+
+    "DINING-ROOM": {
+      "name": "DINING ROOM",
+      "enterText": {
+        "first": "You enter the DINING ROOM.",
+        "repeat": "You are in the DINING ROOM."
+      },
+      "lookText": "You are in the DINING ROOM.",
+      "exits": {
+        "south": { "to": "FOYER",       "door": "foyer2dining-room" },
+        "north": { "to": "KITCHEN",     "door": "dining-room2kitchen" },
+        "east":  { "to": "TV-ROOM",     "door": "dining-room2tv-room" }
+      },
+      "special": {
+        "displaySquare": 4,
+        "backgroundPic": "assets/background/RadleyHouse250x250.png"
+      }
+    },
+
+    "STUDY": {
+      "name": "STUDY",
+      "enterText": {
+        "first": "You enter the STUDY. <span style='color: #ffcc00;'>[hint: try to <b>examine</b> things you see in rooms.]</span>",
+        "repeat": "You are in the STUDY."
+      },
+      "lookText": "You are in the STUDY.",
+      "exits": {
+        "west":  { "to": "FOYER",   "door": "foyer2study" },
+        "north": { "to": "TV-ROOM", "door": "study2tv-room" }
+      },
+      "special": {
+        "displaySquare": 8,
+        "backgroundPic": "assets/background/RadleyHouse250x250.png"
+      }
+    },
+
+    "MUSIC-ROOM": {
+      "name": "MUSIC ROOM",
+      "enterText": {
+        "first": "You enter the MUSIC ROOM. You get the feeling that there might be a hidden door here somewhere... how to reveal it?<span style='color: #ffcc00;'>[hint: don't forget to <b>look</b> around to see what's in each room.]</span>",
+        "repeat": "You are in the MUSIC ROOM."
+      },
+      "lookText": "You are in the MUSIC ROOM. There is a stereo music system here. <b>Examining</b> it might reveal something.",
+      "exits": {
+        "south": { "to": "LIBRARY",   "door": "library2music-room" },
+        "north": { "to": "GAME-ROOM", "door": "music-room2game-room" }
+      },
+      "special": {
+        "displaySquare": 3,
+        "backgroundPic": "assets/background/RadleyHouse250x250.png"
+      }
+    },
+
+    "GAME-ROOM": {
+      "name": "GAME ROOM",
+      "enterText": {
+        "first": "You enter the GAME ROOM. Wow! Look at that Ikea KALLAX shelving system! There must be a dozen cubes there, filled with board games!  Gloomhaven! Spirit Island! Project L! WHAT! No way! Hackmaster!! ... and ... what's that? .... do my eyes deceive me? ... A high-end gaming PC? I wonder what hardware is in that monster! I should definitely <b>examine</b> it!",
+        "repeat": "You are in the GAME ROOM."
+      },
+      "lookText": "You are in the GAME ROOM. Too many board games here! There is also a high-end gaming PC in the corner. I should definitely <b>examine</b> it!",
+      "exits": {
+        "south": { "to": "MUSIC-ROOM", "door": "music-room2game-room" }
+      },
+      "special": {
+        "displaySquare": 0,
+        "backgroundPic": "assets/background/RadleyHouse250x250.png"
+      }
+    },
+
+    "KITCHEN": {
+      "name": "KITCHEN",
+      "enterText": {
+        "first": "You enter the KITCHEN.",
+        "repeat": "You are in the KITCHEN."
+      },
+      "lookText": "You are in the KITCHEN.",
+      "exits": {
+        "south": { "to": "DINING-ROOM", "door": "dining-room2kitchen" }
+      },
+      "special": {
+        "displaySquare": 1,
+        "backgroundPic": "assets/background/RadleyHouse250x250.png"
+      }
+    },
+
+    "BEDROOM": {
+      "name": "BEDROOM",
+      "enterText": {
+        "first": "You enter the BEDROOM.",
+        "repeat": "You are in the BEDROOM."
+      },
+      "lookText": "You are in the BEDROOM.",
+      "exits": {
+        "south": { "to": "TV-ROOM", "door": "bedroom2tv-room" }
+      },
+      "special": {
+        "displaySquare": 2,
+        "backgroundPic": "assets/background/RadleyHouse250x250.png"
+      }
+    },
+
+    "TV-ROOM": {
+      "name": "TV ROOM",
+      "enterText": {
+        "first": "You enter the TV ROOM. A large flat-screen TV mounted on the wall is playing a show - the 2016 Netflix series 'Stranger Things.' On the screen, kids on bikes are racing through a dark forest, flashlights cutting through the fog.<br><br>Against the opposite wall stands an elegant wooden <b>cabinet</b> with glass doors. Through the glass, you can see shelves lined with DVD cases. Your eyes are drawn to a DVD of 'Stranger Things' on the second shelf. Wait... how is the show playing if the DVD is right there in the cabinet?",
+        "repeat": "You are in the TV ROOM. The show is still playing on the TV, and the DVD cabinet stands against the wall."
+      },
+      "lookText": "You are in the TV ROOM. A large TV is mounted on one wall, currently playing 'Stranger Things.' An elegant DVD cabinet with glass doors stands against the opposite wall.",
+      "exits": {
+        "south": { "to": "STUDY",       "door": "study2tv-room" },
+        "north": { "to": "BEDROOM", "door": "bedroom2tv-room" },
+        "west":  { "to": "DINING-ROOM", "door": "dining-room2tv-room" }
+      },
+      "special": {
+        "displaySquare": 5,
+          "backgroundPic": "assets/background/RadleyHouse250x250.png"
+      }
+    },
+
+    "HOME": {
+      "name": "Home",
+      "enterText": {
+        "first": "=========================================================<br><b>You walk home</b>. You can't wait to gorge on all those sweet treats! This was your final haul:",
+        "second": "<b>restart</b> or play a different game.",
+        "repeat": "You are home.  The game is over.  Choose another mini-game."
+      },
+      "lookText": "You are home.  The game is over.  Choose another mini-game.",
+      "exits": {},
+      "special": {
+        "end-game-location": true,
+        "backgroundPic": "assets/background/HOME250x250.png"
+      }
+    }
+  },
+
+  "doors": {
+      "start2street-01": {
+        "between": ["START", "STREET-01"],
+        "description": "The street continues towards Mrs. McGillicutty's house.",
+        "visible": true,
+        "locked": false,
+        "open": true
+      },
+
+      "street-012street-02": {
+        "between": ["STREET-01", "STREET-02"],
+        "description": "It is a sidewalk.",
+        "visible": true,
+        "locked": false,
+        "open": true
+      },
+  
+      "street-012nice-porch": {
+        "between": ["STREET-01", "NICE-PORCH"],
+        "description": "It is a walkway to the porch.",
+        "visible": true,
+        "locked": false,
+        "open": true
+      },
+  
+      "nice-porch2nice-house": {
+        "between": ["NICE-PORCH", "NICE-HOUSE"],
+        "description": "It is a front door.",
+        "visible": true,
+        "locked": false,
+        "open": true
+      },
+  
+      "street022front-porch": {
+        "between": ["STREET-02", "FRONT-PORCH"],
+        "description": "It is a walkway to the porch.",
+        "visible": true,
+        "locked": false,
+        "open": true
+      },
+  
+      "front-porch2foyer": {
+        "between": ["FRONT-PORCH", "FOYER"],
+        "description": "It is a heavy front door.",
+        "visible": true,
+        "locked": true,
+        "open": false
+      },
+  
+      "foyer2library": {
+        "between": ["FOYER", "LIBRARY"],
+        "description": "It is a door.",
+        "visible": true,
+        "locked": false,
+        "open": true
+      },
+  
+      "foyer2study": {
+        "between": ["FOYER", "STUDY"],
+        "description": "It is a door.",
+        "visible": true,
+        "locked": false,
+        "open": true
+      },
+  
+      "foyer2dining-room": {
+        "between": ["FOYER", "DINING-ROOM"],
+        "description": "It is a door.",
+        "visible": true,
+        "locked": false,
+        "open": true
+      },
+  
+      "library2music-room": {
+        "between": ["LIBRARY", "MUSIC-ROOM"],
+        "description": "It is a door.",
+        "visible": true,
+        "locked": false,
+        "open": true
+      },
+  
+      "dining-room2kitchen": {
+        "between": ["DINING-ROOM", "KITCHEN"],
+        "description": "It is a door.",
+        "visible": true,
+        "locked": false,
+        "open": true
+      },
+  
+      "dining-room2tv-room": {
+        "between": ["DINING-ROOM", "TV-ROOM"],
+        "description": "It is a door.",
+        "visible": true,
+        "locked": false,
+        "open": true
+      },
+  
+      "study2tv-room": {
+        "between": ["STUDY", "TV-ROOM"],
+        "description": "It is a door.",
+        "visible": true,
+        "locked": false,
+        "open": true
+      },
+  
+      "music-room2game-room": {
+        "between": ["MUSIC-ROOM", "GAME-ROOM"],
+        "description": "It is a secret door.",
+        "visible": false,
+        "locked": true,
+        "open": false,
+        "requiresPuzzle": "say-friend"
+      },
+  
+      "bedroom2tv-room": {
+        "between": ["BEDROOM", "TV-ROOM"],
+        "description": "It is a heavy wooden door.",
+        "visible": true,
+        "locked": true,
+        "open": false,
+        "lockedMessage": "The BEDROOM door is locked. You'll need a key to open it."
+      },
+
+      "game-room2home": {
+        "between": ["GAME-ROOM", "HOME"],
+        "description": "It is an exit to home.",
+        "visible": true,
+        "locked": false,
+        "open": true
+      }
+    },
+
+  "puzzles": {
+    "say-friend": {
+      "prompt": "An inscription reads: 'Speak, friend, and enter.'",
+      "solutions": ["friend"],
+      "effects": [
+        { "op": "unlock", "door": "music-room2game-room" },
+        { "op": "reveal", "door": "music-room2game-room" }
+      ]
+    }
+  }
+}

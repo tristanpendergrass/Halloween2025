@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<!--
+  The Radley House - A Halloween text adventure game
+  A well-articulated treasure hunt
+  -->
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Radley House</title>
+    <link rel="stylesheet" href="theRadleyHouse.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- NOTE: change h1 and h2 to change name and subtitle!
+             Edit theRadleyHouse.css to change the color, font, size!  -->
+        <h1>The Radley House</h1>
+        <h2>A well-articulated treasure hunt</h2>
+        <div class="header-restart">
+          Type <b>RESTART</b> to start a new game
+        </div>
+        <div class="header-hint">Type HINT for advice/secrets</div>
+      </div>
+      <div class="text"></div>
+      <div class="prompt">
+        <span class="prompt-symbol">></span>
+        <input
+          type="text"
+          id="commandInput"
+          class="command-input"
+          autocomplete="off"
+          spellcheck="false"
+        />
+      </div>
+      <div class="scavenger"></div>
+      <div class="status"></div>
+    </div>
+    <script src="radley-game.js"></script>
+  </body>
+</html>

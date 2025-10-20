@@ -1,0 +1,1207 @@
+{
+  "items": {
+    "candy_bag": {
+      "includeInGame": false,
+      "type": "fixed",
+      "typedNames": [
+        "bag",
+        "candybag",
+        "pillowcase",
+        "sack"
+      ],
+      "display": "candy <b>bag</b>",
+      "description": "A pillowcase for collecting treats",
+      "location": "MUSIC-ROOM",
+      "points": 0,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "actions": {
+        "examine": "Your trusty candy collection <b>bag</b>. It's getting heavy with treats.",
+        "take": {
+          "response": "You pick up the candy <b>bag</b>.",
+          "addToInventory": true
+        }
+      }
+    },
+    "doorbell": {
+      "includeInGame": true,
+      "type": "fixed",
+      "typedNames": [
+        "doorbell",
+        "bell",
+        "button",
+        "ringer"
+      ],
+      "display": "<b>doorbell</b>",
+      "description": "A brass <b>doorbell</b> button",
+      "location": "NICE-PORCH",
+      "points": 0,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "visible": true,
+      "locked": false,
+      "hasBeenUsed": false,
+      "actions": {
+        "ring": {
+          "response": "Ding-dong! You hear footsteps approaching from inside."
+        },
+        "examine": "A brass <b>doorbell</b> button, slightly tarnished with age.",
+        "push": {
+          "response": "Ding-dong! You hear footsteps approaching from inside."
+        },
+        "use": {
+          "response": "<span style='font-size: 24px; font-weight: bold; color: #FFD700; text-shadow: 0 0 10px #FFD700, 0 0 20px #FFED4E, 0 0 30px #FFFFFF, 2px 2px 4px rgba(0,0,0,0.3);'>Ding Dong!</span> You hear footsteps approaching from inside. The door to the house swings open. Mrs. McGillicutty appears. Her face is painted green, and she is wearing a pointy witch hat. 'Elphaba!' you think. <br><br>She offers you two candies, and then leans over and whispers <i>'Mr. Radley and his son Aurhur next door are having a scavenger hunt. You might find this <b>list</b> useful during that game!'</i><br><br>You take the <b>list</b> she offers. 'Good luck dear!' she says, and closes the door. <span style='color: #ffcc00;'>[Hint: typing <b>(i)nventory</b> or <br><b>e(x)amine list</b> might be useful. - <b>(l)ook</b> also!]</span>",
+          "addToInventory": ["list"]
+        },
+        "take": {
+          "response": "You cannot take it. It's attached to the house. But you could <b>ring</b> it or <b>use</b> it.",
+          "addToInventory": false
+        }
+      }
+    },
+    "porch_light_nice": {
+      "includeInGame": true,
+      "type": "fixed",
+      "typedNames": [
+        "porchlight",
+        "light",
+        "porch",
+        "nicelight",
+        "warmlight",
+        "welcominglight",
+        "friendlylight"
+      ],
+      "display": "<b>porch light</b>",
+      "description": "A warm <b>porch light</b>",
+      "location": "NICE-PORCH",
+      "points": 0,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "visible": true,
+      "locked": false,
+      "actions": {
+        "examine": "The <b>porch light</b> is on, casting a warm, welcoming glow.",
+        "take": {
+          "response": "You cannot take it. It's part of the house. But you could <b>examine</b> it.",
+          "addToInventory": false
+        }
+      }
+    },
+    "door_knocker": {
+      "includeInGame": true,
+      "type": "fixed",
+      "typedNames": [
+        "gong",
+        "doorgong",
+        "brassgong",
+        "gonghandle",
+        "handle",
+        "brasshandle",
+        "brassgonghandle"
+      ],
+      "display": "<b>gong</b> <b>handle</b>",
+      "description": "A brass handle that activates the door <b>gong</b>, which sounds inside the house.",
+      "location": "FRONT-PORCH",
+      "points": 0,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "visible": true,
+      "locked": false,
+      "hasBeenUsed": false,
+      "actions": {
+        "use": {
+          "response": "<span style='font-size: 60px; font-weight: bold; color: #ff0000; text-shadow: 0 0 10px red;'>GONG!</span> ... the sound echoes ...<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size: 45px; font-weight: bold; color: #ff0000; text-shadow: 0 0 10px red;'>GONG!</span> ... the sound echoes ...<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size: 30px; font-weight: bold; color: #ff0000; text-shadow: 0 0 10px red;'>GONG!</span> ... the sound fades away .....<br><br>After a moment the great door creaks open.<br>"
+        },
+        "examine": "A brass handle that operates the door <b>gong</b>.",
+        "take": {
+          "response": "You cannot take it. It's attached to the house. But you could <b>use</b> it or <b>turn</b> it.",
+          "addToInventory": false
+        }
+      }
+    },
+    "porch_light_front": {
+      "includeInGame": true,
+      "type": "fixed",
+      "typedNames": [
+        "porchlight",
+        "light",
+        "porch",
+        "eerielight",
+        "spookylight",
+        "flickeringlight",
+        "hauntedlight"
+      ],
+      "display": "<b>porch light</b>",
+      "description": "A flickering <b>porch light</b>",
+      "location": "FRONT-PORCH",
+      "points": 0,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "visible": false,
+      "locked": false,
+      "actions": {
+        "examine": "The <b>porch light</b> flickers eerily, casting dancing shadows.",
+        "take": {
+          "response": "You cannot take it. It's part of the house. But you could <b>examine</b> it.",
+          "addToInventory": false
+        }
+      }
+    },
+    "safe": {
+      "includeInGame": true,
+      "type": "fixed",
+      "typedNames": [
+        "safe",
+        "metalsafe",
+        "vault",
+        "strongbox",
+        "lockbox"
+      ],
+      "display": "metal <b>safe</b>",
+      "description": "A heavy metal <b>safe</b> with a combination lock",
+      "location": "STUDY",
+      "points": 0,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "visible": true,
+      "locked": false,
+      "hasBeenOpened": false,
+      "hasBeenExamined": false,
+      "actions": {
+        "examine": "An old cast iron <b>safe</b>, used for valuables. It has an old fashioned rotary combination lock next to the handle. The combination requires three numbers: ###.  You might look for the combination somewhere in the house?<span style='color: #ffcc00;'> [Hint: type <b>say ###</b> to open the safe.]</span>",
+        "take": {
+          "response": "It's too heavy to move. But you could <b>examine</b> it.",
+          "addToInventory": false
+        },
+        "use": {
+          "response": "placeholder"
+        },
+        "open": "placeholder"
+      }
+    },
+    "musicsystem": {
+      "includeInGame": true,
+      "type": "fixed",
+      "typedNames": [
+        "musicsystem",
+        "system",
+        "stereo",
+        "soundsystem",
+        "stereomusicsystem",
+        "stereosystem",
+        "hifi",
+        "audio",
+        "receiver",
+        "amplifier",
+        "bose"
+      ],
+      "display": "<b>Stereo</b> <b>system</b>",
+      "description": "A high-end <b>stereo</b> music <b>system</b> on a wall shelf",
+      "location": "MUSIC-ROOM",
+      "points": 0,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "visible": true,
+      "locked": false,
+      "hasBeenExamined": false,
+      "actions": {
+        "examine": "A top-of-the-line Bose <b>stereo</b> music <b>system</b> sits on a shelf mounted on the north wall. The brushed aluminum faceplate gleams in the dim light. On the front panel, you notice a selector labeled 'Sound Options' with three buttons: <b>'music'</b>, <b>'movie'</b>, and <b>'game'</b>. <span style='color: #ffcc00;'>[Hint: Try <b>press</b> the buttons to see what they do.]</span>",
+        "take": {
+          "response": "It's mounted on the wall. You cannot take it. But you could <b>examine</b> it.",
+          "addToInventory": false
+        }
+      }
+    },
+    "powerfulpc": {
+      "includeInGame": true,
+      "type": "fixed",
+      "typedNames": [
+        "powerfulpc",
+        "pc",
+        "computer",
+        "gamingpc",
+        "desktop",
+        "tower",
+        "rig"
+      ],
+      "display": "powerful <b>PC</b>",
+      "description": "An impressive gaming computer",
+      "location": "GAME-ROOM",
+      "points": 0,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "visible": true,
+      "locked": false,
+      "revealsItem": "nvidia",
+      "hasBeenSearched": false,
+      "actions": {
+        "examine": "A beast of a gaming machine! The specs are impressive: ASUS ProArt MB, Intel Core Ultra 9 285K CPU, Water cooling! 96GB DDR5 RAM, Several 8TB Gen 5 m.2 drives. And a MSI <b>Nvidia 5090</b> Liquid Suprim Video Card!! Wait... you notice the video card isn't fully seated in its slot. It looks like you could <span style='text-decoration: line-through;'>steal</span> <b>take</b> it if you wanted. 'Shame to butcher such a nice PC for parts,' you think. Oh well, it IS a scavenger item after all!",
+        "take": {
+          "response": "It's too heavy and bulky to carry. But you could <b>examine</b> it.",
+          "addToInventory": false
+        }
+      }
+    },
+    "dvdcabinet": {
+      "includeInGame": true,
+      "type": "fixed",
+      "typedNames": [
+        "dvdcabinet",
+        "cabinet",
+        "glasscabinet",
+        "dvdcase",
+        "case",
+        "shelves",
+        "shelf",
+        "glassdoor",
+        "glassdoors"
+      ],
+      "display": "DVD <b>cabinet</b>",
+      "description": "An elegant wooden <b>cabinet</b> with glass doors",
+      "location": "TV-ROOM",
+      "points": 0,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "visible": true,
+      "locked": false,
+      "hasBeenOpened": false,
+      "hasBeenExamined": false,
+      "revealsItem": "strangerthings",
+      "actions": {
+        "examine": "A handsome wooden <b>cabinet</b> with glass doors. Through the glass you can see shelves lined with DVD cases - classics, comedies, thrillers. You spot 'Stranger Things' on the second shelf. <span style='color: #ffcc00;'>[Hint: You could try to <b>open cabinet</b>.]</span>",
+        "open": "You pull open the glass doors. The DVDs are now accessible.",
+        "take": {
+          "response": "It's a piece of furniture. You cannot take it. But you could <b>examine</b> it or <b>open</b> it.",
+          "addToInventory": false
+        }
+      }
+    },
+    "brass_key": {
+      "includeInGame": true,
+      "type": "tools",
+      "typedNames": [
+        "key",
+        "brasskey",
+        "brass",
+        "metalkey",
+        "oldkey"
+      ],
+      "display": "brass <b>key</b>",
+      "inventoryDisplay": "brass <b>key</b>",
+      "description": "An old brass key",
+      "location": "LIBRARY",
+      "points": 0,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "visible": true,
+      "locked": false,
+      "hasBeenUsed": false,
+      "actions": {
+        "examine": "An old brass <b>key</b>. It looks like it might fit an old lock.",
+        "take": {
+          "response": "You pick up the brass <b>key</b>.",
+          "addToInventory": true
+        },
+        "use": {
+        "response": "You insert the brass key into the BEDROOM door lock and turn it. CLICK! The door unlocks.<br><br>"
+        }
+      }
+    },
+    "oldnote": {
+      "includeInGame": true,
+      "type": "notes",
+      "typedNames": [
+        "bookmark",
+        "oldbookmark",
+        "frankensteinbookmark"
+      ],
+      "display": "old <b>bookmark</b>",
+      "inventoryDisplay": "old <b>bookmark</b>",
+      "description": "An old <b>bookmark</b> from the Frankenstein book",
+      "location": "HIDDEN",
+      "points": 0,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "visible": false,
+      "locked": false,
+      "hasBeenExamined": false,
+      "actions": {
+        "examine": "-----------------------------------------------------------------------------\n|\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/| number of the beast |\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/|\n-----------------------------------------------------------------------------",
+        "take": {
+          "response": "You carefully take the old <b>bookmark</b>.",
+          "addToInventory": true
+        }
+      }
+    },
+    "mrsmcgillicuttyslist": {
+      "includeInGame": true,
+      "type": "notes",
+      "typedNames": [
+        "list",
+        "mrsmcgillicuttyslist",
+        "mrsmcgillicutty'slist",
+        "mrs.mcgillicuttyslist",
+        "mrs.mcgillicutty'slist",
+        "mcgillicuttylist",
+        "clues",
+        "scavengerlist"
+      ],
+      "display": "Mrs. McGillicutty's Scavenger Hunt <b>list</b>",
+      "inventoryDisplay": "Mrs. McGillicutty's <b>list</b>",
+      "description": "A handwritten <b>list</b> with clues",
+      "location": "NICE-HOUSE",
+      "points": 0,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "visible": true,
+      "locked": false,
+      "hasBeenExamined": false,
+      "actions": {
+        "examine": "<u>The Radley's Scavenger Hunt</u>\nGood luck dear!  --Mrs. m\n\n1. Video game hardware helper\n2. Double your fun\n3. Old sense\n4. Graveyard smash\n5. Scary Feline\n6. Schwinn Sting-Ray\n7. Not a monster\n8. gourd\n9. Odd pup",
+        "take": {
+          "response": "You carefully fold the <b>list</b> and put it in your pocket.",
+          "addToInventory": true
+        }
+      }
+    },
+    "passwordpaper": {
+      "includeInGame": true,
+      "type": "notes",
+      "typedNames": [
+        "parchment",
+        "parchmentpaper",
+        "passwordpaper",
+        "mellon"
+      ],
+      "display": "<b>parchment</b> paper",
+      "inventoryDisplay": "<b>parchment</b> paper",
+      "description": "A small piece of <b>parchment</b> with hastily scrawled text - it appears to be of drarven origin. You might <b>examine</b> for some important clue?.",
+      "location": "HIDDEN",
+      "points": 0,
+      "health": 0,
+      "eatable": false,
+      "droppable": false,
+      "visible": false,
+      "locked": false,
+      "hasBeenExamined": false,
+      "actions": {
+        "examine": "Speak, 'friend', and enter.",
+        "take": {
+          "response": "You carefully take the <b>parchment</b> paper.",
+          "addToInventory": true
+        }
+      }
+    },
+    "snickers": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "snickers",
+        "snicker",
+        "snickersbar",
+        "caramelbar"
+      ],
+      "display": "<b>Snickers</b> bar",
+      "description": "A full sized <b>Snickers</b> bar",
+      "location": "FOYER",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/Snickers150.png",
+      "actions": {
+        "examine": "It's a <b>Snickers</b> bar, what's not to like?  Full sized, not like those cheap fun-size bars! The sugar rush will take a few minutes off your time.",
+        "take": {
+          "response": "You pick up the <b>Snickers</b> bar and put it in your trick or treat bag.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "Delicious! You feel slightly healthier.",
+          "addHealth": 5,
+          "removeItem": true
+        }
+      }
+    },
+    "whatchamacallit": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "whatchamacallit",
+        "whatchamacallitbar",
+        "crispybar"
+      ],
+      "display": "<b>Whatchamacallit</b> bar",
+      "description": "A <b>crispy bar</b> with caramel and chocolate.",
+      "location": "LIBRARY",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/Whatchamacallit150.png",
+      "actions": {
+        "examine": "Crispy rice and chewy caramel covered in chocolate. An unusual but tasty choice. A rare treat in this neighborhood! The sugar will give you a minute boost to your time.",
+        "take": {
+          "response": "You pick up the <b>Whatchamacallit</b> bar and put it in your trick or treat bag.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "Crunchy and sweet! The crispy bits tickle your teeth.",
+          "addHealth": 3,
+          "removeItem": true
+        }
+      }
+    },
+    "100grand": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "100grand",
+        "100grandbar",
+        "grand",
+        "100",
+        "crispybar"
+      ],
+      "display": "<b>100 Grand</b> bar",
+      "description": "A crispy chocolate bar easily worth <b>100 grand</b>",
+      "location": "DINING-ROOM",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/100Grand150.png",
+      "actions": {
+        "examine": "<b>Crispy bar</b> with rice crunchies and caramel, covered in milk chocolate. Feels like a fortune!",
+        "take": {
+          "response": "You pick up the <b>100 Grand</b> bar.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "Delicious! The crispy texture is perfect.",
+          "addHealth": 4,
+          "removeItem": true
+        }
+      }
+    },
+    "3musketeers": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "3musketeers",
+        "3musketeersbar",
+        "threemusketeers",
+        "musketeers",
+        "threemusketeers",
+        "threemusketeersbar",
+        "fluffybar"
+      ],
+      "display": "<b>3 Musketeers</b> bar",
+      "description": "A light and fluffy chocolate bar",
+      "location": "STUDY",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/3Musketeers150.png",
+      "actions": {
+        "examine": "Light, fluffy nougat covered in rich chocolate. One for all!",
+        "take": {
+          "response": "You pick up the <b>3 Musketeers</b> bar.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "Light and airy! Melts in your mouth.",
+          "addHealth": 3,
+          "removeItem": true
+        }
+      }
+    },
+    "butterfinger": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "butterfinger",
+        "butterfingerbar",
+        "crispyorange",
+        "butterbar",
+        "peanutbutterbar"
+      ],
+      "display": "<b>Butterfinger</b> bar",
+      "description": "A crispy <b>peanut butter bar</b>",
+      "location": "KITCHEN",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/Butterfinger150.png",
+      "actions": {
+        "examine": "Crispy, crunchy peanut butter layers covered in chocolate. Nobody better lay a finger!",
+        "take": {
+          "response": "You pick up the <b>Butterfinger</b> bar.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "Crunch! The crispy layers shatter perfectly.",
+          "addHealth": 4,
+          "removeItem": true
+        }
+      }
+    },
+    "mars": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "mars",
+        "marsbar",
+        "almondsbar"
+      ],
+      "display": "<b>Mars</b> bar",
+      "description": "A classic chocolate bar with almonds",
+      "location": "GAME-ROOM",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/Mars150.png",
+      "actions": {
+        "examine": "Nougat and caramel with almonds, covered in chocolate. Out of this world!",
+        "take": {
+          "response": "You pick up the <b>Mars</b> bar.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "Mmm! The almonds add a nice crunch.",
+          "addHealth": 4,
+          "removeItem": true
+        }
+      }
+    },
+    "mounds": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "mounds",
+        "moundsbar",
+        "coconutbar",
+        "darkchocolatecoconut"
+      ],
+      "display": "<b>Mounds</b> bar",
+      "description": "A dark chocolate <b>coconut bar</b>",
+      "location": "BEDROOM",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/Mounds150.png",
+      "actions": {
+        "examine": "Sweet coconut surrounded by dark chocolate. Sometimes you feel like a nut!",
+        "take": {
+          "response": "You pick up the <b>Mounds</b> bar.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "This <b>coconut bar</b> is delicious!",
+          "addHealth": 3,
+          "removeItem": true
+        }
+      }
+    },
+    "mrgoodbar": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "mrgoodbar",
+        "mr.goodbar",
+        "mistergoodbar",
+        "goodbar",
+        "peanutchocolatebar"
+      ],
+      "display": "<b>Mr. Goodbar</b>",
+      "description": "A <b>peanut chocolate bar</b>",
+      "location": "TV-ROOM",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/MrGoodbar150.png",
+      "actions": {
+        "examine": "Milk chocolate with peanuts. A <b>good bar</b> indeed!",
+        "take": {
+          "response": "You pick up the <b>Mr. Goodbar</b>.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "Crunchy peanuts in smooth chocolate. So good!",
+          "addHealth": 4,
+          "removeItem": true
+        }
+      }
+    },
+    "apple": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "apple",
+        "redapple",
+        "fruit",
+        "goldenapple",
+        "goldendelicious",
+        "healthytreat"
+      ],
+      "display": "Red <b>apple</b>",
+      "description": "A shiny red <b>apple</b>",
+      "location": "DINING-ROOM",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/apple150.png",
+      "actions": {
+        "examine": "A blemish-free shiny <b>Golden Delicious red apple</b>. The healthiest treat you'll find tonight! Much better for you than all that sugary candy. This should shave a few minutes off your time.",
+        "take": {
+          "response": "You pick up the <b>apple</b>. You can eat it, or maybe throw it?",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "Crisp and refreshing! Much healthier than all that candy. You feel energized and ready to move faster!",
+          "addHealth": 6,
+          "removeItem": true,
+          "timer": -4
+        }
+      }
+    },
+    "cannedcorn": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "cannedcorn",
+        "delmontecorn",
+        "delmontecannedcorn",
+        "delmonte",
+        "fiestacorn",
+        "fiesta",
+        "cornkernals",
+        "corn"
+      ],
+      "display": "<b>Del Monte Canned Corn</b>",
+      "description": "A large can of <b>Del Monte</b> Canned '<b>Fiesta</b>' <b>corn</b>.",
+      "location": "KITCHEN",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/corn150.png",
+      "actions": {
+        "examine": "Well, it will taste great with my fajitas later.",
+        "take": {
+          "response": "It is heavy. But I'll put it in my bag anyway.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "What? You can't eat a can of corn! You'll have to take this home for Calpurnia to cook.",
+          "addHealth": 0,
+          "removeItem": false,
+          "timer": -1
+        }
+      }
+    },
+    "gummybears": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "gummybears",
+        "gummy",
+        "gummys",
+        "gummies",
+        "bears",
+        "fruitybears",
+        "chewybears"
+      ],
+      "display": "<b>Gummy Bears</b>",
+      "description": "A bag of colorful <b>gummy bears</b>",
+      "location": "STUDY",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/gummyBears150.png",
+      "actions": {
+        "examine": "Colorful, chewy <b>gummy bears</b> in all the fruit flavors!",
+        "take": {
+          "response": "You pick up the bag of <b>gummy bears</b>.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "<b>Chewy bears!</b> <b>Fruity bears!</b> They stick to your teeth a bit.",
+          "addHealth": 3,
+          "removeItem": true
+        }
+      }
+    },
+    "hersheykisses": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "hersheykisses",
+        "kisses",
+        "chocolatekisses",
+        "silverwrapped"
+      ],
+      "display": "<b>Hershey's Kisses</b>",
+      "description": "A handful of <b>silver wrapped</b> chocolate <b>kisses</b>",
+      "location": "GAME-ROOM",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/hersheysKisses150.png",
+      "actions": {
+        "examine": "Classic <b>Hershey's Kisses</b>, <b>silver wrapped</b>!. Iconic!",
+        "take": {
+          "response": "You pick up the <b>Hershey's Kisses</b>.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "Smooth milk chocolate melts perfectly. Classic!",
+          "addHealth": 3,
+          "removeItem": true
+        }
+      }
+    },
+    "hotdog": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "hotdog",
+        "frankfurter",
+        "weiner",
+        "sausage"
+      ],
+      "display": "<b>Hot dog</b>",
+      "description": "A cold hot dog",
+      "location": "TV-ROOM",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/hotdog150.png",
+      "actions": {
+        "examine": "A cold <b>hot dog</b>. Who gives out hot dogs for Halloween?",
+        "take": {
+          "response": "You pick up the <b>hot dog</b>, reluctantly.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "Ugh! This cold, clammy hot dog feels like rubber in your mouth. No nutritional value at all!",
+          "addHealth": 0,
+          "removeItem": true,
+          "timer": 0
+        }
+      }
+    },
+    "jollyrancher": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "jollyrancher",
+        "jollyranchers",
+        "hardcandy",
+        "jolly",
+        "ranchers",
+        "rancher",
+        "fruitcandy"
+      ],
+      "display": "<b>Jolly Rancher</b>",
+      "description": "A small bag of hard <b>fruit candy</b>.",
+      "location": "BEDROOM",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/jollyRancher150.png",
+      "actions": {
+        "examine": "Hard fruit-flavored candies. Long-lasting flavor!",
+        "take": {
+          "response": "You pick up the <b>Jolly Ranchers</b>.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "Insanely fruity! Your mouth is puckering.",
+          "addHealth": 2,
+          "removeItem": true
+        }
+      }
+    },
+    "lemondrops": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "lemondrops",
+        "lemoncandy",
+        "sourdrops",
+        "lemon",
+        "drops",
+        "yellowcandy"
+      ],
+      "display": "<b>Lemon Drops</b>",
+      "description": "A bag of tart <b>lemon drops</b>",
+      "location": "DINING-ROOM",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/lemonDrops150.png",
+      "actions": {
+        "examine": "Bright yellow <b>lemon drops</b>. Sweet and sour!",
+        "take": {
+          "response": "You pick up the <b>lemon drops</b>.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "Tart and sweet! Makes your mouth pucker.",
+          "addHealth": 2,
+          "removeItem": true
+        }
+      }
+    },
+    "lifesavers": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "lifesavers",
+        "lifesaver",
+        "savers",
+        "life",
+        "mints",
+        "rolled",
+        "butterrum",
+        "rolledcandy"
+      ],
+      "display": "<b>Life Savers</b>",
+      "description": "A roll of Butter Rum Life Savers candy",
+      "location": "STUDY",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/lifeSavers150.png",
+      "actions": {
+        "examine": "A full sized roll of tasty <b>Butter Rum</b> <b>Life Savers</b>!",
+        "take": {
+          "response": "You pick up the <b>Life Savers</b> roll.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "Minty and refreshing! Your breath smells better now.",
+          "addHealth": 2,
+          "removeItem": true
+        }
+      }
+    },
+    "popcorn": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "popcorn",
+        "poppedcorn",
+        "kernels",
+        "moviepopcorn",
+        "theaterpopcorn",
+        "butteredpopcorn"
+      ],
+      "display": "<b>Popcorn</b>",
+      "description": "A small bag of movie style buttered <b>popcorn</b>",
+      "location": "GAME-ROOM",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/popcorn150.png",
+      "actions": {
+        "examine": "Fresh popped <b>popcorn</b>. Movie style. Just like I would get when watching the latest Coen Brother movie! Salted and buttered just right!",
+        "take": {
+          "response": "You pick up the bag of <b>popcorn</b> and put it in your bag. It spills everywhere.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "You dig some out of your bag - uugh... but it is light and fluffy! This is delicious.",
+          "addHealth": 3,
+          "removeItem": true
+        }
+      }
+    },
+    "reesespieces": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "reesespieces",
+        "reese'spieces",
+        "reeses",
+        "reese's",
+        "peanutbutter",
+        "pieces"
+      ],
+      "display": "<b>Reese's Pieces</b>",
+      "description": "A bag of <b>peanut butter</b> candy",
+      "location": "KITCHEN",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/reesesPieces150.png",
+      "actions": {
+        "examine": "Colorful <b>peanut butter</b> candy coated in a crunchy shell.",
+        "take": {
+          "response": "You pick up the <b>Reese's Pieces</b>.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "Mmm! Peanut butter perfection.",
+          "addHealth": 4,
+          "removeItem": true
+        }
+      }
+    },
+    "rottentomato": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "rottentomato",
+        "tomato",
+        "badtomato",
+        "spoiledtomato"
+      ],
+      "display": "Rotten <b>tomato</b>",
+      "description": "A disgusting rotten <b>tomato</b> - looks inedible.",
+      "location": "BEDROOM",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/rottenTomato150x150.png",
+      "actions": {
+        "examine": "This <b>tomato</b> has seen better days. It's mushy and smells awful.",
+        "take": {
+          "response": "You pick up the <b>rotten</b> <b>tomato</b>, trying not to gag.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "BLECH! That was disgusting! The rotten tomato makes you gag and you lose time recovering from it.",
+          "addHealth": -5,
+          "removeItem": true,
+          "timer": 1
+        }
+      }
+    },
+    "skittles": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "skittles",
+        "skitles",
+        "rainbowcandy",
+        "fruitchews",
+        "fruitcandies",
+        "fruitflavored",
+        "colorfulcandy"
+      ],
+      "display": "<b>Skittles</b>",
+      "description": "A bag of rainbow-colored <b>fruit candies</b>",
+      "location": "TV-ROOM",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/skittles150.png",
+      "actions": {
+        "examine": "Taste the rainbow! Colorful <b>fruit-flavored</b> candies.",
+        "take": {
+          "response": "You pick up the <b>Skittles</b>.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "Fruity and sweet! So many flavors at once.",
+          "addHealth": 3,
+          "removeItem": true
+        }
+      }
+    },
+    "smarties": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "smarties",
+        "smartiescandy",
+        "chalky",
+        "tabletcandy"
+      ],
+      "display": "<b>Smarties</b>",
+      "description": "A roll of <b>Smarties</b> candy tablets",
+      "location": "MUSIC-ROOM",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/smarties150.png",
+      "actions": {
+        "examine": "Colorful candy tablets wrapped in cellophane. <b>Chalky</b> but nostalgic!",
+        "take": {
+          "response": "You pick up the <b>Smarties</b>.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "Chalky and sweet. Brings back childhood memories!",
+          "addHealth": 2,
+          "removeItem": true
+        }
+      }
+    },
+    "socks": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "socks",
+        "oldsocks",
+        "dirtysocks",
+        "stinkysocks"
+      ],
+      "display": "Dirty <b>socks</b>",
+      "description": "A pair of dirty old <b>socks</b>",
+      "location": "BEDROOM",
+      "points": 1,
+      "health": 1,
+      "eatable": false,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/socks150.png",
+      "actions": {
+        "examine": "Old, dirty <b>socks</b>. Who put these here? Gross!",
+        "take": {
+          "response": "You reluctantly pick up the dirty <b>socks</b>.",
+          "addToInventory": true
+        }
+      }
+    },
+    "spicedrops": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "spicedrops",
+        "spicycandy",
+        "gumdrops",
+        "spice",
+        "jellycandy"
+      ],
+      "display": "<b>Spice Drops</b>",
+      "description": "A bag of spiced <b>gumdrops</b>",
+      "location": "BEDROOM",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/spiceDrops150.png",
+      "actions": {
+        "examine": "Colorful spiced <b>gumdrops</b>. An acquired taste!",
+        "take": {
+          "response": "You pick up the <b>Spice Drops</b>.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "Spicy and sweet! Cinnamon burns a little.",
+          "addHealth": 2,
+          "removeItem": true
+        }
+      }
+    },
+    "twizzlers": {
+      "includeInGame": true,
+      "type": "candy",
+      "typedNames": [
+        "twizzlers",
+        "licorice",
+        "redlicorice",
+        "strawberrytwist"
+      ],
+      "display": "<b>Twizzlers</b>",
+      "description": "A pack of strawberry <b>Twizzlers</b>",
+      "location": "TV-ROOM",
+      "points": 1,
+      "health": 1,
+      "eatable": true,
+      "droppable": true,
+      "visible": true,
+      "locked": false,
+      "icon150": "assets/items/twizzlers150.png",
+      "actions": {
+        "examine": "Bite sized red <b>licorice</b> twists. Chewy cherry flavor!",
+        "take": {
+          "response": "You pick up the <b>Twizzlers</b>.",
+          "addToInventory": true
+        },
+        "eat": {
+          "response": "Chewy and strawberry-sweet! Fun to eat.",
+          "addHealth": 3,
+          "removeItem": true
+        }
+      }
+    }
+  }
+}

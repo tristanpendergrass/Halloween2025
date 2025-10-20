@@ -1,0 +1,172 @@
+{
+  "commands": {
+    "help": {
+      "includeInGame": true,
+      "type": "system",
+      "shortcuts": ["h", "?"],
+      "timer": 0,
+      "action": "show_help"
+    },
+    "look": {
+      "includeInGame": true,
+      "type": "action",
+      "shortcuts": ["l"],
+      "timer": 0,
+      "action": "examine_room"
+    },
+    "inventory": {
+      "includeInGame": true,
+      "type": "system",
+      "shortcuts": ["i"],
+      "timer": 0,
+      "action": "show_inventory"
+    },
+    "north": {
+      "includeInGame": true,
+      "type": "movement",
+      "shortcuts": ["n"],
+      "timer": 1,
+      "action": "move_north"
+    },
+    "south": {
+      "includeInGame": true,
+      "type": "movement",
+      "shortcuts": ["s"],
+      "timer": 1,
+      "action": "move_south"
+    },
+    "east": {
+      "includeInGame": true,
+      "type": "movement",
+      "shortcuts": ["e"],
+      "timer": 1,
+      "action": "move_east"
+    },
+    "west": {
+      "includeInGame": true,
+      "type": "movement",
+      "shortcuts": ["w"],
+      "timer": 1,
+      "action": "move_west"
+    },
+    "take": {
+      "includeInGame": true,
+      "type": "action",
+      "shortcuts": ["t", "get", "g"],
+      "timer": 1,
+      "action": "take_item"
+    },
+    "examine": {
+      "includeInGame": true,
+      "type": "action",
+      "shortcuts": ["x", "ex", "read"],
+      "timer": 1,
+      "action": "examine_item"
+    },
+    "drop": {
+      "includeInGame": true,
+      "type": "action",
+      "shortcuts": [],
+      "timer": 1,
+      "action": "drop_item"
+    },
+    "quit": {
+      "includeInGame": true,
+      "type": "system",
+      "shortcuts": ["home"],
+      "timer": 0,
+      "action": "quit_game"
+    },
+    "use": {
+      "includeInGame": true,
+      "type": "action",
+      "shortcuts": ["u", "ring", "turn", "push"],
+      "timer": 1,
+      "action": "use_item"
+    },
+    "eat": {
+      "includeInGame": true,
+      "type": "action",
+      "shortcuts": [],
+      "timer": -2,
+      "action": "eat_item"
+    },
+    "say": {
+      "includeInGame": true,
+      "type": "action",
+      "shortcuts": ["speak", "push", "press", "dial"],
+      "timer": 1,
+      "action": "say_phrase"
+    },
+    "open": {
+      "includeInGame": true,
+      "type": "action",
+      "shortcuts": ["unlock"],
+      "timer": 1,
+      "action": "open_item"
+    },
+    "throw": {
+      "includeInGame": true,
+      "type": "action",
+      "shortcuts": ["toss", "chuck", "hurl"],
+      "timer": 1,
+      "action": "throw_item"
+    },
+    "debug": {
+      "includeInGame": true,
+      "type": "system",
+      "shortcuts": [],
+      "timer": 0,
+      "action": "debug_scavenger"
+    },
+    "celebrate": {
+      "includeInGame": true,
+      "type": "system",
+      "shortcuts": [],
+      "timer": 0,
+      "action": "celebrate_again"
+    },
+    "hint": {
+      "includeInGame": true,
+      "type": "system",
+      "shortcuts": ["secrets"],
+      "timer": 0,
+      "action": "show_secrets"
+    },
+    "restart": {
+      "includeInGame": true,
+      "type": "system",
+      "shortcuts": [],
+      "timer": 0,
+      "action": "restart_game"
+    },
+    "about": {
+      "includeInGame": true,
+      "type": "system",
+      "shortcuts": [],
+      "timer": 0,
+      "action": "show_about"
+    },
+    "score": {
+      "includeInGame": true,
+      "type": "system",
+      "shortcuts": ["scoring", "time", "timer", "clock", "deadline"],
+      "timer": 0,
+      "action": "show_score"
+    },
+    "orange": {
+      "includeInGame": true,
+      "type": "system",
+      "shortcuts": ["orangeborders"],
+      "timer": 0,
+      "action": "theme_orange"
+    },
+    "white": {
+      "includeInGame": true,
+      "type": "system",
+      "shortcuts": ["whiteborders"],
+      "timer": 0,
+      "action": "theme_white"
+    }
+  }
+}

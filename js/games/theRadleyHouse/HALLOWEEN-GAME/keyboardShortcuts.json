@@ -1,0 +1,14 @@
+{
+  "navigation": [
+    {
+      "key": "PageUp",
+      "action": "scrollUp",
+      "preventDefault": true
+    },
+    {
+      "key": "PageDown",
+      "action": "scrollDown",
+      "preventDefault": true
+    }
+  ]
+}

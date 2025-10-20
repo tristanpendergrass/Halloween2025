@@ -1,0 +1,558 @@
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: #000000;
+  margin: 0;
+  padding: 0;
+}
+
+/* CSS Variables */
+:root {
+  --tile-muted-opacity: 0.5;
+}
+
+/* Body styling */
+body {
+  font-family: "Arial", sans-serif;
+  background: #000000;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Game container - exactly 950x714 pixels */
+#screen {
+  width: 950px;
+  height: 714px;
+  background: #000000;
+  position: relative;
+  border: none; /* No border - parent game panel already has border */
+}
+
+/* Game title */
+#game-title {
+  position: absolute;
+  top: 25px;
+  left: 32%;
+  transform: translateX(-50%);
+  font-family: "Creepster", cursive;
+  font-size: 62px;
+  color: #ff8c42;
+  text-shadow: 0 0 20px #7b2d8e, 0 0 40px #7b2d8e;
+  letter-spacing: 0.12em;
+  z-index: 100;
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* Game subtitle */
+#game-subtitle {
+  position: absolute;
+  top: 110px;
+  left: 52%;
+  transform: translateX(-50%);
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: #ff8c42;
+  z-index: 100;
+  text-align: left;
+  width: 90%;
+  line-height: 1.4;
+}
+
+/* Scoring area - contains clicks, best scores, buttons, and controls */
+#scoring-area {
+  position: absolute;
+  bottom: 15px;
+  right: 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  z-index: 40;
+}
+
+/* Current clicks display */
+#current-clicks {
+  font-family: "Arial", sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Best scores display */
+#best-scores-display {
+  display: flex;
+  gap: 90px;
+  font-family: "Arial", sans-serif;
+  font-size: 12px;
+  color: #ff8c42;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Difficulty buttons */
+.difficulty-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.difficulty-button-img {
+  width: 80px;
+  height: 30px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+/* Scoring controls */
+#scoring-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  margin-top: 8px;
+}
+
+.control-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.control-label {
+  color: #ff8c42;
+  font-family: "Arial", sans-serif;
+  font-size: 12px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.scoring-btn {
+  font-family: "Arial", sans-serif;
+  font-size: 11px;
+  padding: 4px 8px;
+  background: #4a2c5e;
+  color: #ffffff;
+  border: 1px solid #7b2d8e;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.scoring-btn:hover {
+  background: #4c4b4d;
+}
+
+.difficulty-button-img:hover {
+  opacity: 0.8;
+}
+
+/* Board container - 502x502 pixels, positioned bottom-left */
+#board {
+  position: absolute;
+  width: 502px;
+  height: 502px;
+  left: 20px;
+  bottom: 20px;
+  background: #553963;
+  box-sizing: content-box;
+  border: 15px ridge #7b2d8e;
+  z-index: 5;
+}
+
+/* Grid lines */
+.grid-line {
+  position: absolute;
+  background-color: white;
+}
+
+/* Tile container - holds both face-up and face-down images */
+.tile-container {
+  position: absolute;
+  cursor: pointer;
+}
+
+/* Selected tile highlight - golden glow effect */
+.tile-selected {
+  box-shadow: 0 0 15px 5px gold, 0 0 25px 8px rgba(255, 215, 0, 0.6);
+  border-radius: 4px;
+  z-index: 10;
+}
+
+/* Completed tile hover highlight - stronger golden glow */
+.tile-completed-glow {
+  box-shadow: 0 0 25px 10px gold, 0 0 40px 15px rgba(255, 215, 0, 0.8);
+  border-radius: 4px;
+  z-index: 10;
+}
+
+/* Bonus tile revealed tiles - yellow glow (separate class for customization) */
+.tile-bonus-revealed {
+  box-shadow: 0 0 15px 5px gold, 0 0 25px 8px rgba(255, 215, 0, 0.6);
+  border-radius: 4px;
+  z-index: 10;
+}
+
+/* Bonus tile flash animation when clicked */
+@keyframes bonus-flash {
+  0% {
+    box-shadow: 0 0 10px 3px gold;
+  }
+  50% {
+    box-shadow: 0 0 30px 15px gold, 0 0 50px 25px rgba(255, 215, 0, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 10px 3px gold;
+  }
+}
+
+.tile-bonus-flash {
+  animation: bonus-flash 0.8s ease-in-out;
+}
+
+/* Bomb-A swap tiles - red glow effect */
+.tile-bomb-swap {
+  box-shadow: 0 0 15px 5px red, 0 0 25px 8px rgba(255, 0, 0, 0.6);
+  border-radius: 4px;
+  z-index: 10;
+}
+
+/* Bomb-A swap pulse animation */
+@keyframes bomb-swap-pulse {
+  0% {
+    box-shadow: 0 0 15px 5px red, 0 0 25px 8px rgba(255, 0, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 35px 15px red, 0 0 55px 25px rgba(255, 0, 0, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 15px 5px red, 0 0 25px 8px rgba(255, 0, 0, 0.6);
+  }
+}
+
+.tile-bomb-swap-pulse {
+  animation: bomb-swap-pulse 1s ease-in-out;
+}
+
+/*
+NOTE that to change the opacity of the muted tile, you can change the value of the --tile-muted-opacity variable in the :root selector. The item just below this comment is NOT where you change the opacity of the muted tile.
+
+Which is at the top of the css file, and looks like this:
+
+:root {
+--tile-muted-opacity: 0.5;
+}
+
+CHANGE IT AT THE TOP OF THE CSS FILE, NOT HERE!
+*/
+
+/* Muted tile - for completed/used tiles */
+.tile-muted .tile-face-down {
+  opacity: var(--tile-muted-opacity);
+}
+
+/* Face-up image/video (bottom layer) */
+.tile-face-up {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Ensure video elements behave like images */
+video.tile-face-up {
+  object-fit: cover;
+}
+
+/* Halftone overlay (middle layer, for completed witches) */
+.tile-halftone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+/* Face-down image (top layer, covers face-up) */
+.tile-face-down {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Legacy tile-image class (kept for compatibility) */
+.tile-image {
+  position: absolute;
+}
+
+/* Status box - positioned to the right of the board */
+#status-box {
+  position: absolute;
+  left: 570px;
+  bottom: 10px;
+  width: 350px;
+  height: 530px;
+  background: transparent;
+  border: none;
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* Character list - inside status box */
+#character-list {
+  width: 100%;
+  max-height: 100%;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 10px 30px 65px 25px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  pointer-events: none; /* Don't block clicks on buttons below */
+}
+
+/* Difficulty-specific vertical centering */
+/* EASY difficulty - vertically centered (6 characters total) */
+#status-box.easyTiles #character-list {
+  padding-top: 110px; /* Adjust this value to center */
+}
+
+/* MEDIUM difficulty - vertically centered (9 characters total) */
+#status-box.mediumTiles #character-list {
+  padding-top: 65px; /* Adjust this value to center */
+}
+
+/* HARD difficulty - vertically centered (13 characters total) */
+#status-box.hardTiles #character-list {
+  padding-top: 25px; /* Adjust this value to center */
+}
+
+.character-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 7px;
+  position: relative;
+  pointer-events: auto; /* Re-enable clicks on witch names */
+}
+
+.character-name {
+  font-weight: bold;
+  color: #ff8c42;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+/* Hover effect for non-completed characters only */
+.character-item[data-completed="false"] .character-name:hover {
+  color: #cccccc;
+}
+
+/* Completed character styling */
+.character-item[data-completed="true"] .character-name {
+  color: #ffff00;
+  cursor: help;
+}
+
+/* Decoy character strikethrough when all real witches found */
+.character-decoy-strikethrough {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.character-description {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 25px;
+  background: #2a1a35;
+  color: #ffffff;
+  padding: 10px;
+  border: 2px solid #7b2d8e;
+  border-radius: 5px;
+  width: 300px;
+  z-index: 1000;
+  line-height: 1.3;
+  font-size: 14px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Show tooltip for completed characters OR when clues enabled */
+.character-item[data-completed="true"]:hover .character-description,
+body.clues-enabled .character-item:hover .character-description {
+  display: block;
+}
+
+/* Hints cat - positioned in top-right corner */
+#hints-cat {
+  position: absolute;
+  top: -20px;
+  right: 75px;
+  z-index: 60;
+}
+
+#cat-image {
+  display: block;
+  width: 350px;
+  height: 200px;
+  transform: rotate(-10deg);
+}
+
+/* Cat tooltip - appears below cat on hover with 1s delay */
+.cat-description {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 210px; /* Positions below the cat (cat height is ~200px) */
+  background: rgba(42, 26, 53, 0.95); /* Semi-transparent dark purple */
+  color: #cccccc; /* Light gray text */
+  padding: 10px;
+  border: 2px solid #7b2d8e;
+  border-radius: 5px;
+  width: 300px;
+  z-index: 1000;
+  line-height: 1.5;
+  font-size: 14px;
+  font-family: "Arial", sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  white-space: normal;
+  text-align: left;
+}
+
+/* Show tooltip on hover with 1 second delay */
+#hints-cat:hover .cat-description {
+  display: block;
+  animation: fadeIn 0.3s ease-in;
+  animation-delay: 1s;
+  animation-fill-mode: backwards;
+}
+
+/* Fade-in animation for delayed appearance */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ========================================
+   VICTORY CELEBRATION STYLES
+   ======================================== */
+
+/* Victory flash animation - quick yellow pulse */
+@keyframes victoryFlash {
+  0% {
+    box-shadow: 0 0 5px 2px gold;
+  }
+  50% {
+    box-shadow: 0 0 40px 20px gold, 0 0 60px 30px rgba(255, 215, 0, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 5px 2px gold;
+  }
+}
+
+/* Flash effect applied to tiles during celebration */
+.tile-victory-flash {
+  animation: victoryFlash 0.2s ease-in-out;
+  z-index: 15;
+}
+
+/* Grayscale and dim effect for witch images during celebration */
+.tile-victory-grayscale .tile-face-up {
+  filter: grayscale(100%) brightness(0.6);
+  transition: filter 0.3s ease;
+}
+
+/* Ensure video elements also get grayscale filter */
+.tile-victory-grayscale video.tile-face-up {
+  filter: grayscale(100%) brightness(0.6);
+}
+
+/* Letter overlay - large colorful text centered over tile */
+.victory-letter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Creepster", cursive;
+  font-size: 96px;
+  font-weight: bold;
+  /* Color will be set via JavaScript for variety */
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), -1px -1px 2px rgba(0, 0, 0, 0.8),
+    0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  pointer-events: none;
+  animation: letterFadeIn 0.2s ease-in;
+}
+
+/* Click-to-start idle letter overlay - white with black shadow for visibility */
+.click-to-start-letter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Lakki Reddy", cursive;
+  font-size: 80px;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), -3px -3px 6px rgba(0, 0, 0, 0.9),
+    3px -3px 6px rgba(0, 0, 0, 0.9), -3px 3px 6px rgba(0, 0, 0, 0.9),
+    0 0 10px rgba(0, 0, 0, 1);
+  z-index: 20;
+  pointer-events: none;
+  padding-top: 35px;
+}
+
+/* Opening screen click-to-start letters - black with orange shadow */
+.click-to-start-letter-initial {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Lakki Reddy", cursive;
+  font-size: 80px;
+  font-weight: bold;
+  color: #000000;
+  text-shadow: 3px 3px 6px rgba(255, 140, 66, 0.9),
+    -3px -3px 6px rgba(255, 140, 66, 0.9), 3px -3px 6px rgba(255, 140, 66, 0.9),
+    -3px 3px 6px rgba(255, 140, 66, 0.9), 0 0 10px rgba(255, 140, 66, 1);
+  z-index: 20;
+  pointer-events: none;
+  padding-top: 35px;
+}
+
+/* Letter fade-in animation */
+@keyframes letterFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "squareParameters": {
+    "hardTiles": {
+      "gridSize": 5,
+      "tileSize": 99,
+      "tileBackColor": "ivory",
+      "lineSize": 2,
+      "lineColor": "black",
+      "squarePositions": [
+        { "square": 0, "x": 0, "y": 0 },
+        { "square": 1, "x": 101, "y": 0 },
+        { "square": 2, "x": 202, "y": 0 },
+        { "square": 3, "x": 303, "y": 0 },
+        { "square": 4, "x": 404, "y": 0 },
+        { "square": 5, "x": 0, "y": 101 },
+        { "square": 6, "x": 101, "y": 101 },
+        { "square": 7, "x": 202, "y": 101 },
+        { "square": 8, "x": 303, "y": 101 },
+        { "square": 9, "x": 404, "y": 101 },
+        { "square": 10, "x": 0, "y": 202 },
+        { "square": 11, "x": 101, "y": 202 },
+        { "square": 12, "x": 202, "y": 202 },
+        { "square": 13, "x": 303, "y": 202 },
+        { "square": 14, "x": 404, "y": 202 },
+        { "square": 15, "x": 0, "y": 303 },
+        { "square": 16, "x": 101, "y": 303 },
+        { "square": 17, "x": 202, "y": 303 },
+        { "square": 18, "x": 303, "y": 303 },
+        { "square": 19, "x": 404, "y": 303 },
+        { "square": 20, "x": 0, "y": 404 },
+        { "square": 21, "x": 101, "y": 404 },
+        { "square": 22, "x": 202, "y": 404 },
+        { "square": 23, "x": 303, "y": 404 },
+        { "square": 24, "x": 404, "y": 404 }
+      ]
+    },
+    "mediumTiles": {
+      "gridSize": 4,
+      "tileSize": 124,
+      "tileBackColor": "green",
+      "lineSize": 2,
+      "lineColor": "black",
+      "squarePositions": [
+        { "square": 0, "x": 0, "y": 0 },
+        { "square": 1, "x": 126, "y": 0 },
+        { "square": 2, "x": 252, "y": 0 },
+        { "square": 3, "x": 378, "y": 0 },
+        { "square": 4, "x": 0, "y": 126 },
+        { "square": 5, "x": 126, "y": 126 },
+        { "square": 6, "x": 252, "y": 126 },
+        { "square": 7, "x": 378, "y": 126 },
+        { "square": 8, "x": 0, "y": 252 },
+        { "square": 9, "x": 126, "y": 252 },
+        { "square": 10, "x": 252, "y": 252 },
+        { "square": 11, "x": 378, "y": 252 },
+        { "square": 12, "x": 0, "y": 378 },
+        { "square": 13, "x": 126, "y": 378 },
+        { "square": 14, "x": 252, "y": 378 },
+        { "square": 15, "x": 378, "y": 378 }
+      ]
+    },
+    "easyTiles": {
+      "gridSize": 3,
+      "tileSize": 166,
+      "tileBackColor": "red",
+      "lineSize": 2,
+      "lineColor": "black",
+      "squarePositions": [
+        { "square": 0, "x": 0, "y": 0 },
+        { "square": 1, "x": 168, "y": 0 },
+        { "square": 2, "x": 336, "y": 0 },
+        { "square": 3, "x": 0, "y": 168 },
+        { "square": 4, "x": 168, "y": 168 },
+        { "square": 5, "x": 336, "y": 168 },
+        { "square": 6, "x": 0, "y": 336 },
+        { "square": 7, "x": 168, "y": 336 },
+        { "square": 8, "x": 336, "y": 336 }
+      ]
+    }
+  }
+}

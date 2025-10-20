@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "gameName": "Halloween Text Adventure",
+    "version": "0.2.0",
+    "author": "Poppy/John"
+  },
+
+  "about": {
+    "text": [
+      {"text": "<b>About The Radley House</b>", "type": "command"},
+      {"text": "", "type": "flavor"},
+      {"text": "A text-based adventure game, well not really adventure, more of a scavenger hunt with no real danger. You explore the Radley House and try to find nine scavenger hunt items hidden throughout the house, while also collecting a bunch of Halloween candy treats.  There are some lame puzzles.  A real time waster.", "type": "flavor"},
+      {"text": "", "type": "flavor"},
+      {"text": "Use the <b>hint</b> command to see some hidden commands, and other general advice.", "type": "flavor"},
+      {"text": "", "type": "flavor"},
+      {"text": "Claude/John - 2025", "type": "flavor"},
+      {"text": "Version 0.19.1", "type": "flavor"}
+    ]
+  },
+
+  "startup": {
+    "room": "START",
+    "welcomeText": [],
+    "playerStats": {
+      "score": 0,
+      "health": 100,
+      "currentRoom": "START",
+      "visitedRooms": [],
+      "treats": {"current": 0, "max": 40},
+      "houses": {"current": 0, "max": 12}
+    }
+  }
+}

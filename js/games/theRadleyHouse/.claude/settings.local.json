@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//mnt/d/dev/projects/halloween/games/**)",
+      "Bash(git restore:*)",
+      "Bash(python3:*)",
+      "Bash(ls:*)",
+      "Read(//mnt/d/dev/projects/halloween/**)",
+      "Bash(for:*)",
+      "Bash(do file \"$f\")",
+      "Bash(done)",
+      "Bash(git ls-tree:*)",
+      "Bash(git mv:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
