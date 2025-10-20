@@ -6,7 +6,7 @@ class HalloweenGames {
     this.isPanelCollapsed = false;
     this.gameNames = {
       "title-screen": "Title Screen",
-      "welcome-game": "Welcome Game",
+      "welcome-game": "welcome game",
       whosThatWitch: "Who's That Witch?",
       "word-haunt": "Word Haunt",
       theRadleyHouse: "The Radley House",
