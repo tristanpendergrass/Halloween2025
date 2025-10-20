@@ -6,7 +6,7 @@ class HalloweenGames {
     this.isPanelCollapsed = false;
     this.gameNames = {
       "title-screen": "Title Screen",
-      "welcome-game": "Welcome Game",
+      "welcome-game": "Goodbye Candy Corn Game",
       whosThatWitch: "Who's That Witch?",
       "word-haunt": "Word Haunt",
       theRadleyHouse: "The Radley House",
@@ -25,8 +25,8 @@ class HalloweenGames {
 
   async init() {
     // Save the original welcome screen HTML as a template
-    const welcomeScreen = document.querySelector('.welcome-screen');
-    this.welcomeScreenTemplate = welcomeScreen ? welcomeScreen.outerHTML : '';
+    const welcomeScreen = document.querySelector(".welcome-screen");
+    this.welcomeScreenTemplate = welcomeScreen ? welcomeScreen.outerHTML : "";
 
     this.bindEvents();
     await this.loadGames();
