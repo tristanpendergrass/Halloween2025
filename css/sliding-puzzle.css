@@ -1,0 +1,72 @@
+/* ====================================================================
+   SLIDING PUZZLE GAME STYLES
+   11-puzzle game (3x4 grid) using CSS background-position technique
+   All classes use .sliding- prefix to avoid conflicts
+   ==================================================================== */
+
+/* SLIDING TILE - Individual puzzle piece
+ * Size: 64px × 95px (192÷3 = 64, 380÷4 = 95)
+ * Uses full puzzle image with background-position offset to show its piece
+ * Smooth sliding animation via CSS transition
+ */
+.sliding-tile {
+  position: absolute;
+  width: 64px;
+  height: 95px;
+  background-size: 192px 380px;
+  background-repeat: no-repeat;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+/* SLIDING BLANK - The empty space (position 0,0 initially)
+ * No background image - shows through to container background
+ */
+.sliding-blank {
+  position: absolute;
+  width: 64px;
+  height: 95px;
+  background: transparent;
+  pointer-events: none;
+}
+
+/* SLIDING TILE CLICKABLE - Tiles adjacent to blank space
+ * Visual feedback: hover effect and pointer cursor
+ * Only these tiles can be moved
+ */
+.sliding-tile-clickable {
+  cursor: pointer;
+}
+
+.sliding-tile-clickable:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* SLIDING TILE LOCKED - Tiles not adjacent to blank
+ * Cannot be moved, no special hover effect
+ */
+.sliding-tile-locked {
+  cursor: default;
+}
+
+/* IMAGE BOX PUZZLE THUMBNAILS - Show top square of each puzzle image
+ * Each thumbnail shows top 192×192 of the 192×380 image
+ * Scaled to fit in 62×62 boxes
+ * Click to load that puzzle
+ */
+.image-box-left,
+.image-box-middle,
+.image-box-right {
+  background-size: cover;
+  background-position: top center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.image-box-left:hover,
+.image-box-middle:hover,
+.image-box-right:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}

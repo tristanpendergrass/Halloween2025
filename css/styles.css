@@ -210,36 +210,64 @@ body {
   padding: 0;
   margin: 0 3px 2px 3px;
   position: relative;
-  background-image: url('../assets/pumpkin_patch_192x380.png');
-  background-size: 192px 380px;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: transparent;
 }
 
-/* GAME GRID OVERLAY - White grid lines over game content
+/* GAME GRID OVERLAY - Grid lines over game content
  * Overlays the entire game-content-container
- * 2px white border + interior white grid lines
- * Grid: 3 vertical sections × 5 horizontal sections
- * Interior grid lines: 2 vertical, 4 horizontal
+ * Grid color controlled by --grid-color variable (easy to change!)
+ * Grid: 3 vertical sections × 4 horizontal sections (3×4 puzzle)
+ * Interior grid lines: 2 vertical, 3 horizontal
  */
 .game-grid-overlay {
+  --grid-color: rgba(0, 0, 0, 0.2);
+
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid white;
+  border: 2px solid var(--grid-color);
   pointer-events: none;
   z-index: 10;
   background-image:
-    /* Vertical lines (2 lines at 62.67px, 125.33px) */
-    linear-gradient(to right, transparent 62.67px, white 62.67px, white 63.67px, transparent 63.67px),
-    linear-gradient(to right, transparent 125.33px, white 125.33px, white 126.33px, transparent 126.33px),
-    /* Horizontal lines (4 lines at 75.2px, 150.4px, 225.6px, 300.8px) */
-    linear-gradient(to bottom, transparent 75.2px, white 75.2px, white 76.2px, transparent 76.2px),
-    linear-gradient(to bottom, transparent 150.4px, white 150.4px, white 151.4px, transparent 151.4px),
-    linear-gradient(to bottom, transparent 225.6px, white 225.6px, white 226.6px, transparent 226.6px),
-    linear-gradient(to bottom, transparent 300.8px, white 300.8px, white 301.8px, transparent 301.8px);
+    /* Vertical lines (2px wide, centered on 64px and 128px boundaries) */
+    linear-gradient(
+      to right,
+      transparent 63px,
+      var(--grid-color) 63px,
+      var(--grid-color) 65px,
+      transparent 65px
+    ),
+    linear-gradient(
+      to right,
+      transparent 127px,
+      var(--grid-color) 127px,
+      var(--grid-color) 129px,
+      transparent 129px
+    ),
+    /* Horizontal lines (2px wide, at 95px, 190px, 285px boundaries - shifted up) */
+    linear-gradient(
+      to bottom,
+      transparent 93px,
+      var(--grid-color) 93px,
+      var(--grid-color) 95px,
+      transparent 95px
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 188px,
+      var(--grid-color) 188px,
+      var(--grid-color) 190px,
+      transparent 190px
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 283px,
+      var(--grid-color) 283px,
+      var(--grid-color) 285px,
+      transparent 285px
+    );
 }
 
 /* IMAGE BOXES CONTAINER - Holds three image boxes at bottom */
