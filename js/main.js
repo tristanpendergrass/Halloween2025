@@ -187,12 +187,7 @@ class HalloweenGames {
       }
     }
 
-    if (this.currentGame === gameId) {
-      console.log("Already on this game, returning");
-      return;
-    }
-
-    if (this.games[this.currentGame]) {
+    if (this.games[this.currentGame] && this.currentGame !== gameId) {
       console.log("Stopping current game:", this.currentGame);
       this.games[this.currentGame].stop();
     }

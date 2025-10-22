@@ -28,6 +28,16 @@ let blankCol = 0;  // Current position of blank space
 let arabicNumbersPuzzle = null;  // Data URL for Arabic numbers (1-11) puzzle
 let chineseNumbersPuzzle = null; // Data URL for Chinese traditional numbers puzzle
 
+// Image cycling for left box
+let cyclingImages = [
+  'assets/image1_192x380.png',
+  'assets/image2_192x380.png',
+  'assets/image3_192x380.png',
+  'assets/image4_192x380.png'
+];
+let currentImageIndex = 0; // Tracks which image to load next
+let leftBoxElement = null; // Reference to left box element for thumbnail updates
+
 // ====================================================================
 // NUMBERED PUZZLE GENERATION
 // ====================================================================
@@ -140,17 +150,25 @@ async function initPuzzleGame() {
   // Generate numbered puzzles first (this happens once)
   await generateNumberedPuzzles();
 
-  // Set up click handlers for the three thumbnail boxes
-  // Box 1: Regular image, Box 2: Arabic numbers, Box 3: Chinese numbers
-  const imageBoxes = [
-    { element: document.querySelector('.image-box-left'), image: 'assets/image3_192x380.png' },
+  // Set up LEFT BOX with cycling behavior
+  leftBoxElement = document.querySelector('.image-box-left');
+  if (leftBoxElement) {
+    // Set initial thumbnail to image1
+    leftBoxElement.style.backgroundImage = `url('${cyclingImages[0]}')`;
+
+    // Add cycling click handler
+    leftBoxElement.addEventListener('click', handleLeftBoxClick);
+  }
+
+  // Set up MIDDLE and RIGHT boxes (unchanged - numbers)
+  const numberBoxes = [
     { element: document.querySelector('.image-box-middle'), image: arabicNumbersPuzzle },
     { element: document.querySelector('.image-box-right'), image: chineseNumbersPuzzle }
   ];
 
-  imageBoxes.forEach(box => {
+  numberBoxes.forEach(box => {
     if (box.element && box.image) {
-      // Set thumbnail background (shows top square of image)
+      // Set thumbnail background
       box.element.style.backgroundImage = `url('${box.image}')`;
 
       // Add click handler to load this puzzle (with shuffle)
@@ -158,8 +176,25 @@ async function initPuzzleGame() {
     }
   });
 
-  // Load first puzzle by default in solved state (no shuffle)
-  loadPuzzle('assets/image3_192x380.png', false);
+  // Load image1 by default in solved state (no shuffle)
+  loadPuzzle(cyclingImages[0], false);
+}
+
+/**
+ * Handle click on left box - cycles through images
+ */
+function handleLeftBoxClick() {
+  // Get the current image to load
+  const imageToLoad = cyclingImages[currentImageIndex];
+
+  // Load the puzzle (with shuffle)
+  loadPuzzle(imageToLoad, true);
+
+  // Update thumbnail to show current image
+  leftBoxElement.style.backgroundImage = `url('${imageToLoad}')`;
+
+  // Move to next image (wrap around to 0 after 3)
+  currentImageIndex = (currentImageIndex + 1) % cyclingImages.length;
 }
 
 // ====================================================================

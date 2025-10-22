@@ -355,12 +355,82 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .title-screen-background {
   width: 950px;
   height: 714px;
   object-fit: cover;
+  position: absolute;
+  z-index: 1;
+}
+
+.batman-silhouette {
+  position: absolute;
+  left: 200px;
+  top: 387px;
+  z-index: 50;
+}
+
+.batman-silhouette.rise {
+  animation: batman-rise ease-in-out forwards;
+}
+
+.batman-silhouette.fall {
+  animation: batman-fall ease-in-out forwards;
+}
+
+.batman-silhouette.flipped.rise {
+  animation: batman-rise-flipped ease-in-out forwards;
+}
+
+.batman-silhouette.flipped.fall {
+  animation: batman-fall-flipped ease-in-out forwards;
+}
+
+@keyframes batman-rise {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-240px);
+  }
+}
+
+@keyframes batman-fall {
+  0% {
+    transform: translateY(-240px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes batman-rise-flipped {
+  0% {
+    transform: scaleX(-1) translateY(0);
+  }
+  100% {
+    transform: scaleX(-1) translateY(-240px);
+  }
+}
+
+@keyframes batman-fall-flipped {
+  0% {
+    transform: scaleX(-1) translateY(-240px);
+  }
+  100% {
+    transform: scaleX(-1) translateY(0);
+  }
+}
+
+.title-screen-foreground {
+  width: 950px;
+  height: 714px;
+  object-fit: cover;
+  position: absolute;
+  z-index: 100;
 }
 
 .welcome-screen h1 {
@@ -425,6 +495,7 @@ body {
   padding: 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   z-index: 100;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -515,10 +586,11 @@ body {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   border-bottom: 2px solid #ff6600;
   padding-bottom: 10px;
+  width: 100%;
 }
 
 .title-section {
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .title-section h3 {
@@ -526,7 +598,13 @@ body {
 }
 
 .games-section h3 {
-  margin-bottom: 15px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .game-list {
