@@ -187,6 +187,15 @@ async function initGame() {
   updateClickDisplay();
   updateBestScoresDisplay();
 
+  // Initialize clues button and state based on cluesEnabled default
+  const cluesToggleBtn = document.getElementById("clues-toggle");
+  if (cluesToggleBtn) {
+    cluesToggleBtn.textContent = cluesEnabled ? "ON" : "OFF";
+  }
+  if (cluesEnabled) {
+    document.body.classList.add("clues-enabled");
+  }
+
   // DEBUG: Global click detector to find what's blocking buttons
   document.addEventListener(
     "click",
