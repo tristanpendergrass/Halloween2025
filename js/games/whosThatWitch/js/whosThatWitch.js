@@ -28,9 +28,9 @@ let bestScores = {
 const BONUS_REVEAL_DURATION = 5000; // How long (ms) bonus tile reveals adjacent tiles
 
 // Track active animation timeouts for cancellation
-let victoryAnimationTimeouts = [];  // All timeouts from celebrateVictory
-let transitionTimeouts = [];        // All timeouts from transitionToClickMessage
-let autoTransitionTimeout = null;   // The 30-second auto-transition timeout
+let victoryAnimationTimeouts = []; // All timeouts from celebrateVictory
+let transitionTimeouts = []; // All timeouts from transitionToClickMessage
+let autoTransitionTimeout = null; // The 30-second auto-transition timeout
 
 // Configuration file paths (easy to find and change)
 const gameConfigFile = "json/gameConfig.json";
@@ -39,21 +39,14 @@ const witchesFile = "json/witches.json";
 
 // Victory celebration messages (9, 16, and 25 characters for easy/medium/hard)
 const CELEBRATION_MESSAGES = {
-  easyTiles: [
-    "WELL DONE",
-    "FANTASTIC",
-    "EXCELLENT",
-    "WONDERFUL",
-    "MARVELOUS",
-    "STELLAR!!"
-  ],
+  easyTiles: ["FANTASTIC", "EXCELLENT", "WONDERFUL", "MARVELOUS", "STELLAR!!"],
   mediumTiles: [
-    "FANTASTIC EFFORT",
+    "AMAZING MEMORY!!",
     "EXCELLENT MEMORY",
-    "YOU ARE AMAZING!",
+    "WHAT A MEMORY!!!",
     "SPELLBINDING JOB",
     "BEWITCHING SKILL",
-    "SUPER WITCH WORK"
+    "SUPER WITCH WORK",
   ],
   hardTiles: [
     "ABSOLUTELY FANTASTIC WORK",
@@ -61,15 +54,15 @@ const CELEBRATION_MESSAGES = {
     "INCREDIBLE WITCH MATCHING",
     "SPECTACULAR ACHIEVEMENT!!",
     "SPELLBINDING PERFORMANCE!",
-    "OUTSTANDING MASTERY SHOWN"
-  ]
+    "OUTSTANDING MASTERY SHOWN",
+  ],
 };
 
 // "Click to start" idle messages (9, 16, and 25 characters for easy/medium/hard)
 const CLICK_TO_START_MESSAGES = {
   easyTiles: "CLICK BTN",
   mediumTiles: "CLICK DIFFICULTY",
-  hardTiles: "CLICK DIFFICULTY TO START"
+  hardTiles: "CLICK DIFFICULTY TO START",
 };
 
 // Grid square positions (left to right, top to bottom)
@@ -195,17 +188,31 @@ async function initGame() {
   updateBestScoresDisplay();
 
   // DEBUG: Global click detector to find what's blocking buttons
-  document.addEventListener("click", (e) => {
-    const target = e.target;
-    console.log("👆 GLOBAL CLICK detected on:", target.tagName, target.className || target.id);
-    console.log("   Click coordinates:", e.clientX, e.clientY);
+  document.addEventListener(
+    "click",
+    (e) => {
+      const target = e.target;
+      console.log(
+        "👆 GLOBAL CLICK detected on:",
+        target.tagName,
+        target.className || target.id
+      );
+      console.log("   Click coordinates:", e.clientX, e.clientY);
 
-    // Get element at exact click position
-    const elementAtPoint = document.elementFromPoint(e.clientX, e.clientY);
-    console.log("   Element at click point:", elementAtPoint);
-    console.log("   Element z-index:", getComputedStyle(elementAtPoint).zIndex);
-    console.log("   Element pointer-events:", getComputedStyle(elementAtPoint).pointerEvents);
-  }, true); // Use capture phase to catch ALL clicks
+      // Get element at exact click position
+      const elementAtPoint = document.elementFromPoint(e.clientX, e.clientY);
+      console.log("   Element at click point:", elementAtPoint);
+      console.log(
+        "   Element z-index:",
+        getComputedStyle(elementAtPoint).zIndex
+      );
+      console.log(
+        "   Element pointer-events:",
+        getComputedStyle(elementAtPoint).pointerEvents
+      );
+    },
+    true
+  ); // Use capture phase to catch ALL clicks
 
   // Show idle state on startup (HARD grid with "CLICK DIFFICULTY TO START" message)
   // Don't draw a full game - wait for player to select difficulty
@@ -218,17 +225,17 @@ async function initGame() {
  */
 function preloadBackImages() {
   const backImages = [
-    'assets/usedInGame/other/_back_witchOnBroom_99.png',   // Hard
-    'assets/usedInGame/other/_back_witchOnBroom_124.png',  // Medium
-    'assets/usedInGame/other/_back_witchOnBroom_166.png'   // Easy
+    "assets/usedInGame/other/_back_witchOnBroom_99.png", // Hard
+    "assets/usedInGame/other/_back_witchOnBroom_124.png", // Medium
+    "assets/usedInGame/other/_back_witchOnBroom_166.png", // Easy
   ];
 
-  backImages.forEach(src => {
+  backImages.forEach((src) => {
     const img = new Image();
     img.src = src;
   });
 
-  console.log('Preloaded back images for all difficulty levels');
+  console.log("Preloaded back images for all difficulty levels");
 }
 
 /**
@@ -825,7 +832,11 @@ function assignTilesToPositions(tilesByType, squares) {
   const excludeAdjacent = [];
 
   // Step 1: Place special tiles (bombA, bombB, then bonus) with adjacency checking
-  const specialTiles = [...tilesByType.bombsA, ...tilesByType.bombsB, ...tilesByType.bonus];
+  const specialTiles = [
+    ...tilesByType.bombsA,
+    ...tilesByType.bombsB,
+    ...tilesByType.bonus,
+  ];
 
   for (const specialTile of specialTiles) {
     const available = getAvailablePositions(
@@ -1532,11 +1543,14 @@ function revertWitchPair(nameText) {
     // Find both tiles with this nameText
     const allTiles = document.querySelectorAll(".tile-container");
     const witchTiles = Array.from(allTiles).filter(
-      (tile) => tile.dataset.nameText === nameText && tile.dataset.type === "gameTile"
+      (tile) =>
+        tile.dataset.nameText === nameText && tile.dataset.type === "gameTile"
     );
 
     if (witchTiles.length !== 2) {
-      console.warn(`Expected 2 tiles for ${nameText}, found ${witchTiles.length}`);
+      console.warn(
+        `Expected 2 tiles for ${nameText}, found ${witchTiles.length}`
+      );
       resolve();
       return;
     }
@@ -1566,7 +1580,9 @@ function revertWitchPair(nameText) {
         halftoneImg.style.opacity = "0";
 
         // Keep data intact (pairId, nameText, descriptionText stay the same)
-        console.log(`  Reverted tile ${tile.dataset.squareNum} to covered state`);
+        console.log(
+          `  Reverted tile ${tile.dataset.squareNum} to covered state`
+        );
       });
 
       // Update character list - remove checkmark and reset completed status
@@ -1631,9 +1647,11 @@ async function handleBombBTile(bombTileContainer) {
   });
 
   // Get unique witch names from completed tiles
-  const completedWitchNames = [...new Set(
-    completedGameTiles.map((tile) => tile.dataset.nameText).filter(Boolean)
-  )];
+  const completedWitchNames = [
+    ...new Set(
+      completedGameTiles.map((tile) => tile.dataset.nameText).filter(Boolean)
+    ),
+  ];
 
   console.log(`Found ${completedWitchNames.length} completed witches`);
 
@@ -2055,7 +2073,9 @@ function handleCorrectMatch(characterItem) {
       // Temporarily hide any celebration/idle letters
       const victoryLetter = tile.querySelector(".victory-letter");
       const clickLetter = tile.querySelector(".click-to-start-letter");
-      const clickLetterInitial = tile.querySelector(".click-to-start-letter-initial");
+      const clickLetterInitial = tile.querySelector(
+        ".click-to-start-letter-initial"
+      );
 
       if (victoryLetter) victoryLetter.style.display = "none";
       if (clickLetter) clickLetter.style.display = "none";
@@ -2086,7 +2106,9 @@ function handleCorrectMatch(characterItem) {
       // Restore any celebration/idle letters
       const victoryLetter = tile.querySelector(".victory-letter");
       const clickLetter = tile.querySelector(".click-to-start-letter");
-      const clickLetterInitial = tile.querySelector(".click-to-start-letter-initial");
+      const clickLetterInitial = tile.querySelector(
+        ".click-to-start-letter-initial"
+      );
 
       if (victoryLetter) victoryLetter.style.display = "flex";
       if (clickLetter) clickLetter.style.display = "flex";
@@ -2094,9 +2116,11 @@ function handleCorrectMatch(characterItem) {
 
       // Restore grayscale filter if game is in celebration/idle state
       // Check if any celebration/idle letters exist on the board
-      if (document.querySelector(".victory-letter") ||
-          document.querySelector(".click-to-start-letter") ||
-          document.querySelector(".click-to-start-letter-initial")) {
+      if (
+        document.querySelector(".victory-letter") ||
+        document.querySelector(".click-to-start-letter") ||
+        document.querySelector(".click-to-start-letter-initial")
+      ) {
         tile.classList.add("tile-victory-grayscale");
       }
 
@@ -2227,9 +2251,7 @@ function checkGameCompletion() {
           `🏆 New best score for ${currentDifficulty}: ${currentScore} clicks!`
         );
       } else {
-        console.log(
-          `Final score: ${currentScore} clicks (best: ${bestScore})`
-        );
+        console.log(`Final score: ${currentScore} clicks (best: ${bestScore})`);
       }
     }
 
@@ -2253,7 +2275,12 @@ function checkGameCompletion() {
     const unrevealedSpecialTiles = Array.from(allTiles).filter((tile) => {
       const tileType = tile.dataset.type;
       const isFaceUp = tile.dataset.isFaceUp === "true";
-      return (tileType === "bombA" || tileType === "bombB" || tileType === "bonus") && !isFaceUp;
+      return (
+        (tileType === "bombA" ||
+          tileType === "bombB" ||
+          tileType === "bonus") &&
+        !isFaceUp
+      );
     });
 
     if (unrevealedSpecialTiles.length > 0) {
@@ -2290,7 +2317,9 @@ function checkGameCompletion() {
     setTimeout(() => {
       const allSpecialTiles = Array.from(allTiles).filter((tile) => {
         const tileType = tile.dataset.type;
-        return tileType === "bombA" || tileType === "bombB" || tileType === "bonus";
+        return (
+          tileType === "bombA" || tileType === "bombB" || tileType === "bonus"
+        );
       });
 
       allSpecialTiles.forEach((tile) => {
@@ -2357,7 +2386,10 @@ function celebrateVictory(difficultyId) {
   // Fisher-Yates shuffle
   for (let i = shuffledIndices.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [shuffledIndices[i], shuffledIndices[j]] = [shuffledIndices[j], shuffledIndices[i]];
+    [shuffledIndices[i], shuffledIndices[j]] = [
+      shuffledIndices[j],
+      shuffledIndices[i],
+    ];
   }
 
   // Select random celebration message for this difficulty
@@ -2371,7 +2403,9 @@ function celebrateVictory(difficultyId) {
   function revealNextTile() {
     if (revealIndex >= numSquares) {
       // All tiles revealed - set 30 second timeout to transition to idle message
-      console.log("Celebration complete! Will auto-transition to idle in 30 seconds...");
+      console.log(
+        "Celebration complete! Will auto-transition to idle in 30 seconds..."
+      );
 
       // Schedule automatic transition to "click to start" message after 30 seconds
       autoTransitionTimeout = setTimeout(() => {
@@ -2386,7 +2420,9 @@ function celebrateVictory(difficultyId) {
     const letter = message[squareIndex]; // Use squareIndex so letter matches square position
 
     // Find the tile container for this square
-    const tile = document.querySelector(`.tile-container[data-square-num="${squareIndex}"]`);
+    const tile = document.querySelector(
+      `.tile-container[data-square-num="${squareIndex}"]`
+    );
 
     if (tile) {
       // Step 1: Remove halftone overlay to reveal the witch
@@ -2412,18 +2448,24 @@ function celebrateVictory(difficultyId) {
         letterDiv.textContent = letter;
 
         // Assign random color from array
-        const randomColor = LETTER_COLORS[Math.floor(Math.random() * LETTER_COLORS.length)];
+        const randomColor =
+          LETTER_COLORS[Math.floor(Math.random() * LETTER_COLORS.length)];
         letterDiv.style.color = randomColor;
 
         tile.appendChild(letterDiv);
 
-        console.log(`Revealed square ${squareIndex} with letter "${letter}" in ${randomColor}`);
+        console.log(
+          `Revealed square ${squareIndex} with letter "${letter}" in ${randomColor}`
+        );
       }, CELEBRATION_CONFIG.flashDuration);
       victoryAnimationTimeouts.push(flashTimeout);
     }
 
     revealIndex++;
-    const nextTileTimeout = setTimeout(revealNextTile, CELEBRATION_CONFIG.delayBetweenTiles);
+    const nextTileTimeout = setTimeout(
+      revealNextTile,
+      CELEBRATION_CONFIG.delayBetweenTiles
+    );
     victoryAnimationTimeouts.push(nextTileTimeout);
   }
 
@@ -2447,7 +2489,7 @@ function showClickToStartMessage(difficultyId, applyGrayscale = true) {
 
   // Apply grayscale to all tiles (if requested)
   if (applyGrayscale) {
-    allTiles.forEach(tile => {
+    allTiles.forEach((tile) => {
       tile.classList.add("tile-victory-grayscale");
     });
   }
@@ -2488,10 +2530,18 @@ function transitionToClickMessage(difficultyId) {
 
       // DEBUG: Check if scoring area and buttons are accessible
       const scoringArea = document.getElementById("scoring-area");
-      const difficultyButtons = document.querySelectorAll(".difficulty-button-img");
+      const difficultyButtons = document.querySelectorAll(
+        ".difficulty-button-img"
+      );
       if (scoringArea) {
-        console.log("📍 Scoring area pointer-events:", getComputedStyle(scoringArea).pointerEvents);
-        console.log("📍 Scoring area z-index:", getComputedStyle(scoringArea).zIndex);
+        console.log(
+          "📍 Scoring area pointer-events:",
+          getComputedStyle(scoringArea).pointerEvents
+        );
+        console.log(
+          "📍 Scoring area z-index:",
+          getComputedStyle(scoringArea).zIndex
+        );
       }
       difficultyButtons.forEach((btn, idx) => {
         const btnStyle = getComputedStyle(btn);
@@ -2505,11 +2555,18 @@ function transitionToClickMessage(difficultyId) {
         const centerY = rect.top + rect.height / 2;
         const elementAtCenter = document.elementFromPoint(centerX, centerY);
 
-        console.log(`🎯 Button ${idx} center (${centerX.toFixed(0)}, ${centerY.toFixed(0)}):`);
+        console.log(
+          `🎯 Button ${idx} center (${centerX.toFixed(0)}, ${centerY.toFixed(
+            0
+          )}):`
+        );
         console.log(`   Element at center:`, elementAtCenter);
         console.log(`   Element tag:`, elementAtCenter?.tagName);
         console.log(`   Element class:`, elementAtCenter?.className);
-        console.log(`   Element z-index:`, elementAtCenter ? getComputedStyle(elementAtCenter).zIndex : 'N/A');
+        console.log(
+          `   Element z-index:`,
+          elementAtCenter ? getComputedStyle(elementAtCenter).zIndex : "N/A"
+        );
         console.log(`   IS the button?:`, elementAtCenter === btn);
       });
 
@@ -2520,7 +2577,9 @@ function transitionToClickMessage(difficultyId) {
     const newLetter = message[squareIndex];
 
     // Find the tile
-    const tile = document.querySelector(`.tile-container[data-square-num="${squareIndex}"]`);
+    const tile = document.querySelector(
+      `.tile-container[data-square-num="${squareIndex}"]`
+    );
     if (tile) {
       // Remove old victory letter
       const oldLetter = tile.querySelector(".victory-letter");
@@ -2554,38 +2613,48 @@ function clearIdleState() {
   // This ensures visual cleanup happens before anything else
   const victoryLetters = document.querySelectorAll(".victory-letter");
   const clickLetters = document.querySelectorAll(".click-to-start-letter");
-  const clickLettersInitial = document.querySelectorAll(".click-to-start-letter-initial");
+  const clickLettersInitial = document.querySelectorAll(
+    ".click-to-start-letter-initial"
+  );
 
-  victoryLetters.forEach(el => {
+  victoryLetters.forEach((el) => {
     if (el.parentNode) {
       el.parentNode.removeChild(el); // Force immediate removal
     }
   });
 
-  clickLetters.forEach(el => {
+  clickLetters.forEach((el) => {
     if (el.parentNode) {
       el.parentNode.removeChild(el);
     }
   });
 
-  clickLettersInitial.forEach(el => {
+  clickLettersInitial.forEach((el) => {
     if (el.parentNode) {
       el.parentNode.removeChild(el);
     }
   });
 
-  console.log(`🗑️ Removed ${victoryLetters.length + clickLetters.length + clickLettersInitial.length} letter elements`);
+  console.log(
+    `🗑️ Removed ${
+      victoryLetters.length + clickLetters.length + clickLettersInitial.length
+    } letter elements`
+  );
 
   // STEP 2: Remove grayscale effect from all tiles
   const grayscaleTiles = document.querySelectorAll(".tile-victory-grayscale");
-  grayscaleTiles.forEach(tile => {
+  grayscaleTiles.forEach((tile) => {
     tile.classList.remove("tile-victory-grayscale");
   });
 
   console.log(`🎨 Removed grayscale from ${grayscaleTiles.length} tiles`);
 
   // STEP 3: Cancel all pending animation timeouts
-  console.log(`⏱️ Cancelling timeouts: ${victoryAnimationTimeouts.length} victory + ${transitionTimeouts.length} transition + ${autoTransitionTimeout ? '1' : '0'} auto`);
+  console.log(
+    `⏱️ Cancelling timeouts: ${victoryAnimationTimeouts.length} victory + ${
+      transitionTimeouts.length
+    } transition + ${autoTransitionTimeout ? "1" : "0"} auto`
+  );
 
   if (autoTransitionTimeout) {
     clearTimeout(autoTransitionTimeout);
