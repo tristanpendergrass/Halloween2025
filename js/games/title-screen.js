@@ -14,14 +14,7 @@ export default class TitleScreen {
     // Fallback if template not available
     return `
             <div class="welcome-screen">
-                <h1>🦇 Halloween Minigames! 🦇</h1>
-                <h2>2025 EDITION!</h2>
-                <p>Choose a game from the menu to start playing!</p>
-                <div class="halloween-decoration">
-                    <span class="pumpkin">🎃</span>
-                    <span class="ghost">👻</span>
-                    <span class="spider">🕷️</span>
-                </div>
+              <img src="assets/background/pumpkin_patch_BACKGROUND_950x714.png" alt="Pumpkin Patch" class="title-screen-background">
             </div>
         `;
   }
