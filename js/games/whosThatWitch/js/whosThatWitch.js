@@ -17,7 +17,7 @@ let currentDifficulty = null; // Track current difficulty for scoring
 
 // Scoring system
 let scoringEnabled = false; // Track if scoring is on/off
-let cluesEnabled = false; // Track if clues (description tooltips) are shown for all witches
+let cluesEnabled = true; // Track if clues (description tooltips) are shown for all witches
 let bestScores = {
   easyTiles: null,
   mediumTiles: null,
