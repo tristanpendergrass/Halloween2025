@@ -176,7 +176,7 @@
       "hasBeenOpened": false,
       "hasBeenExamined": false,
       "actions": {
-        "examine": "An old cast iron <b>safe</b>, used for valuables. It has an old fashioned rotary combination lock next to the handle. The combination requires three numbers: ###.  You might look for the combination somewhere in the house?<span style='color: #ffcc00;'> [Hint: type <b>say ###</b> to open the safe.]</span>",
+        "examine": "An old cast iron <b>safe</b>, used for valuables. It has an old fashioned rotary combination lock next to the handle. The combination requires three numbers: ###.  You might look for the combination somewhere in the house? I've heard that books are a good place to secret away reminders like that.<span style='color: #ffcc00;'> [Hint: type <b>say ###</b> to open the safe.]</span>",
         "take": {
           "response": "It's too heavy to move. But you could <b>examine</b> it.",
           "addToInventory": false
@@ -299,7 +299,7 @@
       ],
       "display": "brass <b>key</b>",
       "inventoryDisplay": "brass <b>key</b>",
-      "description": "An old brass key",
+      "description": "An old brass key.  Would fit an old brass lock.",
       "location": "LIBRARY",
       "points": 0,
       "health": 0,
@@ -311,7 +311,7 @@
       "actions": {
         "examine": "An old brass <b>key</b>. It looks like it might fit an old lock.",
         "take": {
-          "response": "You pick up the brass <b>key</b>.",
+          "response": "You pick up the old brass <b>key</b>. This might come in handy later!",
           "addToInventory": true
         },
         "use": {
@@ -432,7 +432,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "Delicious! You feel slightly healthier.",
+          "response": "Delicious! You feel slightly healthier. And you add a little bit of time back on your clock!",
           "addHealth": 5,
           "removeItem": true
         }
@@ -463,7 +463,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "Crunchy and sweet! The crispy bits tickle your teeth.",
+          "response": "Crunchy and sweet! The crispy bits tickle your teeth. And look at the time! You've added a few minutes back on your clock!",
           "addHealth": 3,
           "removeItem": true
         }
@@ -496,7 +496,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "Delicious! The crispy texture is perfect.",
+          "response": "Delicious! The crispy texture is perfect. And look at the time! You've added a few minutes back on your clock!",
           "addHealth": 4,
           "removeItem": true
         }
@@ -531,7 +531,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "Light and airy! Melts in your mouth.",
+          "response": "Light and airy! Melts in your mouth. And eating is seem to have added some time back on your clock!",
           "addHealth": 3,
           "removeItem": true
         }
@@ -564,7 +564,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "Crunch! The crispy layers shatter perfectly.",
+          "response": "Crunch! The crispy layers shatter perfectly. Bonus! Eating it has added a few minutes back on your clock!",
           "addHealth": 4,
           "removeItem": true
         }
@@ -595,7 +595,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "Mmm! The almonds add a nice crunch.",
+          "response": "Mmm! The almonds add a nice crunch, and it must be healthy because it added a few minutes back on your clock!",
           "addHealth": 4,
           "removeItem": true
         }
@@ -627,7 +627,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "This <b>coconut bar</b> is delicious!",
+          "response": "This <b>coconut bar</b> is delicious! I wonder why eating it adds time back on my clock?",
           "addHealth": 3,
           "removeItem": true
         }
@@ -660,7 +660,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "Crunchy peanuts in smooth chocolate. So good!",
+          "response": "Crunchy peanuts in smooth chocolate. So good!  and also it added some time back on my clock!",
           "addHealth": 4,
           "removeItem": true
         }
@@ -694,7 +694,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "Crisp and refreshing! Much healthier than all that candy. You feel energized and ready to move faster!",
+          "response": "Crisp and refreshing! Much healthier than all that candy. You feel energized and ready to move faster!  And eating it added even mor time back on my clock.",
           "addHealth": 6,
           "removeItem": true,
           "timer": -4
@@ -767,7 +767,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "<b>Chewy bears!</b> <b>Fruity bears!</b> They stick to your teeth a bit.",
+          "response": "<b>Chewy bears!</b> <b>Fruity bears!</b> They stick to my teeth a bit. Very sugary - that sugar rush will certainly add some time back on my clock!",
           "addHealth": 3,
           "removeItem": true
         }
@@ -778,6 +778,10 @@
       "type": "candy",
       "typedNames": [
         "hersheykisses",
+        "hershey'skisses",
+        "hersheyskisses",
+        "hersheys",
+        "hershey",
         "kisses",
         "chocolatekisses",
         "silverwrapped"
@@ -799,7 +803,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "Smooth milk chocolate melts perfectly. Classic!",
+          "response": "Smooth milk chocolate melts perfectly. Classic! Nice that they also add some time back on my clock!",
           "addHealth": 3,
           "removeItem": true
         }
@@ -867,7 +871,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "Insanely fruity! Your mouth is puckering.",
+          "response": "Insanely fruity! Your mouth is puckering. No wonder it adds time back on my clock!",
           "addHealth": 2,
           "removeItem": true
         }
@@ -901,7 +905,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "Tart and sweet! Makes your mouth pucker.",
+          "response": "Tart and sweet! Makes your mouth pucker.  All that sourness really adds time back on my clock!",
           "addHealth": 2,
           "removeItem": true
         }
@@ -937,7 +941,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "Minty and refreshing! Your breath smells better now.",
+          "response": "Minty and refreshing! Your breath smells better now.  I wonder if an all cherry roll would add even more time back on my clock?",
           "addHealth": 2,
           "removeItem": true
         }
@@ -971,7 +975,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "You dig some out of your bag - uugh... but it is light and fluffy! This is delicious.",
+          "response": "You dig some out of your bag - uugh... but it is light and fluffy! This is delicious.  And look at the time! You've added a few minutes back on your clock!",
           "addHealth": 3,
           "removeItem": true
         }
@@ -1005,7 +1009,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "Mmm! Peanut butter perfection.",
+          "response": "Mmm! Peanut butter perfection. Who knows why eating it adds time back on my clock?",
           "addHealth": 4,
           "removeItem": true
         }
@@ -1073,7 +1077,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "Fruity and sweet! So many flavors at once.",
+          "response": "Fruity and sweet! So many flavors at once.  The purple ones are my favorite, and they add some time back on my clock!",
           "addHealth": 3,
           "removeItem": true
         }
@@ -1105,7 +1109,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "Chalky and sweet. Brings back childhood memories!",
+          "response": "Chalky and sweet. Brings back childhood memories!  Makes me feel younger again, and that adds time back on my clock!",
           "addHealth": 2,
           "removeItem": true
         }
@@ -1165,7 +1169,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "Spicy and sweet! Cinnamon burns a little.",
+          "response": "Spicy and sweet! Cinnamon burns a little. Cinnamon is a known time-saving spice, and it adds time back on your clock!",
           "addHealth": 2,
           "removeItem": true
         }
@@ -1197,7 +1201,7 @@
           "addToInventory": true
         },
         "eat": {
-          "response": "Chewy and strawberry-sweet! Fun to eat.",
+          "response": "Chewy and strawberry-sweet! Fun to eat. But that is nothing compared to the time it adds back on my clock!",
           "addHealth": 3,
           "removeItem": true
         }

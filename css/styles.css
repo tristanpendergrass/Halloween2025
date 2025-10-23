@@ -59,6 +59,14 @@ body {
   margin-top: auto;
 }
 
+.year-halo {
+  text-shadow:
+    0 0 10px rgba(255, 140, 66, 0.8),
+    0 0 20px rgba(255, 140, 66, 0.6),
+    0 0 30px rgba(255, 140, 66, 0.4),
+    0 0 40px rgba(255, 140, 66, 0.2);
+}
+
 .info {
   background: rgba(0, 0, 0, 0.3);
   padding: 10px 15px 15px 15px;
@@ -220,7 +228,7 @@ body {
  * Interior grid lines: 2 vertical, 3 horizontal
  */
 .game-grid-overlay {
-  --grid-color: rgba(0, 0, 0, 0.2);
+  --grid-color: rgba(0, 0, 0, 0.35);
 
   position: absolute;
   top: 0;
@@ -229,44 +237,43 @@ body {
   bottom: 0;
   border: 2px solid var(--grid-color);
   pointer-events: none;
-  z-index: 10;
+  z-index: 100;
   background-image:
-    /* Vertical lines (2px wide, centered on 64px and 128px boundaries) */
-    linear-gradient(
+    /* Vertical lines (3px wide, centered on 64px and 128px boundaries) */ linear-gradient(
       to right,
-      transparent 63px,
-      var(--grid-color) 63px,
+      transparent 62px,
+      var(--grid-color) 62px,
       var(--grid-color) 65px,
       transparent 65px
     ),
     linear-gradient(
       to right,
-      transparent 127px,
-      var(--grid-color) 127px,
+      transparent 126px,
+      var(--grid-color) 126px,
       var(--grid-color) 129px,
       transparent 129px
     ),
-    /* Horizontal lines (2px wide, at 95px, 190px, 285px boundaries - shifted up) */
-    linear-gradient(
-      to bottom,
-      transparent 93px,
-      var(--grid-color) 93px,
-      var(--grid-color) 95px,
-      transparent 95px
-    ),
+    /* Horizontal lines (3px wide, at 95px, 190px, 285px boundaries - shifted up) */
+      linear-gradient(
+        to bottom,
+        transparent 93px,
+        var(--grid-color) 93px,
+        var(--grid-color) 96px,
+        transparent 96px
+      ),
     linear-gradient(
       to bottom,
       transparent 188px,
       var(--grid-color) 188px,
-      var(--grid-color) 190px,
-      transparent 190px
+      var(--grid-color) 191px,
+      transparent 191px
     ),
     linear-gradient(
       to bottom,
       transparent 283px,
       var(--grid-color) 283px,
-      var(--grid-color) 285px,
-      transparent 285px
+      var(--grid-color) 286px,
+      transparent 286px
     );
 }
 
@@ -433,6 +440,29 @@ body {
   z-index: 100;
 }
 
+/* Silhouette message overlay */
+.silhouette-message {
+  position: absolute;
+  top: 550px; /* Adjustable - bottom-middle area */
+  left: 40%;
+  transform: translateX(-50%);
+  background: transparent;
+  color: white;
+  padding: 20px 40px;
+  border-radius: 10px;
+  font-size: 1.2em;
+  text-align: center;
+  z-index: 200;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none; /* Don't interfere with clicks when hidden */
+  max-width: 600px;
+}
+
+.silhouette-message.show {
+  opacity: 1;
+}
+
 .welcome-screen h1 {
   font-size: 2.5em;
   margin-bottom: 20px;
@@ -570,48 +600,13 @@ body {
   width: auto;
 }
 
-.right-nav.collapsed .games-icon {
-  display: none;
-}
-
-.right-nav.collapsed .games-section h3 {
-  font-size: 1.2em;
-}
-
-.right-nav h3 {
-  color: #ff8c42;
-  text-align: center;
-  font-size: 1.4em;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  border-bottom: 2px solid #ff6600;
-  padding-bottom: 10px;
-  width: 100%;
-}
-
-.title-section {
-  margin-bottom: 30px;
-}
-
-.title-section h3 {
-  margin-bottom: 15px;
-}
-
-.games-section h3 {
-  margin-bottom: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
 .game-list {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin: auto 0;
+  width: 100%;
 }
 
 .game-item {
@@ -635,13 +630,6 @@ body {
   box-shadow: 0 4px 8px rgba(255, 102, 0, 0.3);
 }
 
-.game-item.active {
-  background: rgba(255, 102, 0, 0.3);
-  border-color: #ffaa66;
-  color: #ffcc88;
-  box-shadow: 0 4px 12px rgba(255, 102, 0, 0.4);
-}
-
 .game-icon {
   font-size: 1.5em;
   width: 30px;
@@ -650,6 +638,11 @@ body {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+
+/* Silhouette icon glow effect */
+.game-item[data-game="title-screen"] .game-icon img {
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
 }
 
 /* Word Haunt custom grid icon */

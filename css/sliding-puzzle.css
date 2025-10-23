@@ -8,6 +8,7 @@
  * Size: 64px × 95px (192÷3 = 64, 380÷4 = 95)
  * Uses full puzzle image with background-position offset to show its piece
  * Smooth sliding animation via CSS transition
+ * z-index: 5 to ensure tiles are below grid overlay (z-index: 10)
  */
 .sliding-tile {
   position: absolute;
@@ -17,6 +18,7 @@
   background-repeat: no-repeat;
   transition: all 0.2s ease;
   box-sizing: border-box;
+  z-index: 5;
 }
 
 /* SLIDING BLANK - The empty space (position 0,0 initially)
@@ -50,12 +52,35 @@
   cursor: default;
 }
 
-/* IMAGE BOX PUZZLE THUMBNAILS - Show top square of each puzzle image
- * Each thumbnail shows top 192×192 of the 192×380 image
- * Scaled to fit in 62×62 boxes
+/* IMAGE BOX PUZZLE THUMBNAILS - Show puzzle image previews
+ * Left box: Shows entire image with transparent padding on sides
+ * Middle/Right boxes: Show top square portion of image
  * Click to load that puzzle
  */
-.image-box-left,
+
+/* Left box - cycles through images, shows full image scaled with padding */
+.image-box-left {
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* Black overlay on top-left corner to show blank space position */
+.image-box-left::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 14.5px;
+  width: 10.3px;
+  height: 15.5px;
+  background: black;
+  z-index: 1;
+}
+
+/* Middle and right boxes - show top portion of numbered puzzles */
 .image-box-middle,
 .image-box-right {
   background-size: cover;
@@ -64,9 +89,42 @@
   transition: all 0.2s ease;
 }
 
+/* Hover effects for all boxes */
 .image-box-left:hover,
 .image-box-middle:hover,
 .image-box-right:hover {
   filter: brightness(1.2);
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+/* VICTORY ANIMATION - Flashing border for puzzle completion
+ * Alternates between bright white and orange with glowing effect
+ * Duration: 5 seconds total (~17 flashes)
+ */
+@keyframes victory-flash {
+  0% {
+    border-color: #ffffff;
+    border-width: 2px;
+    box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.9),
+                0 0 40px 16px rgba(255, 255, 255, 0.6),
+                0 0 60px 24px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    border-color: #ff8800;
+    border-width: 2px;
+    box-shadow: 0 0 20px 8px rgba(255, 136, 0, 0.9),
+                0 0 40px 16px rgba(255, 136, 0, 0.6),
+                0 0 60px 24px rgba(255, 136, 0, 0.3);
+  }
+  100% {
+    border-color: #ffffff;
+    border-width: 2px;
+    box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.9),
+                0 0 40px 16px rgba(255, 255, 255, 0.6),
+                0 0 60px 24px rgba(255, 255, 255, 0.3);
+  }
+}
+
+.game-grid-overlay-victory {
+  animation: victory-flash 0.3s ease-in-out 17;
 }

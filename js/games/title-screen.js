@@ -2,6 +2,7 @@ export default class TitleScreen {
   constructor() {
     this.score = 0;
     this.cycleTimer = null;
+    this.messageTimeout = null; // Store timeout ID for message fade
     this.currentRiseDuration = 0; // Store rise duration for calculating fall duration
     this.currentFallDuration = 0; // Store fall duration
     this.characters = [
@@ -36,20 +37,29 @@ export default class TitleScreen {
     // Fisher-Yates shuffle algorithm
     for (let i = this.shuffledCharacters.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [this.shuffledCharacters[i], this.shuffledCharacters[j]] = [this.shuffledCharacters[j], this.shuffledCharacters[i]];
+      [this.shuffledCharacters[i], this.shuffledCharacters[j]] = [
+        this.shuffledCharacters[j],
+        this.shuffledCharacters[i],
+      ];
     }
 
     // Reset index to start of new shuffled list
     this.currentCharacterIndex = 0;
 
-    console.log(`[TitleScreen] Shuffled character list for new cycle of ${this.shuffledCharacters.length} characters`);
+    console.log(
+      `[TitleScreen] Shuffled character list for new cycle of ${this.shuffledCharacters.length} characters`
+    );
   }
 
   getNextCharacter() {
     // Get character at current index
     const character = this.shuffledCharacters[this.currentCharacterIndex];
 
-    console.log(`[TitleScreen] Character ${this.currentCharacterIndex + 1}/${this.shuffledCharacters.length}: ${character}`);
+    console.log(
+      `[TitleScreen] Character ${this.currentCharacterIndex + 1}/${
+        this.shuffledCharacters.length
+      }: ${character}`
+    );
 
     // Move to next character
     this.currentCharacterIndex++;
@@ -77,6 +87,9 @@ export default class TitleScreen {
               <img src="assets/background/pumpkin_patch_BACKGROUND_950x714.png" alt="Pumpkin Patch" class="title-screen-background">
               <img id="character-silhouette" src="assets/background/silhouette_batman_transparent_250h.png" alt="Character Silhouette" class="batman-silhouette">
               <img src="assets/background/pumpkin_patch_950x714_justBelowHorizon.png" alt="Pumpkin Patch Foreground" class="title-screen-foreground">
+              <div class="silhouette-message" id="silhouette-message">
+                This is just a parade of silhouettes. There is nothing for you to do here. Enjoy.
+              </div>
             </div>
         `;
   }
@@ -98,11 +111,15 @@ export default class TitleScreen {
 
       // Flip if to the right of midpoint
       if (randomX > midpoint) {
-        characterImg.classList.add('flipped');
-        console.log(`[TitleScreen] Character positioned at x=${randomX}px (flipped, right of ${midpoint})`);
+        characterImg.classList.add("flipped");
+        console.log(
+          `[TitleScreen] Character positioned at x=${randomX}px (flipped, right of ${midpoint})`
+        );
       } else {
-        characterImg.classList.remove('flipped');
-        console.log(`[TitleScreen] Character positioned at x=${randomX}px (normal, left of ${midpoint})`);
+        characterImg.classList.remove("flipped");
+        console.log(
+          `[TitleScreen] Character positioned at x=${randomX}px (normal, left of ${midpoint})`
+        );
       }
     };
 
@@ -113,7 +130,11 @@ export default class TitleScreen {
       // Fall is 1 second faster (minimum 1 second)
       this.currentFallDuration = Math.max(1, this.currentRiseDuration - 1);
 
-      console.log(`[TitleScreen] Rising (${this.currentRiseDuration.toFixed(1)}s), will fall (${this.currentFallDuration.toFixed(1)}s)`);
+      console.log(
+        `[TitleScreen] Rising (${this.currentRiseDuration.toFixed(
+          1
+        )}s), will fall (${this.currentFallDuration.toFixed(1)}s)`
+      );
 
       characterImg.classList.remove("rise", "fall");
       void characterImg.offsetWidth; // Force reflow
@@ -123,7 +144,9 @@ export default class TitleScreen {
 
     // Start fall animation
     const startFall = () => {
-      console.log(`[TitleScreen] Falling (${this.currentFallDuration.toFixed(1)}s)...`);
+      console.log(
+        `[TitleScreen] Falling (${this.currentFallDuration.toFixed(1)}s)...`
+      );
 
       characterImg.classList.remove("rise", "fall");
       void characterImg.offsetWidth; // Force reflow
@@ -133,19 +156,32 @@ export default class TitleScreen {
 
     // Animation sequence handler
     const onAnimationEnd = (event) => {
-      if (event.animationName === "batman-rise" || event.animationName === "batman-rise-flipped") {
+      if (
+        event.animationName === "batman-rise" ||
+        event.animationName === "batman-rise-flipped"
+      ) {
         // Character reached the top, pause randomly 1-4 seconds
         const topPause = Math.random() * 3000 + 1000; // 1-4 seconds
-        console.log(`[TitleScreen] Reached top, pausing for ${(topPause / 1000).toFixed(1)}s`);
+        console.log(
+          `[TitleScreen] Reached top, pausing for ${(topPause / 1000).toFixed(
+            1
+          )}s`
+        );
 
         this.cycleTimer = setTimeout(() => {
           startFall();
         }, topPause);
-
-      } else if (event.animationName === "batman-fall" || event.animationName === "batman-fall-flipped") {
+      } else if (
+        event.animationName === "batman-fall" ||
+        event.animationName === "batman-fall-flipped"
+      ) {
         // Character reached the bottom, pause randomly 5-15 seconds
         const bottomPause = Math.random() * 10000 + 5000; // 5-15 seconds
-        console.log(`[TitleScreen] Reached bottom, pausing for ${(bottomPause / 1000).toFixed(1)}s before next character`);
+        console.log(
+          `[TitleScreen] Reached bottom, pausing for ${(
+            bottomPause / 1000
+          ).toFixed(1)}s before next character`
+        );
 
         this.cycleTimer = setTimeout(() => {
           // Get next character from shuffled list
@@ -177,9 +213,41 @@ export default class TitleScreen {
     startRise();
   }
 
+  setupClickMessage() {
+    const welcomeScreen = document.querySelector(".welcome-screen");
+    const message = document.getElementById("silhouette-message");
+
+    if (!welcomeScreen || !message) {
+      console.error(
+        "[TitleScreen] Could not find welcome screen or message element!"
+      );
+      return;
+    }
+
+    // Click handler to show message
+    this.clickHandler = () => {
+      // Clear any existing timeout
+      if (this.messageTimeout) {
+        clearTimeout(this.messageTimeout);
+      }
+
+      // Show message
+      message.classList.add("show");
+
+      // Hide message after 6 seconds
+      this.messageTimeout = setTimeout(() => {
+        message.classList.remove("show");
+      }, 6000);
+    };
+
+    welcomeScreen.addEventListener("click", this.clickHandler);
+    console.log("[TitleScreen] Click message handler set up");
+  }
+
   start() {
     console.log("Title screen active");
     this.setupCharacterCycling();
+    this.setupClickMessage();
   }
 
   stop() {
@@ -190,12 +258,28 @@ export default class TitleScreen {
       this.cycleTimer = null;
     }
 
-    // Remove animation classes and event listener
+    // Clear the message timeout
+    if (this.messageTimeout) {
+      clearTimeout(this.messageTimeout);
+      this.messageTimeout = null;
+    }
+
+    // Remove click handler
+    const welcomeScreen = document.querySelector(".welcome-screen");
+    if (welcomeScreen && this.clickHandler) {
+      welcomeScreen.removeEventListener("click", this.clickHandler);
+    }
+
+    // Hide message if shown
+    const message = document.getElementById("silhouette-message");
+    if (message) {
+      message.classList.remove("show");
+    }
+
+    // Remove animation classes
     const characterImg = document.querySelector(".batman-silhouette");
     if (characterImg) {
       characterImg.classList.remove("rise", "fall");
-      // Note: We can't easily remove the specific event listener since it's an anonymous function
-      // but it will be garbage collected when the page changes
     }
   }
 

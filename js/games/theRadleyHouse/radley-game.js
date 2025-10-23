@@ -6,7 +6,7 @@
 const CONFIG_LOCATION = "HALLOWEEN-GAME";
 
 // Time-based scoring constants (easy to change!)
-const GAME_START_TIME = { hours: 19, minutes: 57 }; // 7:57 PM
+const GAME_START_TIME = { hours: 19, minutes: 31 }; // 7:31 PM
 const GAME_DEADLINE = { hours: 20, minutes: 30 }; // 8:30 PM
 const MAX_CONSECUTIVE_EATS = 5;
 
@@ -47,8 +47,8 @@ let currentRoom = "STREET-01";
 // Time-based scoring state
 let gameTime = {
   hours: 19,
-  minutes: 57,
-  totalMinutes: 1197, // 19*60 + 57 = 1197 (7:57 PM)
+  minutes: 31,
+  totalMinutes: 1171, // 19*60 + 31 = 1171 (7:31 PM)
 };
 let consecutiveEatsCounter = 0;
 let lastCommandSucceeded = false; // Track if last command succeeded (for timer)
@@ -890,7 +890,7 @@ function updateGameTime(minutesToAdd) {
   updateGameStatus(); // Regenerate entire status panel to update curfew styling
 }
 
-// Format time as 12-hour clock (e.g., "7:57 PM")
+// Format time as 12-hour clock (e.g., "7:31 PM")
 function formatTime12Hour() {
   const hours12 =
     gameTime.hours > 12
@@ -1507,7 +1507,7 @@ function handleCelebrateCommand() {
   } else {
     addToBuffer([
       {
-        text: `You need to have collected all NINE scavenger items before you can rewatch the 'celebrate' again.`,
+        text: `You need to find all NINE scavenger items before you can celebrate.`,
         type: "error",
       },
       { text: `Found: ${scavengerCount} / ${totalScavenger}`, type: "flavor" },
@@ -1900,7 +1900,7 @@ function handleSayCommand(command) {
       if (!bookmark || bookmark.location !== "INVENTORY") {
         addToBuffer([
           {
-            text: "You don't know the combination. You'll need to find a clue somewhere.",
+            text: "You don't know the combination. You'll need to find a clue somewhere. I've heard that Arthur used to keep reminders like that stuffed into books.",
             type: "error",
           },
         ]);
@@ -1914,7 +1914,7 @@ function handleSayCommand(command) {
         );
         addToBuffer([
           {
-            text: "The safe will not open until you find the clue about the combination.",
+            text: "The safe will not open until you find the clue about the combination. I've heard that Arthur used to keep reminders like that stuffed into books.",
             type: "error",
           },
         ]);
@@ -2032,7 +2032,7 @@ function handleSayCommand(command) {
             type: "flavor",
           },
           {
-            text: "You also hear a mechanical CLICK from the <b>north</b> wall... looking there you see the wall slide back, revealing a secret door into another room!",
+            text: "<b>You also hear a mechanical CLICK from the <b>north</b> wall... looking there you see the wall slide back, revealing a secret door into another room!  But that secret door is still locked! You will need to SAY the password to open it.  I bet Mr. Radley put the password in a safe somewhere?</b>",
             type: "flavor",
           },
         ]);
@@ -2233,7 +2233,7 @@ function handleOpenCommand(command) {
       // Safe is locked - show hint
       addToBuffer([
         {
-          text: "The <b>safe</b> requires a combination. Type <b>'SAY ##-##-##'</b> to unlock the safe.",
+          text: "The <b>safe</b> requires a combination. Type <b>'SAY ##-##-##'</b> to unlock the safe. You need to find a clue about the combination somewhere in the house; I've heard that books are a good place to secret away reminders like that.",
           type: "flavor",
         },
       ]);
@@ -3780,6 +3780,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     displayRoom(currentRoom);
 
     console.log("Game initialization completed successfully");
+
+    // Show the game container with fade-in effect
+    document.querySelector(".container").classList.add("ready");
 
     // Add keyboard event listener using config-based shortcuts
     document.addEventListener("keydown", async function (e) {

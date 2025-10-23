@@ -17,7 +17,9 @@
       <div class="game-area">
         <!-- Left Navigation - Game Info -->
         <div class="left-nav">
-          <h2 class="game-title">WhatYouWant ToCallIt?</h2>
+          <h2 class="game-title">
+            Halloween<br /><span class="year-halo">2025</span><br />Mini-Games!
+          </h2>
           <div class="info">
             <div class="countdown-label">Trick or Treat<br />starts in...</div>
             <div class="countdown-display">
@@ -74,62 +76,61 @@
                 alt="Pumpkin Patch Foreground"
                 class="title-screen-foreground"
               />
+              <div class="silhouette-message" id="silhouette-message">
+                This is just a parade of silhouettes. There is nothing for you
+                to do. Enjoy.
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Right Navigation - Game List -->
         <div class="right-nav expanded">
-          <div class="title-section">
-            <ul class="game-list">
-              <li class="game-item active" data-game="title-screen">
-                <span class="game-icon">🎃</span>
-                <span class="game-name">Splash Screen</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="games-section">
-            <h3>
-              <span class="games-icon">🕸️</span>
-              <span class="games-text">Games</span>
-            </h3>
-            <ul class="game-list">
-              <li class="game-item" data-game="welcome-game">
-                <span class="game-icon">
-                  <img
-                    src="js/games/welcome-game/Candy_Corn_emoji_40x40.png"
-                    alt="Candy Corn"
-                    style="width: 30px; height: 30px"
-                  />
-                </span>
-                <span class="game-name">Candycorn</span>
-              </li>
-              <li class="game-item" data-game="whosThatWitch">
-                <span class="game-icon">
-                  <img
-                    src="js/games/whosThatWitch/assets/other/witch_emoji_for_title_40x40.png"
-                    alt="Witch"
-                    style="width: 30px; height: 30px"
-                  />
-                </span>
-                <span class="game-name">Who's That Witch?</span>
-              </li>
-              <li class="game-item" data-game="word-haunt">
-                <span class="game-icon word-haunt-icon">
-                  <span>A</span>
-                  <span>👻</span>
-                  <span>🔍</span>
-                  <span>Z</span>
-                </span>
-                <span class="game-name">Word Haunt</span>
-              </li>
-              <li class="game-item" data-game="theRadleyHouse">
-                <span class="game-icon radley-icon">R</span>
-                <span class="game-name radley-name">The Radley House</span>
-              </li>
-            </ul>
-          </div>
+          <ul class="game-list">
+            <li class="game-item" data-game="title-screen">
+              <span class="game-icon">
+                <img
+                  src="assets/icons/snoopy_icon_40x40.png"
+                  alt="Silhouette"
+                  style="width: 30px; height: 30px"
+                />
+              </span>
+              <span class="game-name">Silhouette</span>
+            </li>
+            <li class="game-item" data-game="welcome-game">
+              <span class="game-icon">
+                <img
+                  src="js/games/welcome-game/Candy_Corn_emoji_40x40.png"
+                  alt="Candy Corn"
+                  style="width: 30px; height: 30px"
+                />
+              </span>
+              <span class="game-name">Candycorn</span>
+            </li>
+            <li class="game-item" data-game="whosThatWitch">
+              <span class="game-icon">
+                <img
+                  src="js/games/whosThatWitch/assets/other/witch_emoji_for_title_40x40.png"
+                  alt="Witch"
+                  style="width: 30px; height: 30px"
+                />
+              </span>
+              <span class="game-name">Who's That Witch?</span>
+            </li>
+            <li class="game-item" data-game="word-haunt">
+              <span class="game-icon word-haunt-icon">
+                <span>A</span>
+                <span>👻</span>
+                <span>🔍</span>
+                <span>Z</span>
+              </span>
+              <span class="game-name">Word Haunt</span>
+            </li>
+            <li class="game-item" data-game="theRadleyHouse">
+              <span class="game-icon radley-icon">R</span>
+              <span class="game-name radley-name">The Radley House</span>
+            </li>
+          </ul>
 
           <!-- Panel Toggle Button -->
           <div class="panel-toggle">

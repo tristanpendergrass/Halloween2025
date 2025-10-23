@@ -23,6 +23,7 @@ let currentImagePath = null;  // Currently loaded puzzle image
 let tiles = [];  // Array of tile div elements
 let blankRow = 0;  // Current position of blank space
 let blankCol = 0;  // Current position of blank space
+let isNumberedPuzzle = false;  // Track if current puzzle is a numbered puzzle (slots 2/3)
 
 // Generated puzzle images (created once at page load)
 let arabicNumbersPuzzle = null;  // Data URL for Arabic numbers (1-11) puzzle
@@ -33,9 +34,10 @@ let cyclingImages = [
   'assets/image1_192x380.png',
   'assets/image2_192x380.png',
   'assets/image3_192x380.png',
-  'assets/image4_192x380.png'
+  'assets/image4_192x380.png',
+  'assets/image5_192x380.png'
 ];
-let currentImageIndex = 0; // Tracks which image to load next
+let currentImageIndex = 4; // Tracks which image to load next (starts at 4 for image5 default)
 let leftBoxElement = null; // Reference to left box element for thumbnail updates
 
 // ====================================================================
@@ -153,8 +155,8 @@ async function initPuzzleGame() {
   // Set up LEFT BOX with cycling behavior
   leftBoxElement = document.querySelector('.image-box-left');
   if (leftBoxElement) {
-    // Set initial thumbnail to image1
-    leftBoxElement.style.backgroundImage = `url('${cyclingImages[0]}')`;
+    // Set initial thumbnail to image5
+    leftBoxElement.style.backgroundImage = `url('${cyclingImages[4]}')`;
 
     // Add cycling click handler
     leftBoxElement.addEventListener('click', handleLeftBoxClick);
@@ -171,13 +173,13 @@ async function initPuzzleGame() {
       // Set thumbnail background
       box.element.style.backgroundImage = `url('${box.image}')`;
 
-      // Add click handler to load this puzzle (with shuffle)
-      box.element.addEventListener('click', () => loadPuzzle(box.image, true));
+      // Add click handler to load this puzzle (with shuffle, and mark as numbered)
+      box.element.addEventListener('click', () => loadPuzzle(box.image, true, true));
     }
   });
 
-  // Load image1 by default in solved state (no shuffle)
-  loadPuzzle(cyclingImages[0], false);
+  // Load image5 by default in solved state (no shuffle, image puzzle)
+  loadPuzzle(cyclingImages[4], false, false);
 }
 
 /**
@@ -187,8 +189,8 @@ function handleLeftBoxClick() {
   // Get the current image to load
   const imageToLoad = cyclingImages[currentImageIndex];
 
-  // Load the puzzle (with shuffle)
-  loadPuzzle(imageToLoad, true);
+  // Load the puzzle (with shuffle, image puzzle not numbered)
+  loadPuzzle(imageToLoad, true, false);
 
   // Update thumbnail to show current image
   leftBoxElement.style.backgroundImage = `url('${imageToLoad}')`;
@@ -206,9 +208,11 @@ function handleLeftBoxClick() {
  * This is called when player clicks a thumbnail or on initial load
  * @param {string} imagePath - Path to the puzzle image (192x380)
  * @param {boolean} shouldShuffle - Whether to shuffle the puzzle (default: true)
+ * @param {boolean} isNumbered - Whether this is a numbered puzzle (slots 2/3) vs image puzzle (slot 1)
  */
-function loadPuzzle(imagePath, shouldShuffle = true) {
+function loadPuzzle(imagePath, shouldShuffle = true, isNumbered = false) {
   currentImagePath = imagePath;
+  isNumberedPuzzle = isNumbered;
 
   // Clear any existing tiles
   clearTiles();
@@ -367,6 +371,11 @@ function handleTileClick(event) {
 
     // Update which tiles can now be clicked
     updateClickableStates();
+
+    // Check if puzzle is solved
+    if (checkWinCondition()) {
+      triggerVictoryAnimation();
+    }
   }
 }
 
@@ -485,6 +494,104 @@ function updateClickableStates() {
       tile.classList.remove('sliding-tile-clickable');
     }
   });
+}
+
+/**
+ * Check if the puzzle is solved
+ * Different winning conditions based on puzzle type:
+ *
+ * IMAGE PUZZLES (Slot 1):
+ * - Blank must be at top-left (0,0) ONLY
+ * - All tiles must be in their exact original positions
+ *
+ * NUMBERED PUZZLES (Slots 2 & 3):
+ * - Blank can be in ANY of the 4 corners
+ * - Tiles just need to be in sequential order
+ *
+ * @returns {boolean} True if puzzle is solved
+ */
+function checkWinCondition() {
+  if (isNumberedPuzzle) {
+    // NUMBERED PUZZLE WIN CONDITION
+    // FIRST: Check if blank is in one of the four corners
+    const corners = [
+      { row: 0, col: 0 },  // Top-left
+      { row: 0, col: 2 },  // Top-right
+      { row: 3, col: 0 },  // Bottom-left
+      { row: 3, col: 2 }   // Bottom-right
+    ];
+
+    const blankInCorner = corners.some(corner =>
+      corner.row === blankRow && corner.col === blankCol
+    );
+
+    if (!blankInCorner) {
+      return false; // Blank must be in a corner to win
+    }
+  } else {
+    // IMAGE PUZZLE WIN CONDITION
+    // Blank MUST be at top-left (0,0)
+    if (blankRow !== 0 || blankCol !== 0) {
+      return false;
+    }
+  }
+
+  // SECOND: Build expected sequence of (originalRow, originalCol) pairs
+  const expectedSequence = [];
+  for (let row = 0; row < GRID_ROWS; row++) {
+    for (let col = 0; col < GRID_COLS; col++) {
+      // Skip position (0,0) - that's always the blank in the solved state
+      if (row === 0 && col === 0) {
+        continue;
+      }
+      expectedSequence.push({ row, col });
+    }
+  }
+
+  // Collect tiles in grid reading order (skipping blank)
+  let tileIndex = 0;
+  for (let row = 0; row < GRID_ROWS; row++) {
+    for (let col = 0; col < GRID_COLS; col++) {
+      // Find tile at this position
+      const tile = getTileAt(row, col);
+
+      // Skip blank space
+      if (!tile) {
+        continue;
+      }
+
+      // Check if this tile is in the correct position in the sequence
+      const expectedPos = expectedSequence[tileIndex];
+      const tileOriginalRow = parseInt(tile.dataset.originalRow);
+      const tileOriginalCol = parseInt(tile.dataset.originalCol);
+
+      // If tile doesn't match expected position, puzzle is not solved
+      if (tileOriginalRow !== expectedPos.row || tileOriginalCol !== expectedPos.col) {
+        return false;
+      }
+
+      tileIndex++;
+    }
+  }
+
+  // All tiles are in correct sequence!
+  return true;
+}
+
+/**
+ * Trigger victory animation when puzzle is solved
+ */
+function triggerVictoryAnimation() {
+  const overlay = document.querySelector('.game-grid-overlay');
+  if (!overlay) return;
+
+  // Add victory animation class
+  overlay.classList.add('game-grid-overlay-victory');
+
+  // Remove class after animation completes (5 seconds)
+  setTimeout(() => {
+    overlay.classList.remove('game-grid-overlay-victory');
+  }, 5100); // Slightly longer than animation to ensure it completes
 }
 
 // ====================================================================
