@@ -4,6 +4,8 @@ export default class WelcomeGame {
         this.rotation = 5;
         this.animationFrameId = null;
         this.lastTimestamp = null;
+        this.startTime = null;
+        this.gameActive = false;
         this.isOnTarget = false;
         this.keydownHandler = null;
         this.mousedownHandler = null;
@@ -64,6 +66,18 @@ export default class WelcomeGame {
     }
 
     setWinState() {
+        // Deactivate game to prevent further scoring
+        this.gameActive = false;
+
+        // Calculate and display completion time
+        const elapsedMs = Date.now() - this.startTime;
+        const elapsedSeconds = (elapsedMs / 1000).toFixed(2);
+        const scoreDisplay = document.getElementById('score-display');
+        if (scoreDisplay) {
+            scoreDisplay.textContent = `Completed in ${elapsedSeconds}s`;
+            scoreDisplay.style.display = 'block';
+        }
+
         // Hide spinner and target
         const candyCorn = document.getElementById('candy-corn');
         const target = document.getElementById('candy-corn-target');
@@ -142,11 +156,13 @@ export default class WelcomeGame {
                 this.score = 0;
                 this.rotationSpeed = 2.152;
                 this.rotation = 5;
+                this.startTime = Date.now();
+                this.gameActive = true;
 
-                // Update score display
+                // Hide score display
                 const scoreDisplay = document.getElementById('score-display');
                 if (scoreDisplay) {
-                    scoreDisplay.textContent = 'Score: 0';
+                    scoreDisplay.style.display = 'none';
                 }
 
                 // Update game app score
@@ -211,7 +227,7 @@ export default class WelcomeGame {
 
     render() {
         return `<div style="background-color: rgb(36, 28, 70); width: 100%; height: 100%; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                <div id="score-display" style="color: white; font-size: 32px; font-weight: bold; margin-bottom: 20px;">Score: 0</div>
+                <div id="score-display" style="color: white; font-size: 32px; font-weight: bold; margin-bottom: 20px; display: none;">Score: 0</div>
                 <div style="display: grid; grid-template: 1fr / 1fr; place-items: center; background: radial-gradient(ellipse at center, #fff6a0 0%, #ffaa00 30%, #ff4400 70%, #cc0000 100%); height: 404px; position: relative;">
                     <img id="game-background" src="js/games/welcome-game/halloween_bg.png" style="grid-area: 1/1; width: 100%; height: 100%; object-fit: contain;">
                     <img id="candy-corn" src="js/games/welcome-game/Candy_Corn.png" style="grid-area: 1/1; z-index: 1; height: 180px; transform: translateX(5px) translateY(35px) rotate(5deg);">
@@ -226,6 +242,13 @@ export default class WelcomeGame {
         const target = document.getElementById('candy-corn-target');
         const scoreDisplay = document.getElementById('score-display');
         const canvas = document.getElementById('game-canvas');
+
+        // Activate game and record start time
+        this.gameActive = true;
+        this.startTime = Date.now();
+        if (scoreDisplay) {
+            scoreDisplay.style.display = 'none';
+        }
 
         // Position target at random location
         this.repositionTarget();
@@ -256,11 +279,13 @@ export default class WelcomeGame {
 
         // Scoring logic (shared between keydown and click)
         const handleScore = () => {
+            // Prevent scoring if game is not active (e.g., during win state)
+            if (!this.gameActive) {
+                return;
+            }
+
             if (this.isOnTarget) {
                 this.score++;
-                if (scoreDisplay) {
-                    scoreDisplay.textContent = `Score: ${this.score}`;
-                }
                 // Update the game app score
                 if (window.gameApp) {
                     window.gameApp.updateScore(this.score);
