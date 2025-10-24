@@ -270,7 +270,7 @@
       "icon90x90": "assets/scavenger/frankenstein90x90.png",
       "icon250x250": "assets/scavenger/frankenstein250x250.png",
       "actions": {
-        "examine": "The <b>book</b> is a First Edition of the classic 'Frankenstein' novel by Mary Shelley. It looks like it might fall apart if not handled gently. You notice an old <b>bookmark</b> in the pages. Nice <b>bookmark</b>! You take it and put it in your pocket. You might want to <b>examine</b> it later.",
+        "examine": "The <b>book</b> is a First Edition of the classic 'Frankenstein' novel by Mary Shelley. It looks like it might fall apart if not handled gently. You notice an old <b>bookmark</b> in the pages. Nice <b>bookmark</b>! You take it and wonder if it is important? You think you should <b>examine bookmark</b> more carefully. It might be a useful clue.",
         "take": {
           "response": "You put the <b>book</b> in your bag to read later.",
           "addToInventory": true,

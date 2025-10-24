@@ -361,7 +361,7 @@
       ],
       "display": "Mrs. McGillicutty's Scavenger Hunt <b>list</b>",
       "inventoryDisplay": "Mrs. McGillicutty's <b>list</b>",
-      "description": "A handwritten <b>list</b> with clues",
+      "description": "A handwritten <b>list</b> with clues. You'd better <b>examine list</b> before you get to Mr. Radley's house!",
       "location": "NICE-HOUSE",
       "points": 0,
       "health": 0,
@@ -389,7 +389,7 @@
       ],
       "display": "<b>parchment</b> paper",
       "inventoryDisplay": "<b>parchment</b> paper",
-      "description": "A small piece of <b>parchment</b> with hastily scrawled text - it appears to be of drarven origin. You might <b>examine</b> for some important clue?.",
+      "description": "A small piece of <b>parchment</b> with hastily scrawled text - it appears to be of drarven origin. You really should <b>examine parchment</b> for an important clue.",
       "location": "HIDDEN",
       "points": 0,
       "health": 0,
@@ -401,7 +401,7 @@
       "actions": {
         "examine": "Speak, 'friend', and enter.",
         "take": {
-          "response": "You carefully take the <b>parchment</b> paper.",
+          "response": "You carefully take the <b>parchment</b> paper. You consider that it is probably an important paper. Seriously, you really should <b>examine parchment</b> to read it!",
           "addToInventory": true
         }
       }
