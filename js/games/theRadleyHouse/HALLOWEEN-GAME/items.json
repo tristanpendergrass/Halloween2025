@@ -214,7 +214,10 @@
       "locked": false,
       "hasBeenExamined": false,
       "actions": {
-        "examine": "A top-of-the-line Bose <b>stereo</b> music <b>system</b> sits on a shelf mounted on the north wall. The brushed aluminum faceplate gleams in the dim light. On the front panel, you notice a selector labeled 'Sound Options' with three buttons: <b>'music'</b>, <b>'movie'</b>, and <b>'game'</b>. <span style='color: #ffcc00;'>[Hint: Try <b>press</b> the buttons to see what they do.]</span>",
+        "examine": {
+          "first": "A top-of-the-line Bose <b>stereo</b> music <b>system</b> sits on a shelf mounted on the north wall. You turn it on and the speakers crackle to life, playing Bobby Pickett's 1962 classic 'Monster Mash!'<br><br><b>As the music plays, you hear a mechanical CLICK from the <b>north</b> wall... looking there you see the wall slide back, revealing a <u>secret door</u> into another room!</b> But the secret door is still locked. You'll need to <b>SAY <password></b> to open it. I bet Mr. Radley put the password in a safe somewhere?",
+          "repeat": "The Bose <b>stereo</b> system is still playing Monster Mash. The secret door to the north remains visible. You need a password to open it."
+        },
         "take": {
           "response": "It's mounted on the wall. You cannot take it. But you could <b>examine</b> it.",
           "addToInventory": false

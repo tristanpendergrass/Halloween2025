@@ -1959,138 +1959,14 @@ function handleSayCommand(command) {
     }
   }
 
-  // Check if at MUSIC-ROOM - music system and secret door
+  // Check if at MUSIC-ROOM - secret door password
   if (currentRoom === "MUSIC-ROOM") {
     const secretDoor = doors["music-room2game-room"];
-    const musicSystem = items["musicsystem"];
-
-    // Check if trying to press buttons before examining the stereo
-    if (
-      (normalizedPhrase.includes("music") ||
-        normalizedPhrase.includes("movie") ||
-        normalizedPhrase.includes("theater") ||
-        normalizedPhrase.includes("theatre") ||
-        normalizedPhrase.includes("game") ||
-        normalizedPhrase.includes("gaming")) &&
-      musicSystem &&
-      !musicSystem.hasBeenExamined
-    ) {
-      addToBuffer([
-        {
-          text: `I don't see any '${phrase}' button. Maybe you should <b>examine</b> something?`,
-          type: "error",
-        },
-      ]);
-      // Return without setting lastCommandSucceeded = true (no time penalty)
-      return;
-    }
-
-    // Check for music system sound options
-    if (normalizedPhrase.includes("music")) {
-      addToBuffer([
-        { text: `You say: "${phrase}"`, type: "flavor" },
-        {
-          text: "The system responds with a soft chime. 'Music mode selected - warm equalization active.'",
-          type: "flavor",
-        },
-      ]);
-      // Show room description after SAY
-      addToBuffer([{ text: "", type: "flavor" }]); // Blank line
-      lookAtRoom();
-      lastCommandSucceeded = true;
-      return;
-    }
-
-    if (
-      normalizedPhrase.includes("movie") ||
-      normalizedPhrase.includes("theater") ||
-      normalizedPhrase.includes("theatre")
-    ) {
-      addToBuffer([
-        { text: `You say: "${phrase}"`, type: "flavor" },
-        {
-          text: "The system responds with a soft chime. 'Movie mode selected - surround sound optimized.'",
-          type: "flavor",
-        },
-      ]);
-      // Show room description after SAY
-      addToBuffer([{ text: "", type: "flavor" }]); // Blank line
-      lookAtRoom();
-      lastCommandSucceeded = true;
-      return;
-    }
-
-    if (
-      normalizedPhrase.includes("game") ||
-      normalizedPhrase.includes("gaming")
-    ) {
-      if (secretDoor && !secretDoor.visible) {
-        addToBuffer([
-          { text: `You say: "${phrase}"`, type: "flavor" },
-          {
-            text: "The system responds with a soft chime. 'Gaming mode selected - bass boost active.' <br><br>",
-            type: "flavor",
-          },
-          {
-            text: "<b>You also hear a mechanical CLICK from the <b>north</b> wall... looking there you see the wall slide back, revealing a secret door into another room!  But that secret door is still locked! You will need to SAY the password to open it.  I bet Mr. Radley put the password in a safe somewhere?</b>",
-            type: "flavor",
-          },
-        ]);
-
-        // Make door visible but keep it locked
-        secretDoor.visible = true;
-
-        // Show room state with new exit
-        addToBuffer([{ text: "", type: "flavor" }]);
-        lookAtRoom();
-        lastCommandSucceeded = true;
-        return;
-      } else if (secretDoor && secretDoor.visible) {
-        addToBuffer([
-          { text: `You say: "${phrase}"`, type: "flavor" },
-          {
-            text: "The system responds with a soft chime. 'Gaming mode already active.'",
-            type: "flavor",
-          },
-        ]);
-        // Show room description after SAY
-        addToBuffer([{ text: "", type: "flavor" }]); // Blank line
-        lookAtRoom();
-        lastCommandSucceeded = true;
-        return;
-      }
-    }
 
     // Check for secret door password
     if (normalizedPhrase.includes("friend")) {
-      const passwordPaper = items["passwordpaper"];
-
-      // Check if player has the parchment paper with the password
-      if (!passwordPaper || passwordPaper.location !== "INVENTORY") {
-        addToBuffer([
-          {
-            text: "You don't know about any secret door password. Maybe you need to find a clue first?",
-            type: "error",
-          },
-        ]);
-        // Return without setting lastCommandSucceeded = true (no time penalty)
-        return;
-      }
-
-      // Check if player has examined the parchment paper
-      if (!passwordPaper.hasBeenExamined) {
-        addToBuffer([
-          {
-            text: "You have the parchment, but you haven't read it yet. Maybe you should <b>examine</b> it?",
-            type: "error",
-          },
-        ]);
-        // Return without setting lastCommandSucceeded = true (no time penalty)
-        return;
-      }
-
       if (secretDoor && secretDoor.visible && secretDoor.locked) {
-        // Door is visible but locked - unlock it
+        // Door is visible and locked - unlock it
         addToBuffer([
           { text: `You say: "${phrase}"`, type: "flavor" },
           {
@@ -2109,11 +1985,11 @@ function handleSayCommand(command) {
         lastCommandSucceeded = true;
         return;
       } else if (secretDoor && !secretDoor.visible) {
-        // Door not visible yet
+        // Door not revealed yet
         addToBuffer([
           { text: `You say: "${phrase}"`, type: "flavor" },
           {
-            text: "You sense there might be a secret here, but you don't see a door.",
+            text: "Nothing happens. You don't see any secret door. Maybe you need to examine something in this room first?",
             type: "flavor",
           },
         ]);
@@ -2386,7 +2262,7 @@ function handleQuitCommand() {
       // Some items + on time
       addToBuffer([
         {
-          text: `<span style='color: #ffcc00;'><b>Atticus looks you over and says: I'm glad you are back on time. Thank you for respecting the curfew. And it looks like you found some of those scavenger hunt items that Arthur put out! Some of those are real treasures!</b></span>`,
+          text: `<span style='color: #ffcc00;'><b>Atticus looks you over and says: I'm glad you are back on time. Thank you for respecting the curfew. And it looks like you found some of those scavenger hunt items that Arthur put out! Those are some real treasures!</b></span>`,
           type: "flavor",
         },
       ]);
@@ -2567,6 +2443,22 @@ function handleExamineCommand(command) {
       // Special handling for safe - show different text if opened
       if (itemKey === "safe" && item.hasBeenOpened) {
         addToBuffer([{ text: "The safe door is open.", type: "flavor" }]);
+      }
+      // Special handling for music system - first time reveals door, subsequent shows repeat text
+      else if (itemKey === "musicsystem") {
+        if (!item.hasBeenExamined) {
+          // First time examining - reveal the secret door
+          const secretDoor = doors["music-room2game-room"];
+          if (secretDoor) {
+            secretDoor.visible = true;
+          }
+
+          addToBuffer([{ text: item.actions.examine.first, type: "flavor" }]);
+          item.hasBeenExamined = true;
+        } else {
+          // Subsequent examines - show repeat text
+          addToBuffer([{ text: item.actions.examine.repeat, type: "flavor" }]);
+        }
       } else {
         // Use notes type for notes items, flavor for others
         const textType = item.type === "notes" ? "notes" : "flavor";
@@ -2602,11 +2494,6 @@ function handleExamineCommand(command) {
           console.log(
             "DEBUG: Bookmark examined (fixed item path), hasBeenExamined set to true"
           );
-        }
-
-        // Mark musicsystem as examined (needed for press commands)
-        if (itemKey === "musicsystem") {
-          item.hasBeenExamined = true;
         }
 
         // Mark password paper as examined (needed for "say friend" command)
