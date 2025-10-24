@@ -1,0 +1,431 @@
+{
+  "currentLanguage": "en",
+
+  "ui": {
+    "difficulty": {
+      "easy": { "en": "EASY", "zh": "简单" },
+      "medium": { "en": "MEDIUM", "zh": "中等" },
+      "hard": { "en": "HARD", "zh": "困难" }
+    },
+
+    "controls": {
+      "scoring": { "en": "scoring on/off", "zh": "计分 开/关" },
+      "scoringOn": { "en": "ON", "zh": "开" },
+      "scoringOff": { "en": "OFF", "zh": "关" },
+      "clues": { "en": "clues on/off", "zh": "提示 开/关" },
+      "cluesOn": { "en": "ON", "zh": "开" },
+      "cluesOff": { "en": "OFF", "zh": "关" },
+      "resetBestScore": { "en": "reset best score", "zh": "重置最佳" },
+      "clicks": { "en": "clicks", "zh": "点击" }
+    },
+
+    "bestScores": {
+      "easy": { "en": "EASY", "zh": "简单" },
+      "medium": { "en": "MEDIUM", "zh": "中等" },
+      "hard": { "en": "HARD", "zh": "困难" }
+    }
+  },
+
+  "title": {
+    "main": { "en": "WHO'S THAT WITCH?", "zh": "猜猜她是谁？" },
+    "subtitle": {
+      "en": "First, match the witches, and then identify them!",
+      "zh": "先配对女巫，然后识别她们！"
+    }
+  },
+
+  "idleMessages": {
+    "easy": { "en": "CLICK BTN", "zh": "点按钮" },
+    "medium": { "en": "CLICK DIFFICULTY", "zh": "点击难度" },
+    "hard": { "en": "CLICK DIFFICULTY TO START", "zh": "点击难度开始游戏" }
+  },
+
+  "victoryMessages": {
+    "easy": [
+      { "en": "WELL DONE", "zh": "做得好" },
+      { "en": "FANTASTIC", "zh": "太棒了" },
+      { "en": "EXCELLENT", "zh": "很好" },
+      { "en": "WONDERFUL", "zh": "太好了" },
+      { "en": "MARVELOUS", "zh": "真棒" },
+      { "en": "STELLAR!!", "zh": "出色!!" }
+    ],
+    "medium": [
+      { "en": "FANTASTIC EFFORT", "zh": "非常努力" },
+      { "en": "EXCELLENT MEMORY", "zh": "记忆超群" },
+      { "en": "YOU ARE AMAZING!", "zh": "你太棒了!" },
+      { "en": "SPELLBINDING JOB", "zh": "精彩表现" },
+      { "en": "BEWITCHING SKILL", "zh": "迷人技巧" },
+      { "en": "SUPER WITCH WORK", "zh": "超级配对" }
+    ],
+    "hard": [
+      { "en": "ABSOLUTELY FANTASTIC WORK", "zh": "绝对出色的工作" },
+      { "en": "YOU ARE A MEMORY CHAMPION", "zh": "你是记忆冠军" },
+      { "en": "INCREDIBLE WITCH MATCHING", "zh": "惊人的女巫配对" },
+      { "en": "SPECTACULAR ACHIEVEMENT!!", "zh": "壮观的成就!!" },
+      { "en": "SPELLBINDING PERFORMANCE!", "zh": "精彩的表现!" },
+      { "en": "OUTSTANDING MASTERY SHOWN", "zh": "展现卓越精通" }
+    ]
+  },
+
+  "howToPlay": {
+    "text": {
+      "en": "Click tiles to reveal witches. Match pairs, then click the correct name to identify them!",
+      "zh": "点击方块显示女巫。配对相同女巫，然后点击正确名字识别她们！"
+    }
+  },
+
+  "languageToggle": {
+    "button": { "en": "中文", "zh": "English" },
+    "label": { "en": "Language", "zh": "语言" }
+  },
+
+  "witches": {
+    "Elphaba": {
+      "name": { "en": "Elphaba", "zh": "艾尔法芭" },
+      "descriptions": [
+        {
+          "en": "This is Elphaba, from the 2003 Broadway show Wicked!",
+          "zh": "这是艾尔法芭，来自2003年百老汇音乐剧《女巫前传》！"
+        },
+        {
+          "en": "This is Elphaba, from the 2024 movie 'Wicked'.",
+          "zh": "这是艾尔法芭，来自2024年电影《女巫前传》。"
+        }
+      ]
+    },
+
+    "Wicked_Witch_of_The_West": {
+      "name": { "en": "Wicked Witch of the West", "zh": "西方邪恶女巫" },
+      "descriptions": [
+        {
+          "en": "This is the Wicked Witch of the West, from the 1939 movie 'The Wizard of Oz'.",
+          "zh": "这是西方邪恶女巫，来自1939年电影《绿野仙踪》。"
+        }
+      ]
+    },
+
+    "Galinda": {
+      "name": { "en": "Galinda", "zh": "葛琳达" },
+      "descriptions": [
+        {
+          "en": "This is Galinda, the Good Witch of the North, from the Broadway show Wicked!",
+          "zh": "这是葛琳达，北方好女巫，来自百老汇音乐剧《女巫前传》！"
+        },
+        {
+          "en": "This is Galinda, the Good Witch, from the 2024 movie 'Wicked'.",
+          "zh": "这是葛琳达，好女巫，来自2024年电影《女巫前传》。"
+        }
+      ]
+    },
+
+    "Glinda": {
+      "name": { "en": "Glinda", "zh": "格林达" },
+      "descriptions": [
+        {
+          "en": "This is Glinda, the Good Witch of the North, from the 1939 movie 'The Wizard of Oz'.",
+          "zh": "这是格林达，北方好女巫，来自1939年电影《绿野仙踪》。"
+        }
+      ]
+    },
+
+    "Endora": {
+      "name": { "en": "Endora", "zh": "恩朵拉" },
+      "descriptions": [
+        {
+          "en": "Endora, Samantha's mother, from the TV show 'Bewitched'",
+          "zh": "恩朵拉，萨曼莎的母亲，来自电视剧《家有仙妻》"
+        }
+      ]
+    },
+
+    "Grandmama": {
+      "name": { "en": "Grandmama", "zh": "亚当斯奶奶" },
+      "descriptions": [
+        {
+          "en": "Grandmama Addams, the family matriarch, from 'The Addams Family'",
+          "zh": "亚当斯奶奶，家族女家长，来自《亚当斯一家》"
+        }
+      ]
+    },
+
+    "Hermione": {
+      "name": { "en": "Hermione Granger", "zh": "赫敏·格兰杰" },
+      "descriptions": [
+        {
+          "en": "Hermione Granger, from the Harry Potter series",
+          "zh": "赫敏·格兰杰，来自《哈利·波特》系列"
+        }
+      ]
+    },
+
+    "Jadis": {
+      "name": { "en": "Jadis, The White Witch", "zh": "贾迪斯，白女巫" },
+      "descriptions": [
+        {
+          "en": "Jadis, the White Witch, from 'The Chronicles of Narnia'",
+          "zh": "贾迪斯，白女巫，来自《纳尼亚传奇》"
+        }
+      ]
+    },
+
+    "Kiki": {
+      "name": { "en": "Kiki", "zh": "琪琪" },
+      "descriptions": [
+        {
+          "en": "Kiki, the young witch, from Studio Ghibli's 'Kiki's Delivery Service'",
+          "zh": "琪琪，年轻女巫，来自吉卜力工作室的《魔女宅急便》"
+        }
+      ]
+    },
+
+    "Jiji": {
+      "name": { "en": "Jiji", "zh": "吉吉" },
+      "descriptions": [
+        {
+          "en": "Jiji, Kiki's cat familiar, from Studio Ghibli's 'Kiki's Delivery Service'",
+          "zh": "吉吉，琪琪的猫咪伙伴，来自吉卜力工作室的《魔女宅急便》"
+        }
+      ]
+    },
+
+    "Lafayette": {
+      "name": { "en": "Lafayette Reynolds", "zh": "拉斐特·雷诺兹" },
+      "descriptions": [
+        {
+          "en": "Lafayette Reynolds, the powerful medium, from the TV show 'True Blood'",
+          "zh": "拉斐特·雷诺兹，强大的灵媒，来自电视剧《真爱如血》"
+        }
+      ]
+    },
+
+    "Melisandre": {
+      "name": { "en": "Melisandre", "zh": "梅丽珊卓" },
+      "descriptions": [
+        {
+          "en": "Melisandre, the Red Priestess, from 'Game of Thrones'",
+          "zh": "梅丽珊卓，红袍女祭司，来自《权力的游戏》"
+        }
+      ]
+    },
+
+    "Mildred": {
+      "name": { "en": "Mildred Hubble", "zh": "米尔德雷德·哈布尔" },
+      "descriptions": [
+        {
+          "en": "Mildred Hubble, from 'The Worst Witch' book and TV series",
+          "zh": "米尔德雷德·哈布尔，来自《糟糕女巫》书籍和电视剧"
+        }
+      ]
+    },
+
+    "Morticia": {
+      "name": { "en": "Morticia Addams", "zh": "魔蒂西亚·亚当斯" },
+      "descriptions": [
+        {
+          "en": "Morticia Addams, the gothic matriarch, from 'The Addams Family'",
+          "zh": "魔蒂西亚·亚当斯，哥特式女家长，来自《亚当斯一家》"
+        }
+      ]
+    },
+
+    "McGonagall": {
+      "name": { "en": "Professor McGonagall", "zh": "麦格教授" },
+      "descriptions": [
+        {
+          "en": "Professor Minerva McGonagall, from the Harry Potter series",
+          "zh": "米勒娃·麦格教授，来自《哈利·波特》系列"
+        }
+      ]
+    },
+
+    "Sabrina": {
+      "name": { "en": "Sabrina Spellman", "zh": "莎宾娜·斯佩尔曼" },
+      "descriptions": [
+        {
+          "en": "Sabrina Spellman, the teenage witch, from 'Sabrina the Teenage Witch'",
+          "zh": "莎宾娜·斯佩尔曼，少女女巫，来自《少年魔法师》"
+        }
+      ]
+    },
+
+    "Salem": {
+      "name": { "en": "Salem Saberhagen", "zh": "塞勒姆" },
+      "descriptions": [
+        {
+          "en": "Salem, Sabrina's wise-cracking cat familiar, from 'Sabrina the Teenage Witch'",
+          "zh": "塞勒姆，莎宾娜的诙谐猫咪伙伴，来自《少年魔法师》"
+        }
+      ]
+    },
+
+    "Samantha": {
+      "name": { "en": "Samantha Stephens", "zh": "萨曼莎·史蒂文斯" },
+      "descriptions": [
+        {
+          "en": "Samantha Stephens, the suburban witch, from the TV show 'Bewitched'",
+          "zh": "萨曼莎·史蒂文斯，郊区女巫，来自电视剧《家有仙妻》"
+        }
+      ]
+    },
+
+    "Tabitha": {
+      "name": { "en": "Tabitha Stephens", "zh": "塔比莎·史蒂文斯" },
+      "descriptions": [
+        {
+          "en": "Tabitha Stephens, Samantha's daughter, from 'Bewitched'",
+          "zh": "塔比莎·史蒂文斯，萨曼莎的女儿，来自《家有仙妻》"
+        }
+      ]
+    },
+
+    "Wednesday": {
+      "name": { "en": "Wednesday Addams", "zh": "星期三·亚当斯" },
+      "descriptions": [
+        {
+          "en": "Wednesday Addams, the dark daughter, from 'The Addams Family'",
+          "zh": "星期三·亚当斯，黑暗女儿，来自《亚当斯一家》"
+        }
+      ]
+    },
+
+    "Wendy": {
+      "name": { "en": "Wendy the Good Little Witch", "zh": "温蒂小女巫" },
+      "descriptions": [
+        {
+          "en": "Wendy, the Good Little Witch, from Harvey Comics",
+          "zh": "温蒂，善良的小女巫，来自哈维漫画"
+        }
+      ]
+    },
+
+    "Willow": {
+      "name": { "en": "Willow Rosenberg", "zh": "薇洛·罗森伯格" },
+      "descriptions": [
+        {
+          "en": "Willow Rosenberg, the powerful witch, from 'Buffy the Vampire Slayer'",
+          "zh": "薇洛·罗森伯格，强大女巫，来自《吸血鬼猎人巴菲》"
+        }
+      ]
+    },
+
+    "WitchHazel": {
+      "name": { "en": "Witch Hazel", "zh": "女巫榛子" },
+      "descriptions": [
+        {
+          "en": "Witch Hazel, from Looney Tunes cartoons",
+          "zh": "女巫榛子，来自乐一通卡通"
+        }
+      ]
+    },
+
+    "Yubaba": {
+      "name": { "en": "Yubaba", "zh": "汤婆婆" },
+      "descriptions": [
+        {
+          "en": "Yubaba, the bathhouse owner, from Studio Ghibli's 'Spirited Away'",
+          "zh": "汤婆婆，澡堂老板娘，来自吉卜力工作室的《千与千寻》"
+        }
+      ]
+    },
+
+    "Agatha_Harkness": {
+      "name": { "en": "Agatha Harkness", "zh": "阿加莎·哈克尼斯" },
+      "descriptions": [
+        {
+          "en": "Agatha Harkness, the powerful witch, from Marvel Comics",
+          "zh": "阿加莎·哈克尼斯，强大女巫，来自漫威漫画"
+        }
+      ]
+    },
+
+    "Bai_Suzhen": {
+      "name": { "en": "Bai Suzhen (白娘子)", "zh": "白素贞" },
+      "descriptions": [
+        {
+          "en": "Bai Suzhen, the White Snake spirit, from Chinese legend 'Legend of the White Snake'",
+          "zh": "白素贞，白蛇精灵，来自中国传说《白蛇传》"
+        }
+      ]
+    },
+
+    "Circe": {
+      "name": { "en": "Circe", "zh": "瑟茜" },
+      "descriptions": [
+        {
+          "en": "Circe, the enchantress, from Homer's Odyssey",
+          "zh": "瑟茜，女魔法师，来自荷马的《奥德赛》"
+        }
+      ]
+    },
+
+    "Dani_and_Dorian": {
+      "name": { "en": "Dani and Dorian Wytte", "zh": "达妮和多里安·怀特" },
+      "descriptions": [
+        {
+          "en": "Dani and Dorian Wytte, twin witches, from the webcomic 'Hooky'",
+          "zh": "达妮和多里安·怀特，双胞胎女巫，来自网络漫画《Hooky》"
+        }
+      ]
+    },
+
+    "Granny_Weatherwax": {
+      "name": { "en": "Granny Weatherwax", "zh": "韦瑟韦克斯奶奶" },
+      "descriptions": [
+        {
+          "en": "Esme Weatherwax, the formidable witch, from Terry Pratchett's Discworld series",
+          "zh": "埃斯梅·韦瑟韦克斯，令人敬畏的女巫，来自特里·普拉切特的《碟形世界》系列"
+        }
+      ]
+    },
+
+    "Morgan_le_Fay": {
+      "name": { "en": "Morgan le Fay", "zh": "摩根勒菲" },
+      "descriptions": [
+        {
+          "en": "Morgan le Fay, the powerful enchantress, from Arthurian legend",
+          "zh": "摩根勒菲，强大女魔法师，来自亚瑟王传说"
+        }
+      ]
+    },
+
+    "Nie_Xiaoqian": {
+      "name": { "en": "Nie Xiaoqian (聂小倩)", "zh": "聂小倩" },
+      "descriptions": [
+        {
+          "en": "Nie Xiaoqian, the ghost spirit, from 'Strange Stories from a Chinese Studio'",
+          "zh": "聂小倩，鬼魂精灵，来自《聊斋志异》"
+        }
+      ]
+    },
+
+    "Shuimu": {
+      "name": { "en": "Shuimu (水母)", "zh": "水母" },
+      "descriptions": [
+        {
+          "en": "Shuimu, the Water Mother spirit, from Chinese folklore",
+          "zh": "水母，水母精灵，来自中国民间传说"
+        }
+      ]
+    },
+
+    "The_Weird_Sisters": {
+      "name": { "en": "The Weird Sisters", "zh": "命运三女巫" },
+      "descriptions": [
+        {
+          "en": "The Weird Sisters, the three witches, from Shakespeare's 'Macbeth'",
+          "zh": "命运三女巫，三个女巫，来自莎士比亚的《麦克白》"
+        }
+      ]
+    },
+
+    "Xianniang": {
+      "name": { "en": "Xianniang (仙娘)", "zh": "仙娘" },
+      "descriptions": [
+        {
+          "en": "Xianniang, the powerful witch, from Disney's 'Mulan' (2020)",
+          "zh": "仙娘，强大女巫，来自迪士尼的《花木兰》(2020)"
+        }
+      ]
+    }
+  }
+}
