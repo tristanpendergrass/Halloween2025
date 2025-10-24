@@ -12,6 +12,9 @@ export default class WelcomeGame {
         this.mouseupHandler = null;
         this.rotationSpeed = 2.152;
         this.targetDegree = 0;
+        this.hasInteracted = false;
+        this.promptShown = false;
+        this.promptTimeout = null;
     }
 
     positionOnCircle(degreesFromTop) {
@@ -165,6 +168,25 @@ export default class WelcomeGame {
                     scoreDisplay.style.display = 'none';
                 }
 
+                // Reset prompt behavior for new game
+                this.hasInteracted = false;
+                this.promptShown = false;
+                if (this.promptTimeout) {
+                    clearTimeout(this.promptTimeout);
+                }
+
+                // Start 3-second timeout to show prompt if no interaction
+                const promptDisplay = document.getElementById('prompt-display');
+                if (promptDisplay) {
+                    promptDisplay.style.opacity = '0';
+                    this.promptTimeout = setTimeout(() => {
+                        if (!this.hasInteracted) {
+                            promptDisplay.style.opacity = '1';
+                            this.promptShown = true;
+                        }
+                    }, 3000);
+                }
+
                 // Update game app score
                 if (window.gameApp) {
                     window.gameApp.updateScore(0);
@@ -181,6 +203,23 @@ export default class WelcomeGame {
                 if (target) target.style.opacity = '1';
             }, 1000);
         }, 7000);
+    }
+
+    handleInteraction() {
+        // Mark that user has interacted
+        this.hasInteracted = true;
+
+        // Clear the prompt timeout if it exists
+        if (this.promptTimeout) {
+            clearTimeout(this.promptTimeout);
+            this.promptTimeout = null;
+        }
+
+        // Fade out prompt if it's visible
+        const promptDisplay = document.getElementById('prompt-display');
+        if (promptDisplay && promptDisplay.style.opacity !== '0') {
+            promptDisplay.style.opacity = '0';
+        }
     }
 
     gameLoop(timestamp) {
@@ -233,6 +272,7 @@ export default class WelcomeGame {
                     <img id="candy-corn" src="js/games/welcome-game/Candy_Corn.png" style="grid-area: 1/1; z-index: 1; height: 180px; transform: translateX(5px) translateY(35px) rotate(5deg);">
                     <img id="candy-corn-target" src="js/games/welcome-game/Candy_Corn.png" style="grid-area: 1/1; z-index: 1; height: 60px; transform: translateX(5px) translateY(-85px) rotate(180deg); transition: height 0.15s ease-out;">
                 </div>
+                <div id="prompt-display" style="color: white; font-size: 24px; font-weight: bold; margin-top: 20px; opacity: 0; transition: opacity 0.5s ease-in-out;">Press any key</div>
         </div>`;
     }
 
@@ -248,6 +288,25 @@ export default class WelcomeGame {
         this.startTime = Date.now();
         if (scoreDisplay) {
             scoreDisplay.style.display = 'none';
+        }
+
+        // Initialize prompt behavior
+        this.hasInteracted = false;
+        this.promptShown = false;
+        if (this.promptTimeout) {
+            clearTimeout(this.promptTimeout);
+        }
+
+        // Start 3-second timeout to show prompt if no interaction
+        const promptDisplay = document.getElementById('prompt-display');
+        if (promptDisplay) {
+            promptDisplay.style.opacity = '0';
+            this.promptTimeout = setTimeout(() => {
+                if (!this.hasInteracted) {
+                    promptDisplay.style.opacity = '1';
+                    this.promptShown = true;
+                }
+            }, 3000);
         }
 
         // Position target at random location
@@ -317,15 +376,18 @@ export default class WelcomeGame {
                 return;
             }
             e.preventDefault();
+            this.handleInteraction();
             handleScore();
         };
         document.addEventListener('keydown', this.keydownHandler);
 
         // Add mousedown and mouseup listeners
         this.mousedownHandler = () => {
+            this.handleInteraction();
             handleScore();
         };
         this.mouseupHandler = () => {
+            this.handleInteraction();
             handleScore();
         };
         document.addEventListener('mousedown', this.mousedownHandler);
@@ -337,6 +399,10 @@ export default class WelcomeGame {
         if (this.animationFrameId) {
             cancelAnimationFrame(this.animationFrameId);
             this.animationFrameId = null;
+        }
+        if (this.promptTimeout) {
+            clearTimeout(this.promptTimeout);
+            this.promptTimeout = null;
         }
         if (this.keydownHandler) {
             document.removeEventListener('keydown', this.keydownHandler);
