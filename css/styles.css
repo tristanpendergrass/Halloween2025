@@ -600,6 +600,11 @@ body {
   width: auto;
 }
 
+
+.right-nav.collapsed .game-list-header {
+  display: none;
+}
+
 .game-list {
   list-style: none;
   display: flex;
