@@ -2,7 +2,8 @@ export default class WelcomeGame {
     constructor() {
         this.score = 0;
         this.rotation = 5;
-        this.rotationInterval = null;
+        this.animationFrameId = null;
+        this.lastTimestamp = null;
         this.isOnTarget = false;
         this.keydownHandler = null;
         this.clickHandler = null;
@@ -165,6 +166,48 @@ export default class WelcomeGame {
         }, 7000);
     }
 
+    gameLoop(timestamp) {
+        const candyCorn = document.getElementById('candy-corn');
+        const target = document.getElementById('candy-corn-target');
+
+        if (!candyCorn || !target) {
+            return;
+        }
+
+        // Initialize timestamp on first frame
+        if (this.lastTimestamp === null) {
+            this.lastTimestamp = timestamp;
+        }
+
+        // Calculate delta time in seconds
+        const deltaTime = (timestamp - this.lastTimestamp) / 1000;
+        this.lastTimestamp = timestamp;
+
+        // Update rotation based on delta time
+        // rotationSpeed is degrees per frame at 60fps (16.67ms)
+        // Convert to degrees per second: rotationSpeed * 60
+        const degreesPerSecond = this.rotationSpeed * 60;
+        this.rotation += degreesPerSecond * deltaTime;
+        const normalizedRotation = ((this.rotation % 360) + 360) % 360;
+
+        // Check if spinner is pointing at target (within tolerance)
+        const tolerance = 25;
+        const diff = Math.abs(normalizedRotation - this.targetDegree);
+        // Handle wrap-around (e.g., 355° and 5° are 10° apart, not 350°)
+        const angleDiff = Math.min(diff, 360 - diff);
+        this.isOnTarget = angleDiff <= tolerance;
+
+        // Update spinner rotation
+        candyCorn.style.transform = `translateX(5px) translateY(35px) rotate(${this.rotation}deg)`;
+
+        // Update target size based on whether spinner is on target
+        const targetSize = this.isOnTarget ? '90px' : '60px';
+        if (target) target.style.height = targetSize;
+
+        // Continue the animation loop
+        this.animationFrameId = requestAnimationFrame((ts) => this.gameLoop(ts));
+    }
+
     render() {
         return `<div style="background-color: rgb(36, 28, 70); width: 100%; height: 100%; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                 <div id="score-display" style="color: white; font-size: 32px; font-weight: bold; margin-bottom: 20px;">Score: 0</div>
@@ -204,26 +247,10 @@ export default class WelcomeGame {
         }
 
         if (candyCorn && target) {
-            // 360 degrees over 5 seconds = 72 degrees per second
-            // Update every 16ms (roughly 60fps) = 1.152 degrees per frame
-            this.rotationInterval = setInterval(() => {
-                this.rotation += this.rotationSpeed;
-                const normalizedRotation = ((this.rotation % 360) + 360) % 360;
-
-                // Check if spinner is pointing at target (within tolerance)
-                const tolerance = 25;
-                const diff = Math.abs(normalizedRotation - this.targetDegree);
-                // Handle wrap-around (e.g., 355° and 5° are 10° apart, not 350°)
-                const angleDiff = Math.min(diff, 360 - diff);
-                this.isOnTarget = angleDiff <= tolerance;
-
-                // Update spinner rotation
-                candyCorn.style.transform = `translateX(5px) translateY(35px) rotate(${this.rotation}deg)`;
-
-                // Update target size based on whether spinner is on target
-                const targetSize = this.isOnTarget ? '90px' : '60px';
-                if (target) target.style.height = targetSize;
-            }, 16);
+            // Reset timestamp for new animation loop
+            this.lastTimestamp = null;
+            // Start the animation loop
+            this.animationFrameId = requestAnimationFrame((ts) => this.gameLoop(ts));
         }
 
         // Scoring logic (shared between keydown and click)
@@ -277,9 +304,9 @@ export default class WelcomeGame {
 
     stop() {
         console.log('Welcome game stopped');
-        if (this.rotationInterval) {
-            clearInterval(this.rotationInterval);
-            this.rotationInterval = null;
+        if (this.animationFrameId) {
+            cancelAnimationFrame(this.animationFrameId);
+            this.animationFrameId = null;
         }
         if (this.keydownHandler) {
             document.removeEventListener('keydown', this.keydownHandler);
