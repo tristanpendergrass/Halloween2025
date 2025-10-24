@@ -6,7 +6,8 @@ export default class WelcomeGame {
         this.lastTimestamp = null;
         this.isOnTarget = false;
         this.keydownHandler = null;
-        this.clickHandler = null;
+        this.mousedownHandler = null;
+        this.mouseupHandler = null;
         this.rotationSpeed = 2.152;
         this.targetDegree = 0;
     }
@@ -295,11 +296,15 @@ export default class WelcomeGame {
         };
         document.addEventListener('keydown', this.keydownHandler);
 
-        // Add click listener
-        this.clickHandler = () => {
+        // Add mousedown and mouseup listeners
+        this.mousedownHandler = () => {
             handleScore();
         };
-        document.addEventListener('click', this.clickHandler);
+        this.mouseupHandler = () => {
+            handleScore();
+        };
+        document.addEventListener('mousedown', this.mousedownHandler);
+        document.addEventListener('mouseup', this.mouseupHandler);
     }
 
     stop() {
@@ -312,9 +317,13 @@ export default class WelcomeGame {
             document.removeEventListener('keydown', this.keydownHandler);
             this.keydownHandler = null;
         }
-        if (this.clickHandler) {
-            document.removeEventListener('click', this.clickHandler);
-            this.clickHandler = null;
+        if (this.mousedownHandler) {
+            document.removeEventListener('mousedown', this.mousedownHandler);
+            this.mousedownHandler = null;
+        }
+        if (this.mouseupHandler) {
+            document.removeEventListener('mouseup', this.mouseupHandler);
+            this.mouseupHandler = null;
         }
     }
 
