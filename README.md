@@ -4,10 +4,7 @@ for Halloween game 2025
 
 john calls folder halloween2025
 
-tristan is on board.
-
-
-
+tristan is on board...
 
 # 🎃 Halloween Minigames 🎃
 
@@ -71,6 +68,7 @@ npm run validate-word-haunt hard
 - ⚠️ **NEEDS REVIEW** - One or more words found 0 or multiple times
 
 The validator shows:
+
 - How many times each word appears in the grid
 - Summary of validation results
 - Grid dimensions and word count
