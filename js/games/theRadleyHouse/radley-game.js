@@ -1929,7 +1929,7 @@ function handleSayCommand(command) {
           type: "flavor",
         },
         {
-          text: "Inside you see two <b>Indian Head pennies</b>! c1909. Nice! Oh, and you notice an tiny old piece of <b>parchment</b>.",
+          text: "Inside you see two <b>Indian Head pennies</b>! c1909. Nice! Those are part of the scavenger hunt! You should probably <b>take</b> those. Oh, and you also notice an old piece of <b>parchment</b>. That looks important! You should <b>take parchment</b> also, so you can then <b>examine parchment</b>.",
           type: "flavor",
         },
       ]);
@@ -2552,7 +2552,7 @@ function handleExamineCommand(command) {
     } else {
       addToBuffer([
         {
-          text: `You need to pick up the ${item.display} first to examine it closely.`,
+          text: `You need to <b>take ${item.display}</b> first.  Then you can <b>examine ${item.display}</b> to study it closely.`,
           type: "error",
         },
       ]);

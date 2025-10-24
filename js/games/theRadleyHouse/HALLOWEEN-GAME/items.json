@@ -54,7 +54,7 @@
           "response": "Ding-dong! You hear footsteps approaching from inside."
         },
         "use": {
-          "response": "<span style='font-size: 24px; font-weight: bold; color: #FFD700; text-shadow: 0 0 10px #FFD700, 0 0 20px #FFED4E, 0 0 30px #FFFFFF, 2px 2px 4px rgba(0,0,0,0.3);'>Ding Dong!</span> You hear footsteps approaching from inside. The door to the house swings open. Mrs. McGillicutty appears. Her face is painted green, and she is wearing a pointy witch hat. 'Elphaba!' you think. <br><br>She offers you two candies, and then leans over and whispers <i>'Mr. Radley and his son Aurhur next door are having a scavenger hunt. You might find this <b>list</b> useful during that game!'</i><br><br>You take the <b>list</b> she offers. 'Good luck dear!' she says, and closes the door. <span style='color: #ffcc00;'>[Hint: typing <b>(i)nventory</b> or <br><b>e(x)amine list</b> might be useful. - <b>(l)ook</b> also!]</span>",
+          "response": "<span style='font-size: 24px; font-weight: bold; color: #FFD700; text-shadow: 0 0 10px #FFD700, 0 0 20px #FFED4E, 0 0 30px #FFFFFF, 2px 2px 4px rgba(0,0,0,0.3);'>Ding Dong!</span> You hear footsteps approaching from inside. The door to the house swings open. Mrs. McGillicutty appears. Her face is painted green, and she is wearing a pointy witch hat. 'Elphaba!' you think. <br><br>She offers you two candies, and then leans over and whispers <i>'Mr. Radley and his son Aurhur next door are having a scavenger hunt. You might find this <b>list</b> useful during that game! You really really should <b>examine list</b> right now!'</b></i><br><br>You take the <b>list</b> she offers. 'Good luck dear!' she says, and closes the door. <span style='color: #ffcc00;'>[Hint: typing <b>(i)nventory</b> or <br><b>e(x)amine list</b> might be useful. - <b>(l)ook</b> also!]</span>",
           "addToInventory": ["list"]
         },
         "take": {
@@ -329,7 +329,7 @@
       ],
       "display": "old <b>bookmark</b>",
       "inventoryDisplay": "old <b>bookmark</b>",
-      "description": "An old <b>bookmark</b> from the Frankenstein book",
+      "description": "An old <b>bookmark</b> from the Frankenstein book. You really should <b>examine bookmark</b> to read it!",
       "location": "HIDDEN",
       "points": 0,
       "health": 0,

@@ -79,7 +79,7 @@
     "NICE-HOUSE": {
       "name": "Nice House",
         "enterText": {
-          "first": "NOTE THIS IS NOW IN THE ITEMS - THIS IS LEFT HERE TO REMIND ME. The door to the nice house swings open. Mrs. McGillicutty answers. Her face is painted green, and she is wearing a pointy witch hat. 'Elphaba!' you think? She holds a small candy dish, and tells you to take two candies.<br><br>After you take the candies she leans over and whispers 'Mr. Radley and his son Arthur next door are having a scavenger hunt. You might find this note useful during that game!'<br><br>She hands you a handwritten note and you put it in your pocket. <span style='color: #ffcc00;'>[hint: type <b>examine list</b> to read Mrs. McGillicutty's clues.]</span> 'Good luck dear!' she says, and closes the door.",
+          "first": "NOTE THIS IS NOW IN THE ITEMS - THIS IS LEFT HERE TO REMIND ME. The door to the nice house swings open. Mrs. McGillicutty answers. Her face is painted green, and she is wearing a pointy witch hat. 'Elphaba!' you think? She holds a small candy dish, and tells you to take two candies.<br><br>After you take the candies she leans over and whispers 'Mr. Radley and his son Arthur next door are having a scavenger hunt. You might find this note useful during that game!  You really should <b>examine list</b> right now!<br><br>She hands you a handwritten note and you put it in your pocket. <span style='color: #ffcc00;'>[hint: type <b>examine list</b> to read Mrs. McGillicutty's clues.]</span> 'Good luck dear!' she says, and closes the door.",
 
 
           "second": "The porchlight is off. You ring and ring, but no one answers.",
