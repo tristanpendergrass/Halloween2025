@@ -773,11 +773,37 @@ function updateStartupText() {
     const randomMsg = messages[Math.floor(Math.random() * messages.length)];
     const newMessage = randomMsg[currentLanguage];
 
-    // Update each letter's text content
-    victoryLetters.forEach((letterDiv, index) => {
+    // Celebration letter colors - same as used in celebrateVictory
+    const LETTER_COLORS = [
+      "#FFD700", // Gold
+      "#FF8C42", // Orange
+      "#FFFF00", // Yellow
+      "#FF00FF", // Magenta
+      "#00FF00", // Lime
+      "#00FFFF", // Cyan
+      "#FF69B4", // Hot Pink
+      "#FFA500", // Orange
+    ];
+
+    // Remove ALL old victory letters first
+    allTiles.forEach((tile) => {
+      const oldLetters = tile.querySelectorAll('.victory-letter');
+      oldLetters.forEach(letter => letter.remove());
+    });
+
+    // Create new letters with correct message length
+    allTiles.forEach((tile, index) => {
       const letter = newMessage[index];
       if (letter) {
+        const letterDiv = document.createElement("div");
+        letterDiv.className = "victory-letter";
         letterDiv.textContent = letter;
+
+        // Assign random color from array
+        const randomColor = LETTER_COLORS[Math.floor(Math.random() * LETTER_COLORS.length)];
+        letterDiv.style.color = randomColor;
+
+        tile.appendChild(letterDiv);
       }
     });
 
