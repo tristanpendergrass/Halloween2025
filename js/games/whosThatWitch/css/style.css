@@ -147,6 +147,30 @@ body {
   background: #4c4b4d;
 }
 
+/* Language selection buttons - redesigned */
+.lang-btn-new {
+  font-family: "Arial", sans-serif;
+  font-size: 11px;
+  padding: 4px 8px;
+  background: #FFF8DC; /* Cream/cornsilk */
+  color: #000000;
+  border: 1px solid #7b2d8e;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s;
+  min-width: 60px;
+  margin-left: 12px;
+}
+
+.lang-btn-new:hover {
+  background: #FFE4B5; /* Slightly darker cream on hover */
+}
+
+.lang-checkmark {
+  margin-left: 3px;
+  font-size: 10px;
+}
+
 .difficulty-button-img:hover {
   opacity: 0.8;
 }

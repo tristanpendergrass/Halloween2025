@@ -7,6 +7,7 @@ let gameConfig = null;
 let tileData = null;
 let imageList = null;
 let groupedWitches = null; // Images organized by group number
+let translations = null; // Loaded from textEngAndZH.json
 
 // Game state variables for tile interaction
 let selectedTiles = []; // Currently selected tiles (max 2)
@@ -18,6 +19,7 @@ let currentDifficulty = null; // Track current difficulty for scoring
 // Scoring system
 let scoringEnabled = false; // Track if scoring is on/off
 let cluesEnabled = true; // Track if clues (description tooltips) are shown for all witches
+let currentLanguage = 'en'; // Track current language: 'en' or 'zh'
 let bestScores = {
   easyTiles: null,
   mediumTiles: null,
@@ -133,6 +135,24 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /**
+ * Map filename-based character keys to translation keys
+ * Handles cases where filenames have full names but translations use short keys
+ * @param {string} filenameKey - Character key extracted from filename
+ * @returns {string} - Normalized key that matches translations.witches
+ */
+function normalizeCharacterKey(filenameKey) {
+  const keyMap = {
+    'Jadis_The_White_Witch': 'Jadis',
+    'JiJi': 'Jiji',
+    'Lafayette_Reynolds': 'Lafayette',
+    'Mildred_Hubble': 'Mildred',
+    'Professor_McGonagall': 'McGonagall',
+  };
+
+  return keyMap[filenameKey] || filenameKey;
+}
+
+/**
  * Initialize the game
  */
 async function initGame() {
@@ -160,6 +180,9 @@ async function initGame() {
   await loadTileData();
   await loadImageList();
 
+  // Load translations
+  await loadTranslations();
+
   // Build grouped witches data structure
   buildGroupedWitches();
 
@@ -168,6 +191,9 @@ async function initGame() {
 
   // Setup buttons dynamically from config
   setupButtons();
+
+  // Update all startup text from translations
+  updateStartupText();
 
   // Load best scores from localStorage
   loadBestScores();
@@ -183,14 +209,26 @@ async function initGame() {
     .getElementById("clues-toggle")
     .addEventListener("click", toggleClues);
 
+  // Setup language toggle button event listeners
+  document
+    .getElementById("lang-en")
+    .addEventListener("click", () => switchLanguage("en"));
+  document
+    .getElementById("lang-zh")
+    .addEventListener("click", () => switchLanguage("zh"));
+
   // Initialize display state based on scoring settings
   updateClickDisplay();
   updateBestScoresDisplay();
 
   // Initialize clues button and state based on cluesEnabled default
   const cluesToggleBtn = document.getElementById("clues-toggle");
+  console.log('Initializing clues button - cluesEnabled:', cluesEnabled);
   if (cluesToggleBtn) {
     cluesToggleBtn.textContent = cluesEnabled ? "ON" : "OFF";
+    console.log('Set clues button to:', cluesToggleBtn.textContent);
+  } else {
+    console.error('Clues toggle button not found!');
   }
   if (cluesEnabled) {
     document.body.classList.add("clues-enabled");
@@ -254,12 +292,25 @@ function preloadBackImages() {
 function drawInitialIdleState() {
   console.log("Drawing initial idle state...");
 
+  if (!tileData) {
+    console.error("ERROR: tileData not loaded yet!");
+    return;
+  }
+
   const difficultyId = "hardTiles"; // Always use HARD for initial state
   const config = tileData[difficultyId];
+
+  if (!config) {
+    console.error("ERROR: No config found for", difficultyId);
+    return;
+  }
+
   const gridSize = config.gridSize;
   const tileSize = config.tileSize;
   const lineSize = config.lineSize;
   const lineColor = config.lineColor;
+
+  console.log(`Drawing ${gridSize}x${gridSize} grid with ${tileSize}px tiles`);
 
   // Clear existing content
   clearBoard();
@@ -344,6 +395,22 @@ async function loadImageList() {
     console.log(`Images loaded: ${characterCount} unique characters`);
   } catch (error) {
     console.error("Error loading image list:", error);
+  }
+}
+
+/**
+ * Load translations from JSON file
+ */
+async function loadTranslations() {
+  try {
+    const response = await fetch('json/textEngAndZH.json');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    translations = await response.json();
+    console.log('Translations loaded successfully');
+  } catch (error) {
+    console.error('Error loading translations:', error);
   }
 }
 
@@ -451,7 +518,8 @@ function updateClickDisplay() {
   const display = document.getElementById("current-clicks");
   if (display) {
     if (scoringEnabled) {
-      display.textContent = `clicks: ${clickCount}`;
+      const clicksLabel = translations ? translations.ui.controls.clicks[currentLanguage] : 'clicks';
+      display.textContent = `${clicksLabel}: ${clickCount}`;
       display.style.display = "block";
     } else {
       display.style.display = "none";
@@ -512,8 +580,10 @@ function updateBestScoresDisplay() {
 function toggleScoring() {
   scoringEnabled = !scoringEnabled;
   const toggleBtn = document.getElementById("scoring-toggle");
-  if (toggleBtn) {
-    toggleBtn.textContent = scoringEnabled ? "ON" : "OFF";
+  if (toggleBtn && translations) {
+    toggleBtn.textContent = scoringEnabled
+      ? translations.ui.controls.scoringOn[currentLanguage]
+      : translations.ui.controls.scoringOff[currentLanguage];
   }
   updateClickDisplay();
   console.log(`Scoring ${scoringEnabled ? "enabled" : "disabled"}`);
@@ -535,8 +605,10 @@ function resetBestScores() {
 function toggleClues() {
   cluesEnabled = !cluesEnabled;
   const toggleBtn = document.getElementById("clues-toggle");
-  if (toggleBtn) {
-    toggleBtn.textContent = cluesEnabled ? "ON" : "OFF";
+  if (toggleBtn && translations) {
+    toggleBtn.textContent = cluesEnabled
+      ? translations.ui.controls.cluesOn[currentLanguage]
+      : translations.ui.controls.cluesOff[currentLanguage];
   }
 
   // Add/remove body class for CSS to react immediately
@@ -547,6 +619,153 @@ function toggleClues() {
   }
 
   console.log(`Clues ${cluesEnabled ? "enabled" : "disabled"}`);
+}
+
+/**
+ * Switch language between English and Chinese
+ * @param {string} lang - Language code: 'en' or 'zh'
+ */
+function switchLanguage(lang) {
+  if (lang === currentLanguage) return; // Already selected
+
+  currentLanguage = lang;
+
+  // Update checkmark visibility
+  const enCheckmark = document.querySelector('#lang-en .lang-checkmark');
+  const zhCheckmark = document.querySelector('#lang-zh .lang-checkmark');
+
+  if (lang === 'en') {
+    enCheckmark.style.visibility = 'visible';
+    zhCheckmark.style.visibility = 'hidden';
+  } else {
+    enCheckmark.style.visibility = 'hidden';
+    zhCheckmark.style.visibility = 'visible';
+  }
+
+  // Update all startup text immediately
+  updateStartupText();
+
+  // Update character list if game is in progress
+  const characterList = document.getElementById('character-list');
+  if (characterList && characterList.children.length > 0) {
+    updateCharacterListLanguage();
+  }
+
+  console.log(`Language switched to: ${lang}`);
+}
+
+/**
+ * Update all startup text from translations JSON
+ * Updates title, subtitle, control labels, and other static text
+ */
+function updateStartupText() {
+  if (!translations) {
+    console.error('Translations not loaded yet');
+    return;
+  }
+
+  const lang = currentLanguage; // 'en' for Phase 1A
+
+  // Update title and subtitle
+  const titleEl = document.getElementById('game-title');
+  const subtitleEl = document.getElementById('game-subtitle');
+  if (titleEl) titleEl.textContent = translations.title.main[lang];
+  if (subtitleEl) subtitleEl.textContent = translations.title.subtitle[lang];
+
+  // Update control labels using data attributes (works in any language)
+  const scoringLabel = document.querySelector('.control-label[data-label-type="scoring"]');
+  const cluesLabel = document.querySelector('.control-label[data-label-type="clues"]');
+  const resetLabel = document.querySelector('.control-label[data-label-type="reset"]');
+
+  if (scoringLabel) {
+    scoringLabel.textContent = translations.ui.controls.scoring[lang] + ':    ';
+  }
+  if (cluesLabel) {
+    cluesLabel.textContent = translations.ui.controls.clues[lang] + ':';
+  }
+  if (resetLabel) {
+    resetLabel.textContent = translations.ui.controls.resetBestScore[lang] + ':';
+  }
+
+  // Update clicks display (just the label part)
+  updateClickDisplay();
+
+  // Update button text (ON/OFF/reset)
+  const scoringBtn = document.getElementById('scoring-toggle');
+  const cluesBtn = document.getElementById('clues-toggle');
+  const resetBtn = document.getElementById('scoring-reset');
+
+  if (scoringBtn) {
+    scoringBtn.textContent = scoringEnabled
+      ? translations.ui.controls.scoringOn[lang]
+      : translations.ui.controls.scoringOff[lang];
+  }
+
+  if (cluesBtn) {
+    cluesBtn.textContent = cluesEnabled
+      ? translations.ui.controls.cluesOn[lang]
+      : translations.ui.controls.cluesOff[lang];
+  }
+
+  if (resetBtn) {
+    resetBtn.textContent = translations.ui.controls.resetButton[lang];
+  }
+
+  // If idle message is currently showing, re-render it in the new language
+  const idleLetters = document.querySelectorAll('.click-to-start-letter, .click-to-start-letter-initial');
+  if (idleLetters.length > 0) {
+    // Determine which difficulty is showing based on number of tiles
+    const allTiles = document.querySelectorAll('.tile-container');
+    let difficultyId = 'hardTiles'; // default
+
+    if (allTiles.length === 9) {
+      difficultyId = 'easyTiles';
+    } else if (allTiles.length === 16) {
+      difficultyId = 'mediumTiles';
+    } else if (allTiles.length === 25) {
+      difficultyId = 'hardTiles';
+    }
+
+    // Check if it's the initial state (has initial class) or post-victory state
+    const isInitialState = document.querySelector('.click-to-start-letter-initial') !== null;
+
+    // Re-render the idle message in the new language
+    showClickToStartMessage(difficultyId, !isInitialState);
+  }
+
+  // If victory celebration letters are currently showing, update them to new language
+  const victoryLetters = document.querySelectorAll('.victory-letter');
+  if (victoryLetters.length > 0) {
+    // Determine which difficulty based on number of tiles
+    const allTiles = document.querySelectorAll('.tile-container');
+    let difficultyId = 'hardTiles'; // default
+
+    if (allTiles.length === 9) {
+      difficultyId = 'easyTiles';
+    } else if (allTiles.length === 16) {
+      difficultyId = 'mediumTiles';
+    } else if (allTiles.length === 25) {
+      difficultyId = 'hardTiles';
+    }
+
+    // Get a random victory message in the new language
+    const difficultyKey = difficultyId.replace('Tiles', '');
+    const messages = translations.victoryMessages[difficultyKey];
+    const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+    const newMessage = randomMsg[currentLanguage];
+
+    // Update each letter's text content
+    victoryLetters.forEach((letterDiv, index) => {
+      const letter = newMessage[index];
+      if (letter) {
+        letterDiv.textContent = letter;
+      }
+    });
+
+    console.log(`Victory message updated to ${lang}: "${newMessage}"`);
+  }
+
+  console.log('Startup text updated from translations');
 }
 
 /**
@@ -762,12 +981,19 @@ function selectImagesForDifficulty(difficultyConfig, tileSize) {
     // Build the image path
     const imagePath = buildImagePath(selectedImage.filename, tileSize);
 
+    // Extract real character key from filename (before first parenthesis)
+    // e.g., "Wicked_Witch_of_The_West(Wizard_of_Oz)01" → "Wicked_Witch_of_The_West"
+    // Then normalize to match translation keys (e.g., "Professor_McGonagall" → "McGonagall")
+    const rawKey = selectedImage.filename.split('(')[0];
+    const characterKey = normalizeCharacterKey(rawKey);
+
     // Store full tile data with metadata
     // Use a unique pairId for each witch (NOT group number, since multiple witches can share a group)
     const tileData = {
       imagePath: imagePath,
       name_text: selectedImage.name_text,
       description_text: selectedImage.description_text,
+      characterKey: characterKey, // Store character key for translations lookup
       type: "gameTile",
       pairId: nextPairId, // Use unique pairId for this witch's pair
     };
@@ -1217,6 +1443,9 @@ function drawTiles(
     if (tileData.description_text) {
       tileContainer.dataset.descriptionText = tileData.description_text;
     }
+    if (tileData.characterKey) {
+      tileContainer.dataset.characterKey = tileData.characterKey;
+    }
 
     // Create face-up image (bottom layer - the witch/character/bomb/bonus)
     const faceUpElement = document.createElement("img");
@@ -1600,9 +1829,10 @@ function revertWitchPair(nameText) {
 
       characterItems.forEach((item) => {
         if (item.dataset.characterName === nameText) {
-          // Remove checkmark from name
+          // Remove checkmark from name (use translated display name, not English nameText)
           const characterName = item.querySelector(".character-name");
-          characterName.textContent = nameText; // Remove "✓ " prefix
+          const displayName = item.dataset.displayName || nameText;
+          characterName.textContent = displayName; // Remove "✓ " prefix
 
           // Reset completed status
           item.dataset.completed = "false";
@@ -1953,10 +2183,14 @@ function handleCharacterClick(characterItem) {
  * @param {HTMLElement} characterItem - The character list item that was correctly identified
  */
 function handleCorrectMatch(characterItem) {
-  // Create success tooltip
+  // Create success tooltip (use translated display name, not English characterName)
+  const displayName = characterItem.dataset.displayName || characterItem.dataset.characterName;
   const successTooltip = document.createElement("div");
   successTooltip.className = "success-tooltip";
-  successTooltip.innerHTML = `Yes! I am witch <strong>${characterItem.dataset.characterName}</strong>!`;
+
+  // Use translated message template and replace {name} placeholder
+  const messageTemplate = translations.ui.messages.success[currentLanguage];
+  successTooltip.innerHTML = messageTemplate.replace('{name}', displayName);
 
   // Position it relative to the character item
   successTooltip.style.position = "absolute";
@@ -2060,9 +2294,9 @@ function handleCorrectMatch(characterItem) {
   // Update character item as completed
   characterItem.dataset.completed = "true";
 
-  // Add checkmark to character name
+  // Add checkmark to character name (use translated display name from earlier in function)
   const characterName = characterItem.querySelector(".character-name");
-  characterName.textContent = "✓ " + characterItem.dataset.characterName;
+  characterName.textContent = "✓ " + displayName;
 
   // Add hover functionality to highlight tiles when hovering over completed character name
   const handleCompletedHoverEnter = () => {
@@ -2160,9 +2394,13 @@ function handleCorrectMatch(characterItem) {
  */
 function handleIncorrectMatch(characterItem) {
   // Create temporary error tooltip
+  const displayName = characterItem.dataset.displayName || characterItem.dataset.characterName;
   const errorTooltip = document.createElement("div");
   errorTooltip.className = "error-tooltip";
-  errorTooltip.innerHTML = `Nope! <strong>${characterItem.dataset.characterName}</strong> is not my name!`;
+
+  // Use translated message template and replace {name} placeholder
+  const messageTemplate = translations.ui.messages.error[currentLanguage];
+  errorTooltip.innerHTML = messageTemplate.replace('{name}', displayName);
 
   // Position it relative to the character item
   errorTooltip.style.position = "absolute";
@@ -2402,8 +2640,17 @@ function celebrateVictory(difficultyId) {
   }
 
   // Select random celebration message for this difficulty
-  const messages = CELEBRATION_MESSAGES[difficultyId];
-  const message = messages[Math.floor(Math.random() * messages.length)];
+  let message;
+  if (translations) {
+    const difficultyKey = difficultyId.replace('Tiles', ''); // 'hardTiles' -> 'hard'
+    const messages = translations.victoryMessages[difficultyKey];
+    const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+    message = randomMsg[currentLanguage];
+  } else {
+    // Fallback to hardcoded messages if translations not loaded
+    const messages = CELEBRATION_MESSAGES[difficultyId];
+    message = messages[Math.floor(Math.random() * messages.length)];
+  }
   console.log(`Celebration message: "${message}"`);
 
   // Loop through shuffled indices and reveal tiles with letters
@@ -2490,8 +2737,15 @@ function celebrateVictory(difficultyId) {
 function showClickToStartMessage(difficultyId, applyGrayscale = true) {
   console.log(`Showing "click to start" message for ${difficultyId}`);
 
-  // Get the message for this difficulty
-  const message = CLICK_TO_START_MESSAGES[difficultyId];
+  // Get the message for this difficulty from translations
+  let message;
+  if (translations) {
+    const difficultyKey = difficultyId.replace('Tiles', ''); // 'hardTiles' -> 'hard'
+    message = translations.idleMessages[difficultyKey][currentLanguage];
+  } else {
+    // Fallback to hardcoded messages if translations not loaded
+    message = CLICK_TO_START_MESSAGES[difficultyId];
+  }
 
   // Get all tiles
   const allTiles = document.querySelectorAll(".tile-container");
@@ -2502,6 +2756,12 @@ function showClickToStartMessage(difficultyId, applyGrayscale = true) {
       tile.classList.add("tile-victory-grayscale");
     });
   }
+
+  // First, remove any existing letter divs from previous language
+  allTiles.forEach((tile) => {
+    const oldLetters = tile.querySelectorAll('.click-to-start-letter, .click-to-start-letter-initial');
+    oldLetters.forEach(letter => letter.remove());
+  });
 
   // Add letters sequentially to each square
   allTiles.forEach((tile, index) => {
@@ -2529,7 +2789,16 @@ function transitionToClickMessage(difficultyId) {
   transitionTimeouts.forEach(clearTimeout);
   transitionTimeouts = [];
 
-  const message = CLICK_TO_START_MESSAGES[difficultyId];
+  // Get the message for this difficulty from translations
+  let message;
+  if (translations) {
+    const difficultyKey = difficultyId.replace('Tiles', ''); // 'hardTiles' -> 'hard'
+    message = translations.idleMessages[difficultyKey][currentLanguage];
+  } else {
+    // Fallback to hardcoded messages if translations not loaded
+    message = CLICK_TO_START_MESSAGES[difficultyId];
+  }
+
   const squares = getSquaresForDifficulty(difficultyId);
   let replaceIndex = 0;
 
@@ -2736,9 +3005,15 @@ function updateCharacterList(tileDataArray) {
     // Get character data from imageList
     const decoyImages = imageList[decoyName];
     if (decoyImages && decoyImages.length > 0) {
+      // Extract real character key from filename (same as game tiles)
+      // Then normalize to match translation keys
+      const rawDecoyKey = decoyImages[0].filename.split('(')[0];
+      const decoyCharacterKey = normalizeCharacterKey(rawDecoyKey);
+
       const decoyData = {
         name_text: decoyImages[0].name_text,
         description_text: decoyImages[0].description_text,
+        characterKey: decoyCharacterKey, // Store character key for translations
         type: "decoy",
       };
       uniqueCharacters.push(decoyData);
@@ -2753,18 +3028,35 @@ function updateCharacterList(tileDataArray) {
     const characterItem = document.createElement("div");
     characterItem.className = "character-item";
 
+    // Get translated name and description if available
+    let displayName = character.name_text;
+    let displayDescription = character.description_text;
+
+    if (translations && character.characterKey) {
+      const charKey = character.characterKey;
+      if (translations.witches[charKey]) {
+        displayName = translations.witches[charKey].name[currentLanguage];
+        // Use first description if available
+        if (translations.witches[charKey].descriptions && translations.witches[charKey].descriptions.length > 0) {
+          displayDescription = translations.witches[charKey].descriptions[0][currentLanguage];
+        }
+      }
+    }
+
     // Add data attributes for tracking
     characterItem.dataset.completed = "false";
-    characterItem.dataset.characterName = character.name_text;
+    characterItem.dataset.characterName = character.name_text; // Keep original for matching
+    characterItem.dataset.displayName = displayName; // Store translated name for display
     characterItem.dataset.characterType = character.type || "gameTile"; // Store type to identify decoys
+    characterItem.dataset.characterKey = character.characterKey || ""; // Store key for translation lookup
 
     const characterName = document.createElement("div");
     characterName.className = "character-name";
-    characterName.textContent = character.name_text;
+    characterName.textContent = displayName;
 
     const characterDesc = document.createElement("div");
     characterDesc.className = "character-description";
-    characterDesc.textContent = character.description_text;
+    characterDesc.textContent = displayDescription;
 
     // Add click handler for character selection
     characterItem.addEventListener("click", () =>
@@ -2779,4 +3071,47 @@ function updateCharacterList(tileDataArray) {
   console.log(
     `Character list updated: ${uniqueCharacters.length} unique characters`
   );
+}
+
+/**
+ * Update character list names and descriptions to current language
+ * Updates text content in-place without rebuilding DOM
+ * Preserves event listeners and completion state
+ */
+function updateCharacterListLanguage() {
+  const characterItems = document.querySelectorAll('.character-item');
+
+  characterItems.forEach(item => {
+    const characterKey = item.dataset.characterKey;
+
+    if (!characterKey || !translations.witches[characterKey]) {
+      return; // Skip if no key or translation not found
+    }
+
+    // Get translated name and description
+    const translatedName = translations.witches[characterKey].name[currentLanguage];
+    let translatedDesc = '';
+    if (translations.witches[characterKey].descriptions?.length > 0) {
+      translatedDesc = translations.witches[characterKey].descriptions[0][currentLanguage];
+    }
+
+    // Update displayName dataset
+    item.dataset.displayName = translatedName;
+
+    // Update DOM text content
+    const nameEl = item.querySelector('.character-name');
+    const descEl = item.querySelector('.character-description');
+
+    if (nameEl) {
+      // Preserve checkmark if present
+      const hasCheckmark = nameEl.textContent.includes('✓');
+      nameEl.textContent = hasCheckmark ? `✓ ${translatedName}` : translatedName;
+    }
+
+    if (descEl) {
+      descEl.textContent = translatedDesc;
+    }
+  });
+
+  console.log('Character list updated to language:', currentLanguage);
 }

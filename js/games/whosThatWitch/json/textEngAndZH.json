@@ -16,6 +16,7 @@
       "cluesOn": { "en": "ON", "zh": "开" },
       "cluesOff": { "en": "OFF", "zh": "关" },
       "resetBestScore": { "en": "reset best score", "zh": "重置最佳" },
+      "resetButton": { "en": "reset", "zh": "重置" },
       "clicks": { "en": "clicks", "zh": "点击" }
     },
 
@@ -23,6 +24,11 @@
       "easy": { "en": "EASY", "zh": "简单" },
       "medium": { "en": "MEDIUM", "zh": "中等" },
       "hard": { "en": "HARD", "zh": "困难" }
+    },
+
+    "messages": {
+      "success": { "en": "Yes! I am witch <strong>{name}</strong>!", "zh": "是的！我是女巫<strong>{name}</strong>！" },
+      "error": { "en": "Nope! <strong>{name}</strong> is not my name!", "zh": "不对！<strong>{name}</strong>不是我的名字！" }
     }
   },
 

@@ -15,7 +15,8 @@
       "Bash(cat:*)",
       "Bash(npm run validate-word-haunt:*)",
       "Bash(kill 1683 4117)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8000)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8000)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []

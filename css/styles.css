@@ -679,6 +679,20 @@ body {
 .game-name {
   font-weight: bold;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.game-name-en {
+  font-size: 1em;
+  line-height: 1.2;
+}
+
+.game-name-zh {
+  font-size: 0.85em;
+  opacity: 0.8;
+  line-height: 1.2;
 }
 
 /* The Radley House special styling - matches game title */

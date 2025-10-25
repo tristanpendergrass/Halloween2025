@@ -19,8 +19,8 @@
         First, match the witches, and then identify them!
       </div>
       <div id="scoring-area">
-        <div id="current-clicks">clicks: 0</div>
-        <div id="best-scores-display">
+        <div id="current-clicks" style="display:none">clicks: 0</div>
+        <div id="best-scores-display" style="display:none">
           <span id="best-easy">---</span>
           <span id="best-medium">---</span>
           <span id="best-hard">---</span>
@@ -30,18 +30,20 @@
         </div>
         <div id="scoring-controls">
           <div class="control-row">
-            <span class="control-label"
+            <span class="control-label" data-label-type="scoring"
               >scoring on/off:&nbsp;&nbsp;&nbsp;&nbsp;</span
             >
             <button id="scoring-toggle" class="scoring-btn">OFF</button>
-            <span class="control-label" style="margin-left: 15px"
+            <span class="control-label" data-label-type="clues" style="margin-left: 15px"
               >clues on/off:</span
             >
             <button id="clues-toggle" class="scoring-btn">OFF</button>
           </div>
           <div class="control-row">
-            <span class="control-label">reset best score:</span>
+            <span class="control-label" data-label-type="reset">reset best score:</span>
             <button id="scoring-reset" class="scoring-btn">reset</button>
+            <button id="lang-en" class="lang-btn-new lang-selected">ENGLISH <span class="lang-checkmark">✅</span></button>
+            <button id="lang-zh" class="lang-btn-new">中文 <span class="lang-checkmark" style="visibility:hidden">✅</span></button>
           </div>
         </div>
       </div>
