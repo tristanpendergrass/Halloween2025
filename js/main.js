@@ -57,6 +57,34 @@ class HalloweenGames {
       this.isPanelCollapsed = true;
       this.updatePanelState();
     }
+
+    // Credits modal
+    const creditsButton = document.getElementById("credits-button");
+    const creditsModal = document.getElementById("credits-modal");
+    const closeModalButton = document.getElementById("close-modal");
+
+    if (creditsButton && creditsModal) {
+      creditsButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        creditsModal.showModal();
+      });
+    }
+
+    if (closeModalButton && creditsModal) {
+      closeModalButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        creditsModal.close();
+      });
+    }
+
+    // Close modal when clicking backdrop
+    if (creditsModal) {
+      creditsModal.addEventListener("click", (e) => {
+        if (e.target === creditsModal) {
+          creditsModal.close();
+        }
+      });
+    }
   }
 
   async loadGames() {

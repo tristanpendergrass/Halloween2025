@@ -151,6 +151,9 @@
             </li>
           </ul>
 
+          <!-- Credits Button -->
+          <button id="credits-button" class="credits-button">Credits</button>
+
           <!-- Panel Toggle Button -->
           <div class="panel-toggle">
             <button
@@ -164,6 +167,18 @@
         </div>
       </div>
     </div>
+
+    <!-- Credits Modal -->
+    <dialog id="credits-modal" class="credits-modal">
+      <div class="modal-content">
+        <button id="close-modal" class="close-button" aria-label="Close">&times;</button>
+        <h2>Credits</h2>
+        <ul class="credits-list">
+          <li>Design, programming, and art: JP and Tristan</li>
+          <li>AI was used to create art and code for this website.</li>
+        </ul>
+      </div>
+    </dialog>
 
     <script src="js/main.js"></script>
     <script src="js/sliding-puzzle.js"></script>

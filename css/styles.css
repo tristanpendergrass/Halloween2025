@@ -553,9 +553,115 @@ body {
   display: none;
 }
 
+/* Credits Button */
+.credits-button {
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  background: rgba(255, 102, 0, 0.2);
+  border: 1px solid #cc5500;
+  border-radius: 8px;
+  color: #cc9966;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.credits-button:hover {
+  background: rgba(255, 102, 0, 0.3);
+  border-color: #ff8c42;
+  color: #ffaa66;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 102, 0, 0.3);
+}
+
+.credits-button:active {
+  transform: translateY(0);
+}
+
+/* Hide credits button when panel is collapsed */
+.right-nav.collapsed .credits-button {
+  display: none;
+}
+
+/* Credits Modal */
+.credits-modal {
+  border: 2px solid #ff6600;
+  border-radius: 12px;
+  padding: 0;
+  background: linear-gradient(180deg, #3d2817 0%, #2a1810 100%);
+  color: #cc9966;
+  max-width: 500px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+.credits-modal::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+.credits-modal .modal-content {
+  padding: 30px;
+  position: relative;
+}
+
+.credits-modal h2 {
+  margin: 0 0 20px 0;
+  color: #ff8c42;
+  font-family: 'Cinzel', serif;
+  font-size: 24px;
+  text-align: center;
+}
+
+.credits-modal .credits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1.8;
+}
+
+.credits-modal .credits-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 102, 0, 0.2);
+}
+
+.credits-modal .credits-list li:last-child {
+  border-bottom: none;
+}
+
+.credits-modal .close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: #ff8c42;
+  font-size: 32px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  transition: all 0.2s ease;
+}
+
+.credits-modal .close-button:hover {
+  color: #ffaa66;
+  transform: scale(1.2);
+}
+
+.credits-modal .close-button:active {
+  transform: scale(1.0);
+}
+
 /* Panel Toggle Button */
 .panel-toggle {
-  margin-top: auto;
   padding: 20px 0;
   text-align: center;
 }
