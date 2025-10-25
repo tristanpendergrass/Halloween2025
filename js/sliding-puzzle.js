@@ -178,8 +178,8 @@ async function initPuzzleGame() {
     }
   });
 
-  // Load image5 by default in solved state (no shuffle, image puzzle)
-  loadPuzzle(cyclingImages[4], false, false);
+  // Load image5 by default in scrambled state (with shuffle, image puzzle)
+  loadPuzzle(cyclingImages[4], true, false);
 }
 
 /**

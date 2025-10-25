@@ -58,13 +58,21 @@ class HalloweenGames {
       this.updatePanelState();
     }
 
-    // Credits modal
+    // Bind credits button and modal
+    this.bindCreditsButton();
+  }
+
+  bindCreditsButton() {
     const creditsButton = document.getElementById("credits-button");
     const creditsModal = document.getElementById("credits-modal");
     const closeModalButton = document.getElementById("close-modal");
 
     if (creditsButton && creditsModal) {
-      creditsButton.addEventListener("click", (e) => {
+      // Remove old listener if exists by cloning the button
+      const newCreditsButton = creditsButton.cloneNode(true);
+      creditsButton.parentNode.replaceChild(newCreditsButton, creditsButton);
+
+      newCreditsButton.addEventListener("click", (e) => {
         e.preventDefault();
         creditsModal.showModal();
       });
@@ -260,6 +268,9 @@ class HalloweenGames {
                 </div>
             `;
     }
+
+    // Re-bind credits button after rendering (in case it was replaced)
+    this.bindCreditsButton();
   }
 
   updateUI() {

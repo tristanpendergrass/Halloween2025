@@ -553,36 +553,35 @@ body {
   display: none;
 }
 
-/* Credits Button */
-.credits-button {
-  width: 100%;
-  margin-top: auto;
-  margin-bottom: 10px;
-  padding: 10px 20px;
-  background: rgba(255, 102, 0, 0.2);
-  border: 1px solid #cc5500;
+/* Credits Button - Centered in Welcome Screen */
+.credits-button-center {
+  position: absolute;
+  top: 600px;
+  left: 40%;
+  transform: translateX(-50%);
+  padding: 10px 25px;
+  background: rgba(255, 102, 0, 0.3);
+  border: 2px solid #cc5500;
   border-radius: 8px;
-  color: #cc9966;
+  color: #ffaa66;
   font-size: 14px;
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
+  z-index: 100;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
-.credits-button:hover {
-  background: rgba(255, 102, 0, 0.3);
+.credits-button-center:hover {
+  background: rgba(255, 102, 0, 0.5);
   border-color: #ff8c42;
-  color: #ffaa66;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(255, 102, 0, 0.3);
+  color: #ffffff;
+  transform: translateX(-50%) translateY(-3px);
+  box-shadow: 0 6px 12px rgba(255, 102, 0, 0.4);
 }
 
-.credits-button:active {
-  transform: translateY(0);
-}
-
-/* Hide credits button when panel is collapsed */
-.right-nav.collapsed .credits-button {
-  display: none;
+.credits-button-center:active {
+  transform: translateX(-50%) translateY(-1px);
 }
 
 /* Credits Modal */

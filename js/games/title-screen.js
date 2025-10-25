@@ -87,9 +87,8 @@ export default class TitleScreen {
               <img src="assets/background/pumpkin_patch_BACKGROUND_950x714.png" alt="Pumpkin Patch" class="title-screen-background">
               <img id="character-silhouette" src="assets/background/silhouette_batman_transparent_250h.png" alt="Character Silhouette" class="batman-silhouette">
               <img src="assets/background/pumpkin_patch_950x714_justBelowHorizon.png" alt="Pumpkin Patch Foreground" class="title-screen-foreground">
-              <div class="silhouette-message" id="silhouette-message">
-                This is just a parade of silhouettes. There is nothing for you to do here. Enjoy.
-              </div>
+              <!-- Credits Button -->
+              <button id="credits-button" class="credits-button-center">Credits</button>
             </div>
         `;
   }
@@ -247,7 +246,7 @@ export default class TitleScreen {
   start() {
     console.log("Title screen active");
     this.setupCharacterCycling();
-    this.setupClickMessage();
+    // setupClickMessage() disabled - message removed from UI
   }
 
   stop() {
