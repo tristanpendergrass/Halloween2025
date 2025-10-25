@@ -147,6 +147,12 @@ function normalizeCharacterKey(filenameKey) {
     'Lafayette_Reynolds': 'Lafayette',
     'Mildred_Hubble': 'Mildred',
     'Professor_McGonagall': 'McGonagall',
+    'Wendy_The_Good_Little_Witch': 'Wendy',
+    'Witch_Hazel': 'WitchHazel',
+    'Yababa': 'Yubaba',
+    'Dani_and_Dorian_Wytte': 'Dani_and_Dorian',
+    'Nie_Xiaoqian_': 'Nie_Xiaoqian',  // Trailing underscore before (聂小倩)
+    'Shuimu ': 'Shuimu',              // Trailing space before (水母)
   };
 
   return keyMap[filenameKey] || filenameKey;
