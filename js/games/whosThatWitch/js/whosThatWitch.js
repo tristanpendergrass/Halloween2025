@@ -648,6 +648,19 @@ function switchLanguage(lang) {
     zhCheckmark.style.visibility = 'visible';
   }
 
+  // Toggle cat tooltip visibility based on language
+  const catTooltipEn = document.getElementById('cat-tooltip');
+  const catTooltipZh = document.getElementById('cat-tooltip-zh');
+  if (catTooltipEn && catTooltipZh) {
+    if (lang === 'en') {
+      catTooltipEn.style.display = '';
+      catTooltipZh.style.display = 'none';
+    } else {
+      catTooltipEn.style.display = 'none';
+      catTooltipZh.style.display = '';
+    }
+  }
+
   // Update all startup text immediately
   updateStartupText();
 
